@@ -8,12 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0D02CC5798300040379 /* SwiftPoetryApp.swift */; };
-		0F37D0D32CC5798300040379 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0D22CC5798300040379 /* ContentView.swift */; };
 		0F37D0D52CC5798400040379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F37D0D42CC5798400040379 /* Assets.xcassets */; };
 		0F37D0D92CC5798400040379 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F37D0D82CC5798400040379 /* Preview Assets.xcassets */; };
 		0F37D0E32CC5798400040379 /* SwiftPoetryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0E22CC5798400040379 /* SwiftPoetryTests.swift */; };
 		0F37D0ED2CC5798400040379 /* SwiftPoetryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0EC2CC5798400040379 /* SwiftPoetryUITests.swift */; };
 		0F37D0EF2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0EE2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift */; };
+		0F37D0FC2CC6502600040379 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */; };
+		0F37D0FE2CC650A200040379 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */; };
+		0F37D1002CC650FB00040379 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FF2CC650FB00040379 /* Navigation.swift */; };
+		0F37D1022CC652F400040379 /* PoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1012CC652F400040379 /* PoetryService.swift */; };
+		0F37D1042CC6563800040379 /* AuthorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1032CC6563800040379 /* AuthorsView.swift */; };
+		0F37D1072CC6571600040379 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1062CC6571600040379 /* AuthorView.swift */; };
+		0F37D1092CC657BB00040379 /* PoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1082CC657BB00040379 /* PoemView.swift */; };
+		0F37D10B2CC6615500040379 /* Hashable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D10A2CC6615500040379 /* Hashable+Extensions.swift */; };
+		0F37D10F2CC6E9B100040379 /* DisplayLinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */; };
+		0F37D1112CC6E9F200040379 /* SpeedReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +45,6 @@
 /* Begin PBXFileReference section */
 		0F37D0CD2CC5798300040379 /* SwiftPoetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPoetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F37D0D02CC5798300040379 /* SwiftPoetryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPoetryApp.swift; sourceTree = "<group>"; };
-		0F37D0D22CC5798300040379 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0F37D0D42CC5798400040379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F37D0D62CC5798400040379 /* SwiftPoetry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftPoetry.entitlements; sourceTree = "<group>"; };
 		0F37D0D82CC5798400040379 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +53,16 @@
 		0F37D0E82CC5798400040379 /* SwiftPoetryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPoetryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F37D0EC2CC5798400040379 /* SwiftPoetryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPoetryUITests.swift; sourceTree = "<group>"; };
 		0F37D0EE2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPoetryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
+		0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
+		0F37D0FF2CC650FB00040379 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		0F37D1012CC652F400040379 /* PoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryService.swift; sourceTree = "<group>"; };
+		0F37D1032CC6563800040379 /* AuthorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsView.swift; sourceTree = "<group>"; };
+		0F37D1062CC6571600040379 /* AuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorView.swift; sourceTree = "<group>"; };
+		0F37D1082CC657BB00040379 /* PoemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemView.swift; sourceTree = "<group>"; };
+		0F37D10A2CC6615500040379 /* Hashable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hashable+Extensions.swift"; sourceTree = "<group>"; };
+		0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkController.swift; sourceTree = "<group>"; };
+		0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedReadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +113,9 @@
 		0F37D0CF2CC5798300040379 /* SwiftPoetry */ = {
 			isa = PBXGroup;
 			children = (
-				0F37D0D02CC5798300040379 /* SwiftPoetryApp.swift */,
-				0F37D0D22CC5798300040379 /* ContentView.swift */,
+				0F37D10C2CC6633F00040379 /* Model */,
+				0F37D1052CC656AD00040379 /* UI */,
+				0F37D10D2CC6635300040379 /* Util */,
 				0F37D0D42CC5798400040379 /* Assets.xcassets */,
 				0F37D0D62CC5798400040379 /* SwiftPoetry.entitlements */,
 				0F37D0D72CC5798400040379 /* Preview Content */,
@@ -127,6 +146,38 @@
 				0F37D0EE2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift */,
 			);
 			path = SwiftPoetryUITests;
+			sourceTree = "<group>";
+		};
+		0F37D1052CC656AD00040379 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D0D02CC5798300040379 /* SwiftPoetryApp.swift */,
+				0F37D0FF2CC650FB00040379 /* Navigation.swift */,
+				0F37D1032CC6563800040379 /* AuthorsView.swift */,
+				0F37D1062CC6571600040379 /* AuthorView.swift */,
+				0F37D1082CC657BB00040379 /* PoemView.swift */,
+				0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0F37D10C2CC6633F00040379 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D1012CC652F400040379 /* PoetryService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F37D10D2CC6635300040379 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */,
+				0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */,
+				0F37D10A2CC6615500040379 /* Hashable+Extensions.swift */,
+				0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +310,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F37D0D32CC5798300040379 /* ContentView.swift in Sources */,
+				0F37D0FE2CC650A200040379 /* Codable+Extensions.swift in Sources */,
+				0F37D1072CC6571600040379 /* AuthorView.swift in Sources */,
+				0F37D10B2CC6615500040379 /* Hashable+Extensions.swift in Sources */,
+				0F37D0FC2CC6502600040379 /* DispatchQueue+Extensions.swift in Sources */,
+				0F37D1002CC650FB00040379 /* Navigation.swift in Sources */,
+				0F37D1022CC652F400040379 /* PoetryService.swift in Sources */,
+				0F37D10F2CC6E9B100040379 /* DisplayLinkController.swift in Sources */,
+				0F37D1112CC6E9F200040379 /* SpeedReadingView.swift in Sources */,
+				0F37D1042CC6563800040379 /* AuthorsView.swift in Sources */,
 				0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */,
+				0F37D1092CC657BB00040379 /* PoemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +480,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftPoetry/Preview Content\"";
+				DEVELOPMENT_TEAM = 5Y7PM3HB9M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -456,6 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftPoetry/Preview Content\"";
+				DEVELOPMENT_TEAM = 5Y7PM3HB9M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

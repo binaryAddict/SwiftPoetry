@@ -11,7 +11,11 @@ import SwiftUI
 struct SwiftPoetryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                AuthorsView(viewModel: AuthorsViewModel())
+                    .navigationDestinations()
+                
+            }
         }
     }
 }
