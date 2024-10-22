@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import SwiftPoetry
 
 final class SwiftPoetryTests: XCTestCase {
 
@@ -17,7 +18,17 @@ final class SwiftPoetryTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    @MainActor func testExample() throws {
+        AppStorageKey.removeAllValues()
+        var model = HomeViewModel()
+        XCTAssert(model.offlineOnly == false)
+        model.offlineOnly = true
+        XCTAssert(model.offlineOnly)
+        model = HomeViewModel()
+        XCTAssert(model.offlineOnly)
+        AppStorageKey.removeAllValues()
+        model = HomeViewModel()
+        XCTAssert(model.offlineOnly == false)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         // Any test you write for XCTest can be annotated as throws and async.

@@ -8,6 +8,13 @@
 import Foundation
 
 extension Decodable {
+    
+    static func readJSONString(_ text: String) throws -> Self {
+        let data = text.data(using: .utf8)!
+        let result = try JSONDecoder().decode(self, from: data)
+        return result
+    }
+    
     static func readJSONData(_ data: Data) throws -> Self {
         try JSONDecoder().decode(self, from: data)
     }

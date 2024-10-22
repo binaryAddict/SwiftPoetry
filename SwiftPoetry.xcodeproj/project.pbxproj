@@ -32,6 +32,7 @@
 		0F37D1222CC8043300040379 /* PoetryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1212CC8043300040379 /* PoetryStore.swift */; };
 		0F37D1242CC804CB00040379 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1232CC804CB00040379 /* URL+Extensions.swift */; };
 		0F37D1262CC8050300040379 /* PoetryServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1252CC8050300040379 /* PoetryServiceProvider.swift */; };
+		0F37D1292CC82AA000040379 /* AppStorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1282CC82AA000040379 /* AppStorageKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		0F37D1212CC8043300040379 /* PoetryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryStore.swift; sourceTree = "<group>"; };
 		0F37D1232CC804CB00040379 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		0F37D1252CC8050300040379 /* PoetryServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryServiceProvider.swift; sourceTree = "<group>"; };
+		0F37D1282CC82AA000040379 /* AppStorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				0F37D1272CC8050E00040379 /* PoetryService */,
+				0F37D1282CC82AA000040379 /* AppStorageKey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				0F37D1262CC8050300040379 /* PoetryServiceProvider.swift in Sources */,
 				0F37D1042CC6563800040379 /* AuthorsView.swift in Sources */,
 				0F37D1152CC7A0FE00040379 /* HomeView.swift in Sources */,
+				0F37D1292CC82AA000040379 /* AppStorageKey.swift in Sources */,
 				0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */,
 				0F37D1092CC657BB00040379 /* PoemView.swift in Sources */,
 			);

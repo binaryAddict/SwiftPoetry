@@ -12,16 +12,18 @@ import SwiftUI
 class AuthorsViewModel {
     private(set) var fetching = false
     private(set) var authors: [String] = []
-    private(set) var peom: Poem?
     private let poetryServiceProvider: PoetryServiceProvider
+    @ObservationIgnored @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly
     
     init(poetryServiceProvider: PoetryServiceProvider = .shared) {
         self.poetryServiceProvider = poetryServiceProvider
     }
     
     func onAppear() {
+        let offlineOnly = self.offlineOnly
+        fetching = true
         DispatchQueue.main.asyncAwait {
-            try await self.poetryServiceProvider.service().authors()
+            try await self.poetryServiceProvider.service(offlineOnly: offlineOnly).authors()
         } completion: { [weak self] val in
             guard let self else { return }
             self.fetching = false

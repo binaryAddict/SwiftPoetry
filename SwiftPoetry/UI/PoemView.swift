@@ -21,8 +21,3 @@ struct PoemView: View {
     PoemView(poem: Poem(title: "My First", author: "Some One", lines: ["This is my first poem.", "The End"]))
 }
 
-enum WordPerMinute {
-    static let min = 15
-    static let max = 60 * 15
-}
-

@@ -12,7 +12,7 @@ import SwiftUI
 class SpeedReadingViewModel {
     
     var wordDuration: TimeInterval {
-         60 / TimeInterval(wordPerMinute)
+        60 / TimeInterval(wordPerMinute.value)
     }
     var currentWord: Substring {
         words[wordIndex]
@@ -24,15 +24,7 @@ class SpeedReadingViewModel {
     
     let poem: Poem
     let words: [Substring]
-    private var _wordPerMinute = 240
-    var wordPerMinute: Int {
-        get {
-            _wordPerMinute
-        }
-        set {
-            _wordPerMinute = min(WordPerMinute.max, max(WordPerMinute.min, newValue))
-        }
-    }
+    @ObservationIgnored @AppStorage(AppStorageKey.wordsPerMinute.rawValue) var wordPerMinute = AppStorageDefaultValue.wordsPerMinute
     private(set) var wordIndex = 0
     
     private var duration = TimeInterval(0)
@@ -83,20 +75,20 @@ struct RunnerView: View {
                         .opacity(viewModel.complete == 1 ? 1 : 0)
                     Spacer()
                     VStack(alignment: .center) {
-                        Text("\(viewModel.wordPerMinute)")
+                        Text("\(viewModel.wordPerMinute.value)")
                         HStack(spacing: 16) {
                             Button {
-                                viewModel.wordPerMinute -= 10
+                                viewModel.wordPerMinute.value -= 10
                             } label: {
                                 Image(systemName: "minus")
                             }
-                            .disabled(viewModel.wordPerMinute == WordPerMinute.min)
+                            .disabled(viewModel.wordPerMinute.value == WordsPerMinute.min)
                             Button {
-                                viewModel.wordPerMinute += 10
+                                viewModel.wordPerMinute.value += 10
                             } label: {
                                 Image(systemName: "plus")
                             }
-                            .disabled(viewModel.wordPerMinute == WordPerMinute.max)
+                            .disabled(viewModel.wordPerMinute.value == WordsPerMinute.max)
                         }
                     }
                     .disabled(viewModel.complete == 1)
