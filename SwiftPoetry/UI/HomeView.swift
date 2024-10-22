@@ -7,16 +7,14 @@
 
 import SwiftUI
 
-enum ServiceError: Error {
-    case missingData
-}
+
 
 @MainActor
 @Observable
 class HomeViewModel {
-    private let poetryService: any PoetryServer
+    private let poetryService: any PoetryService
     private(set) var poem: Poem?
-    init(poetryService: any PoetryServer = .shared) {
+    init(poetryService: any PoetryService = .shared) {
         self.poetryService = poetryService
     }
     func onAppear() {
@@ -25,15 +23,7 @@ class HomeViewModel {
     
     func fetchRandomPoem() {
         DispatchQueue.main.asyncAwait {
-            let authors = try await self.poetryService.authors()
-            guard let author = authors.randomElement() else {
-                throw ServiceError.missingData
-            }
-            let poems = try await self.poetryService.poems(author: author)
-            guard let poem = poems.randomElement() else {
-                throw ServiceError.missingData
-            }
-            return poem
+            try await self.poetryService.randomPoem()
         } completion: { [weak self] result in
             guard let self else { return }
             switch result {

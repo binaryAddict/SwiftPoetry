@@ -24,6 +24,7 @@
 		0F37D10F2CC6E9B100040379 /* DisplayLinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */; };
 		0F37D1112CC6E9F200040379 /* SpeedReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */; };
 		0F37D1152CC7A0FE00040379 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1142CC7A0FE00040379 /* HomeView.swift */; };
+		0F37D1172CC7AE3800040379 /* PoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1162CC7AE3800040379 /* PoetryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkController.swift; sourceTree = "<group>"; };
 		0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedReadingView.swift; sourceTree = "<group>"; };
 		0F37D1142CC7A0FE00040379 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0F37D1162CC7AE3800040379 /* PoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				0F37D1012CC652F400040379 /* PoetryServer.swift */,
+				0F37D1162CC7AE3800040379 /* PoetryService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				0F37D1022CC652F400040379 /* PoetryServer.swift in Sources */,
 				0F37D10F2CC6E9B100040379 /* DisplayLinkController.swift in Sources */,
 				0F37D1112CC6E9F200040379 /* SpeedReadingView.swift in Sources */,
+				0F37D1172CC7AE3800040379 /* PoetryService.swift in Sources */,
 				0F37D1042CC6563800040379 /* AuthorsView.swift in Sources */,
 				0F37D1152CC7A0FE00040379 /* HomeView.swift in Sources */,
 				0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */,
