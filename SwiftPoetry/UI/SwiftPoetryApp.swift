@@ -12,7 +12,7 @@ struct SwiftPoetryApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                AuthorsView(viewModel: AuthorsViewModel())
+                HomeView(viewModel: .init())
                     .navigationDestinations()
                 
             }
