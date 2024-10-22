@@ -17,9 +17,19 @@ struct Poem: Hashable, Codable {
     let lines: [String]
 }
 
-actor PoetryService: ObjectInstanceHashable {
+protocol PoetryServer: ObjectInstanceHashable {
+    func authors() async throws -> [String]
+    func poems(author: String) async throws -> [Poem]
+}
 
-    static let shared  = PoetryService()
+extension PoetryServer where Self == PoetryServerImp {
+    static var shared: some PoetryServer {
+        PoetryServerImp.shared
+    }
+}
+
+actor PoetryServerImp: PoetryServer {
+    static let shared  = PoetryServerImp()
     
     func authors() async throws -> [String] {
         let url = URL(string: "https://poetrydb.org/author")!

@@ -14,9 +14,9 @@ enum ServiceError: Error {
 @MainActor
 @Observable
 class HomeViewModel {
-    private let poetryService: PoetryService
+    private let poetryService: any PoetryServer
     private(set) var poem: Poem?
-    init(poetryService: PoetryService = .shared) {
+    init(poetryService: any PoetryServer = .shared) {
         self.poetryService = poetryService
     }
     func onAppear() {

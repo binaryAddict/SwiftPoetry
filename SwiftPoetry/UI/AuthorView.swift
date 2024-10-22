@@ -13,9 +13,9 @@ class AuthorViewModel {
     private(set) var fetching = false
     let author: String
     private(set) var peoms: [Poem] = []
-    private let poetryService: PoetryService
+    private let poetryService: any PoetryServer
     
-    init(author: String, poetryService: PoetryService = .shared) {
+    init(author: String, poetryService: any PoetryServer = .shared) {
         self.author = author
         self.poetryService = poetryService
     }

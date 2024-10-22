@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthorNavigation: Hashable {
     let author: String
-    let poetryService: PoetryService
+    @HashableIgnored var poetryService: any PoetryServer
 }
 
 extension View {

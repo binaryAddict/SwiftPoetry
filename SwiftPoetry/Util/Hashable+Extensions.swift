@@ -17,3 +17,15 @@ extension ObjectInstanceHashable {
         ObjectIdentifier(self).hash(into: &hasher)
     }
 }
+
+@propertyWrapper
+public struct HashableIgnored<T>: Hashable {
+    public var wrappedValue: T
+    public init(wrappedValue: T) {
+        self.wrappedValue = wrappedValue
+    }
+    public static func == (lhs: HashableIgnored<T>, rhs: HashableIgnored<T>) -> Bool {
+        true
+    }
+    public func hash(into hasher: inout Hasher) {}
+}
