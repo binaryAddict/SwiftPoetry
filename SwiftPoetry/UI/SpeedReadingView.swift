@@ -15,15 +15,15 @@ class SpeedReadingViewModel {
          60 / TimeInterval(wordPerMinute)
     }
     var currentWord: Substring {
-        currentLine[wordIndex]
+        words[wordIndex]
     }
     var complete: Float {
         let lastWord: Float = duration >= wordDuration ? 1 : 0
-        let currentLine = (lastWord + Float(wordIndex)) / Float(currentLine.count)
-        return (currentLine + Float(lineIndex)) / Float(poem.lines.count)
+        return (lastWord + Float(wordIndex)) / Float(words.count)
     }
     
     let poem: Poem
+    let words: [Substring]
     private var _wordPerMinute = 240
     var wordPerMinute: Int {
         get {
@@ -33,11 +33,7 @@ class SpeedReadingViewModel {
             _wordPerMinute = min(WordPerMinute.max, max(WordPerMinute.min, newValue))
         }
     }
-    
     private(set) var wordIndex = 0
-    private(set) var lineIndex = -1
-    private(set) var finished = false
-    private(set) var currentLine: [Substring] = [""]
     
     private var duration = TimeInterval(0)
     private let displayLink = DisplayLinkController(paused: true)
@@ -45,34 +41,21 @@ class SpeedReadingViewModel {
     
     init(poem: Poem) {
         self.poem = poem
-        nextWord()
+        self.words = poem.lines.flatMap {
+            $0.split(separator: " ")
+        }
         token = displayLink.update.sink { [weak self] change in
             guard let self else { return }
             duration += change.duration
             guard duration > wordDuration, complete != 1 else { return }
+            
             duration -= wordDuration
-            nextWord()
+            wordIndex += 1
         }
     }
     
     func onAppear() {
         displayLink.paused = false
-    }
-    
-    func nextWord() {
-        if wordIndex < currentLine.count - 1 {
-            wordIndex += 1
-            return
-        }
-        guard lineIndex < poem.lines.count - 1 else {
-            return
-        }
-        lineIndex += 1
-        wordIndex = 0
-        currentLine = poem.lines[lineIndex].split(separator: " ")
-        if currentLine.isEmpty {
-            currentLine.append("")
-        }
     }
 }
 
@@ -84,7 +67,6 @@ struct SpeedReadingView: View {
         } else {
             RunnerView(viewModel: viewModel)
         }
-        
     }
 }
 
@@ -121,7 +103,7 @@ struct RunnerView: View {
                     .padding(16)
                 }
                 ProgressView(value: viewModel.complete)
-                    .animation(.easeInOut(duration: viewModel.wordDuration), value:  viewModel.complete)
+                    .animation(.linear(duration: viewModel.wordDuration), value:  viewModel.complete)
             }
         }
         .onAppear(perform: viewModel.onAppear)
