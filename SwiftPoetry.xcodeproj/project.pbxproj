@@ -16,7 +16,7 @@
 		0F37D0FC2CC6502600040379 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */; };
 		0F37D0FE2CC650A200040379 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */; };
 		0F37D1002CC650FB00040379 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FF2CC650FB00040379 /* Navigation.swift */; };
-		0F37D1022CC652F400040379 /* PoetryServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1012CC652F400040379 /* PoetryServer.swift */; };
+		0F37D1022CC652F400040379 /* NetworkPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1012CC652F400040379 /* NetworkPoetryService.swift */; };
 		0F37D1042CC6563800040379 /* AuthorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1032CC6563800040379 /* AuthorsView.swift */; };
 		0F37D1072CC6571600040379 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1062CC6571600040379 /* AuthorView.swift */; };
 		0F37D1092CC657BB00040379 /* PoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1082CC657BB00040379 /* PoemView.swift */; };
@@ -25,6 +25,13 @@
 		0F37D1112CC6E9F200040379 /* SpeedReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */; };
 		0F37D1152CC7A0FE00040379 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1142CC7A0FE00040379 /* HomeView.swift */; };
 		0F37D1172CC7AE3800040379 /* PoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1162CC7AE3800040379 /* PoetryService.swift */; };
+		0F37D1192CC7B9D200040379 /* OfflinePoetryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1182CC7B9D200040379 /* OfflinePoetryStore.swift */; };
+		0F37D11C2CC7E90B00040379 /* Offline in Resources */ = {isa = PBXBuildFile; fileRef = 0F37D11B2CC7E90B00040379 /* Offline */; };
+		0F37D11E2CC7EF2500040379 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D11D2CC7EF2500040379 /* FileManager+Extensions.swift */; };
+		0F37D1202CC7FEA900040379 /* MixedPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D11F2CC7FEA900040379 /* MixedPoetryService.swift */; };
+		0F37D1222CC8043300040379 /* PoetryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1212CC8043300040379 /* PoetryStore.swift */; };
+		0F37D1242CC804CB00040379 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1232CC804CB00040379 /* URL+Extensions.swift */; };
+		0F37D1262CC8050300040379 /* PoetryServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1252CC8050300040379 /* PoetryServiceProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +65,7 @@
 		0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		0F37D0FF2CC650FB00040379 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		0F37D1012CC652F400040379 /* PoetryServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryServer.swift; sourceTree = "<group>"; };
+		0F37D1012CC652F400040379 /* NetworkPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPoetryService.swift; sourceTree = "<group>"; };
 		0F37D1032CC6563800040379 /* AuthorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsView.swift; sourceTree = "<group>"; };
 		0F37D1062CC6571600040379 /* AuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorView.swift; sourceTree = "<group>"; };
 		0F37D1082CC657BB00040379 /* PoemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemView.swift; sourceTree = "<group>"; };
@@ -67,6 +74,13 @@
 		0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedReadingView.swift; sourceTree = "<group>"; };
 		0F37D1142CC7A0FE00040379 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0F37D1162CC7AE3800040379 /* PoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryService.swift; sourceTree = "<group>"; };
+		0F37D1182CC7B9D200040379 /* OfflinePoetryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflinePoetryStore.swift; sourceTree = "<group>"; };
+		0F37D11B2CC7E90B00040379 /* Offline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Offline; sourceTree = "<group>"; };
+		0F37D11D2CC7EF2500040379 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
+		0F37D11F2CC7FEA900040379 /* MixedPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedPoetryService.swift; sourceTree = "<group>"; };
+		0F37D1212CC8043300040379 /* PoetryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryStore.swift; sourceTree = "<group>"; };
+		0F37D1232CC804CB00040379 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		0F37D1252CC8050300040379 /* PoetryServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryServiceProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +131,7 @@
 		0F37D0CF2CC5798300040379 /* SwiftPoetry */ = {
 			isa = PBXGroup;
 			children = (
+				0F37D11B2CC7E90B00040379 /* Offline */,
 				0F37D10C2CC6633F00040379 /* Model */,
 				0F37D1052CC656AD00040379 /* UI */,
 				0F37D10D2CC6635300040379 /* Util */,
@@ -169,8 +184,7 @@
 		0F37D10C2CC6633F00040379 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0F37D1012CC652F400040379 /* PoetryServer.swift */,
-				0F37D1162CC7AE3800040379 /* PoetryService.swift */,
+				0F37D1272CC8050E00040379 /* PoetryService */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,8 +196,23 @@
 				0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */,
 				0F37D10A2CC6615500040379 /* Hashable+Extensions.swift */,
 				0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */,
+				0F37D11D2CC7EF2500040379 /* FileManager+Extensions.swift */,
+				0F37D1232CC804CB00040379 /* URL+Extensions.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		0F37D1272CC8050E00040379 /* PoetryService */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D1162CC7AE3800040379 /* PoetryService.swift */,
+				0F37D1252CC8050300040379 /* PoetryServiceProvider.swift */,
+				0F37D1212CC8043300040379 /* PoetryStore.swift */,
+				0F37D1182CC7B9D200040379 /* OfflinePoetryStore.swift */,
+				0F37D11F2CC7FEA900040379 /* MixedPoetryService.swift */,
+				0F37D1012CC652F400040379 /* NetworkPoetryService.swift */,
+			);
+			path = PoetryService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F37D11C2CC7E90B00040379 /* Offline in Resources */,
 				0F37D0D92CC5798400040379 /* Preview Assets.xcassets in Resources */,
 				0F37D0D52CC5798400040379 /* Assets.xcassets in Resources */,
 			);
@@ -316,15 +346,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F37D1222CC8043300040379 /* PoetryStore.swift in Sources */,
 				0F37D0FE2CC650A200040379 /* Codable+Extensions.swift in Sources */,
 				0F37D1072CC6571600040379 /* AuthorView.swift in Sources */,
+				0F37D11E2CC7EF2500040379 /* FileManager+Extensions.swift in Sources */,
+				0F37D1202CC7FEA900040379 /* MixedPoetryService.swift in Sources */,
 				0F37D10B2CC6615500040379 /* Hashable+Extensions.swift in Sources */,
 				0F37D0FC2CC6502600040379 /* DispatchQueue+Extensions.swift in Sources */,
+				0F37D1192CC7B9D200040379 /* OfflinePoetryStore.swift in Sources */,
 				0F37D1002CC650FB00040379 /* Navigation.swift in Sources */,
-				0F37D1022CC652F400040379 /* PoetryServer.swift in Sources */,
+				0F37D1022CC652F400040379 /* NetworkPoetryService.swift in Sources */,
 				0F37D10F2CC6E9B100040379 /* DisplayLinkController.swift in Sources */,
 				0F37D1112CC6E9F200040379 /* SpeedReadingView.swift in Sources */,
 				0F37D1172CC7AE3800040379 /* PoetryService.swift in Sources */,
+				0F37D1242CC804CB00040379 /* URL+Extensions.swift in Sources */,
+				0F37D1262CC8050300040379 /* PoetryServiceProvider.swift in Sources */,
 				0F37D1042CC6563800040379 /* AuthorsView.swift in Sources */,
 				0F37D1152CC7A0FE00040379 /* HomeView.swift in Sources */,
 				0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */,

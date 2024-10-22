@@ -7,23 +7,24 @@
 
 import SwiftUI
 
-
-
 @MainActor
 @Observable
 class HomeViewModel {
-    private let poetryService: any PoetryService
+    
+    private let poetryServiceProvider: PoetryServiceProvider
     private(set) var poem: Poem?
-    init(poetryService: any PoetryService = .shared) {
-        self.poetryService = poetryService
+    
+    init(poetryService: PoetryServiceProvider = .shared) {
+        self.poetryServiceProvider = poetryService
     }
+    
     func onAppear() {
         fetchRandomPoem()
     }
     
     func fetchRandomPoem() {
         DispatchQueue.main.asyncAwait {
-            try await self.poetryService.randomPoem()
+            try await self.poetryServiceProvider.service().randomPoem()
         } completion: { [weak self] result in
             guard let self else { return }
             switch result {

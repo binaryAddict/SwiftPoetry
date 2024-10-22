@@ -13,15 +13,15 @@ class AuthorsViewModel {
     private(set) var fetching = false
     private(set) var authors: [String] = []
     private(set) var peom: Poem?
-    private let poetryService: any PoetryServer
+    private let poetryServiceProvider: PoetryServiceProvider
     
-    init(poetryService: any PoetryServer = .shared) {
-        self.poetryService = poetryService
+    init(poetryServiceProvider: PoetryServiceProvider = .shared) {
+        self.poetryServiceProvider = poetryServiceProvider
     }
     
     func onAppear() {
         DispatchQueue.main.asyncAwait {
-            try await self.poetryService.authors()
+            try await self.poetryServiceProvider.service().authors()
         } completion: { [weak self] val in
             guard let self else { return }
             self.fetching = false
@@ -35,7 +35,7 @@ class AuthorsViewModel {
     }
     
     func navigationValue(author: String) -> some Hashable {
-        AuthorNavigation(author: author, poetryService: poetryService)
+        AuthorNavigation(author: author, poetryServiceProvider: poetryServiceProvider)
     }
 }
 

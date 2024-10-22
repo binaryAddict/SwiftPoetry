@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AuthorNavigation: Hashable {
     let author: String
-    @HashableIgnored var poetryService: any PoetryServer
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
 }
 
 extension View {
     @MainActor func navigationDestinations() -> some View {
         navigationDestination(for: AuthorNavigation.self) {
-            AuthorView(viewModel: .init(author: $0.author, poetryService: $0.poetryService))
+            AuthorView(viewModel: .init(author: $0.author, poetryServiceProvider: $0.poetryServiceProvider))
         }
         .navigationDestination(for: Poem.self) {
 //            PoemView(poem: $0)

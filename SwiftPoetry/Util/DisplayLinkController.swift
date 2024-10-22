@@ -19,7 +19,7 @@ struct DisplayLinkUpdate: Hashable {
     private(set) unowned var displayLink: CADisplayLink!
     let update = PassthroughSubject<DisplayLinkUpdate, Never>()
     var paused: Bool {
-        get {
+        get {  
             displayLink.isPaused
         }
         set {
@@ -27,9 +27,13 @@ struct DisplayLinkUpdate: Hashable {
         }
     }
     
-   init(paused: Bool = false) {
+    init(paused: Bool = false) {
         super.init()
+#if os(macOS)
+        let displayLink = NSScreen.main!.displayLink(target: self, selector:  #selector(DisplayLinkController._update))
+#else
         let displayLink = CADisplayLink(target: self, selector: #selector(DisplayLinkController._update))
+#endif
         displayLink.isPaused = paused
         displayLink.add(to: .main, forMode: .default)
         self.displayLink = displayLink

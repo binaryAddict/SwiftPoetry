@@ -13,16 +13,16 @@ class AuthorViewModel {
     private(set) var fetching = false
     let author: String
     private(set) var peoms: [Poem] = []
-    private let poetryService: any PoetryServer
+    private let poetryServiceProvider: PoetryServiceProvider
     
-    init(author: String, poetryService: any PoetryServer = .shared) {
+    init(author: String, poetryServiceProvider: PoetryServiceProvider = .shared) {
         self.author = author
-        self.poetryService = poetryService
+        self.poetryServiceProvider = poetryServiceProvider
     }
     
     func onAppear() {
         DispatchQueue.main.asyncAwait {
-            try await self.poetryService.poems(author: self.author)
+            try await self.poetryServiceProvider.service().poems(author: self.author)
         } completion: { [weak self] val in
             guard let self else { return }
             self.fetching = false
