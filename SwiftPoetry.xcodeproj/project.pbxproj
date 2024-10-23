@@ -176,15 +176,10 @@
 		0F37D1052CC656AD00040379 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0F37D12F2CC95A0C00040379 /* Common */,
+				0F37D12E2CC959F800040379 /* Flow */,
 				0F37D0D02CC5798300040379 /* SwiftPoetryApp.swift */,
 				0F37D0FF2CC650FB00040379 /* Navigation.swift */,
-				0F37D1032CC6563800040379 /* AuthorsView.swift */,
-				0F37D1062CC6571600040379 /* AuthorView.swift */,
-				0F37D1082CC657BB00040379 /* PoemView.swift */,
-				0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */,
-				0F37D1142CC7A0FE00040379 /* SelectionRootView.swift */,
-				0F37D12A2CC912D600040379 /* RandomPoemView.swift */,
-				0F37D12C2CC9167200040379 /* View+Extensions.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -222,6 +217,43 @@
 				0F37D1012CC652F400040379 /* NetworkPoetryService.swift */,
 			);
 			path = PoetryService;
+			sourceTree = "<group>";
+		};
+		0F37D12E2CC959F800040379 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D1312CC95A3400040379 /* PoemSelection */,
+				0F37D1302CC95A2800040379 /* SpeedReading */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		0F37D12F2CC95A0C00040379 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D12C2CC9167200040379 /* View+Extensions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0F37D1302CC95A2800040379 /* SpeedReading */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D1082CC657BB00040379 /* PoemView.swift */,
+				0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */,
+				0F37D1142CC7A0FE00040379 /* SelectionRootView.swift */,
+			);
+			path = SpeedReading;
+			sourceTree = "<group>";
+		};
+		0F37D1312CC95A3400040379 /* PoemSelection */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D1032CC6563800040379 /* AuthorsView.swift */,
+				0F37D1062CC6571600040379 /* AuthorView.swift */,
+				0F37D12A2CC912D600040379 /* RandomPoemView.swift */,
+			);
+			path = PoemSelection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
