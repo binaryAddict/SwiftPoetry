@@ -9,27 +9,30 @@ import SwiftUI
 
 @MainActor
 @Observable
-final class SelectionRootViewModel {
+final class SelectionRootViewModel: ObjectInstanceHashable {
     
-    @ObservationIgnored
-    @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly
     private let poetryServiceProvider: PoetryServiceProvider
+    var settings: Settings
     
-    init(poetryServiceProvider: PoetryServiceProvider = .shared) {
+    init(poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
         self.poetryServiceProvider = poetryServiceProvider
+        self.settings = settings
     }
     
     func randomPoemNavigation() -> some Hashable {
-        RandomPoemNavigation(poetryServiceProvider: poetryServiceProvider)
+        RandomPoemViewModel(poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
     
     func authorsNavigationValue() -> some Hashable {
-        AuthorsNavigation(poetryServiceProvider: poetryServiceProvider)
+        AuthorsViewModel(poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
 
 extension SelectionRootViewModel {
     static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> SelectionRootViewModel {
-        .init(poetryServiceProvider: .testPreview(mode: mode))
+        .init(
+            poetryServiceProvider: .testPreview(mode: mode),
+            settings: .makeUnbacked()
+        )
     }
 }

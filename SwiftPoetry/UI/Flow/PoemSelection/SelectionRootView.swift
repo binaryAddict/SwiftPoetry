@@ -21,7 +21,7 @@ struct SelectionRootView: View {
                     Text("Let me choose")
                 }
                 Spacer()
-                OfflineOnlyView(offlineOnly: $viewModel.offlineOnly)
+                OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
             }
         }
         .navigationTitle("Pick a Poem")

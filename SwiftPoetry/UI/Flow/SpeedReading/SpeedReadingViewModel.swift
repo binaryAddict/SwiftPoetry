@@ -14,12 +14,12 @@ struct RunInfo {
     var duration = TimeInterval(0)
 }
 
-@MainActor
+//@MainActor
 @Observable
-class SpeedReadingViewModel: Chainable {
+class SpeedReadingViewModel: ObjectInstanceHashable, Chainable {
     
     var targetWordDuration: TimeInterval {
-        60 / TimeInterval(wordPerMinute.value)
+        60 / TimeInterval(settings.wordsPerMinute.value)
     }
     var currentWord: Substring {
         words[runInfo.wordIndex]
@@ -28,8 +28,6 @@ class SpeedReadingViewModel: Chainable {
         let lastWord: Float = runInfo.duration >= targetWordDuration ? 1 : 0
         return (lastWord + Float(runInfo.wordIndex)) / Float(words.count)
     }
-    
-    @ObservationIgnored @AppStorage(AppStorageKey.wordsPerMinute.rawValue) var wordPerMinute = AppStorageDefaultValue.wordsPerMinute
     
     let poem: Poem
     let words: [Substring]
@@ -42,10 +40,12 @@ class SpeedReadingViewModel: Chainable {
     private let displayLink = DisplayLinkController(paused: true)
     private var token: Any?
     private let poetryServiceProvider: PoetryServiceProvider
+    var settings: Settings
     
-    init(poem: Poem, poetryServiceProvider: PoetryServiceProvider = .shared) {
+    init(poem: Poem, poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
         self.poem = poem
         self.poetryServiceProvider = poetryServiceProvider
+        self.settings = settings
         self.words = poem.lines.flatMap {
             $0.split(separator: " ")
         }
@@ -74,8 +74,8 @@ class SpeedReadingViewModel: Chainable {
         isPaused = false
     }
     
-    func selectionRootNavigation() -> some Hashable {
-        SelectionRootNavigation(poetryServiceProvider: poetryServiceProvider)
+    @MainActor func selectionRootNavigation() -> some Hashable {
+        SelectionRootViewModel(poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
 
@@ -86,7 +86,8 @@ extension SpeedReadingViewModel {
     {
         .init(
             poem: poem,
-            poetryServiceProvider: .testPreview(mode: mode)
+            poetryServiceProvider: .testPreview(mode: mode),
+            settings: .makeUnbacked()
         )
     }
 }

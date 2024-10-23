@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class AuthorPoemsViewModel {
+class AuthorPoemsViewModel: ObjectInstanceHashable {
     
     var fetching = false
     let author: String
@@ -20,10 +20,12 @@ class AuthorPoemsViewModel {
     var presentError = false
     private(set) var peoms: [Poem] = []
     private let poetryServiceProvider: PoetryServiceProvider
+    private let settings: Settings
     
-    init(author: String, poetryServiceProvider: PoetryServiceProvider = .shared) {
+    init(author: String, poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
         self.author = author
         self.poetryServiceProvider = poetryServiceProvider
+        self.settings = settings
     }
     
     func onAppear() {
@@ -43,12 +45,16 @@ class AuthorPoemsViewModel {
     }
     
     func navigationValue(poem: Poem) -> some Hashable {
-        SpeedReederNavigation(poem: poem, poetryServiceProvider: poetryServiceProvider)
+        SpeedReadingViewModel(poem: poem, poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
 
 extension AuthorPoemsViewModel {
     static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> AuthorPoemsViewModel {
-        .init(author: PoetryStubs.authorJonathanSwift, poetryServiceProvider: .testPreview(mode: mode))
+        .init(
+            author: PoetryStubs.authorJonathanSwift,
+            poetryServiceProvider: .testPreview(mode: mode),
+            settings: .makeUnbacked()
+        )
     }
 }

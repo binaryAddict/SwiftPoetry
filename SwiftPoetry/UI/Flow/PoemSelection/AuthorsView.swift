@@ -20,7 +20,7 @@ struct AuthorsView: View {
                 }
             }
             
-            OfflineOnlyView(offlineOnly: $viewModel.offlineOnly)
+            OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
                 .background(Color.white)
                 .shadow(radius: 12)
         }
@@ -29,7 +29,7 @@ struct AuthorsView: View {
         .searchable(text: $viewModel.filter)
         .fetchingOverlay(isFetching: $viewModel.fetching)
         .alert("Error", isPresented: $viewModel.presentError) {
-            if viewModel.offlineOnly {
+            if viewModel.settings.offlineOnly {
                 Button("Ok") {
                     dismiss()
                 }
@@ -38,7 +38,7 @@ struct AuthorsView: View {
                     dismiss()
                 }
                 Button("Use Offline") {
-                    viewModel.offlineOnly = true
+                    viewModel.settings.offlineOnly = true
                     viewModel.fetchAuthors()
                 }
             }

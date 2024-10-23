@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct RunnerView: View {
-    @State var viewModel: SpeedReadingViewModel
+//    @State 
+    var viewModel: SpeedReadingViewModel
+    var settings: Settings
+    init(viewModel: SpeedReadingViewModel) {
+        self.viewModel = viewModel
+        self.settings = viewModel.settings
+    }
     var body: some View {
         ZStack {
             Text(viewModel.currentWord)
@@ -39,21 +45,21 @@ struct RunnerView: View {
                     .padding(16)
                     Spacer()
                     VStack(alignment: .center) {
-                        Text("\(viewModel.wordPerMinute.value)")
+                        Text("\(viewModel.settings.wordsPerMinute.value)")
                             .opacity(viewModel.isPaused ? 1 : 0)
                         HStack(spacing: 16) {
                             Button {
-                                viewModel.wordPerMinute.value -= 10
+                                viewModel.settings.wordsPerMinute.value -= 10
                             } label: {
                                 Image(systemName: "minus")
                             }
-                            .disabled(viewModel.wordPerMinute.value == WordsPerMinute.min)
+                            .disabled(viewModel.settings.wordsPerMinute.value == WordsPerMinute.min)
                             Button {
-                                viewModel.wordPerMinute.value += 10
+                                viewModel.settings.wordsPerMinute.value += 10
                             } label: {
                                 Image(systemName: "plus")
                             }
-                            .disabled(viewModel.wordPerMinute.value == WordsPerMinute.max)
+                            .disabled(viewModel.settings.wordsPerMinute.value == WordsPerMinute.max)
                         }
                     }
                     .disabled(viewModel.complete == 1)

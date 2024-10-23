@@ -9,17 +9,17 @@ import SwiftUI
 
 @MainActor
 @Observable
-class RandomPoemViewModel {
-    @ObservationIgnored
-    @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly
-    
+class RandomPoemViewModel: ObjectInstanceHashable {
+
+    var settings: Settings
     var speedReading: SpeedReadingViewModel?
     private let poetryServiceProvider: PoetryServiceProvider
     var fetching = false
     var presentError = false
     
-    init(poetryServiceProvider: PoetryServiceProvider) {
+    init(poetryServiceProvider: PoetryServiceProvider, settings: Settings = .shared) {
         self.poetryServiceProvider = poetryServiceProvider
+        self.settings = settings
     }
     
     func onAppear() {
@@ -27,7 +27,7 @@ class RandomPoemViewModel {
     }
     
     func fetchRandomPoem() {
-        let offlineOnly = self.offlineOnly
+        let offlineOnly = settings.offlineOnly
         fetching = true
         DispatchQueue.main.asyncAwait {
             try await self.poetryServiceProvider.service(offlineOnly: offlineOnly).randomPoem()
@@ -46,6 +46,9 @@ class RandomPoemViewModel {
 
 extension RandomPoemViewModel {
     static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> RandomPoemViewModel {
-        .init(poetryServiceProvider: .testPreview(mode: mode))
+        .init(
+            poetryServiceProvider: .testPreview(mode: mode),
+            settings: .makeUnbacked()
+        )
     }
 }

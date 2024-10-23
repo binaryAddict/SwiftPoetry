@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-final class AuthorsViewModel {
+final class AuthorsViewModel: ObjectInstanceHashable {
     
     var filter = ""
     var filteredAuthors: [String] {
@@ -19,14 +19,19 @@ final class AuthorsViewModel {
     var presentError = false
     private(set) var authors: [String] = []
     private let poetryServiceProvider: PoetryServiceProvider
-    @ObservationIgnored @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly {
-        didSet {
-            fetchAuthors()
-        }
-    }
+    var settings: Settings
+    private var token: Any?
     
-    init(poetryServiceProvider: PoetryServiceProvider = .shared) {
+    init(poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
         self.poetryServiceProvider = poetryServiceProvider
+        self.settings = settings
+        token = withObservationTracking {
+            settings.offlineOnly
+        } onChange: {
+            DispatchQueue.main.async { [weak self] in
+                self?.fetchAuthors()
+            }
+        }
     }
     
     func onAppear() {
@@ -34,7 +39,7 @@ final class AuthorsViewModel {
     }
     
     func fetchAuthors() {
-        let offlineOnly = self.offlineOnly
+        let offlineOnly = settings.offlineOnly
         fetching = true
         authors.removeAll()
         DispatchQueue.main.asyncAwait {
@@ -52,12 +57,15 @@ final class AuthorsViewModel {
     }
     
     func navigationValue(author: String) -> some Hashable {
-        AuthorPoemsNavigation(author: author, poetryServiceProvider: poetryServiceProvider)
+        AuthorPoemsViewModel(author: author, poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
 
 extension AuthorsViewModel {
     static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> AuthorsViewModel {
-        .init(poetryServiceProvider: .testPreview(mode: mode))
+        .init(
+            poetryServiceProvider: .testPreview(mode: mode),
+            settings: .makeUnbacked()
+        )
     }
 }

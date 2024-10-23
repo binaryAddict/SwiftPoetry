@@ -19,7 +19,7 @@ struct RandomPoemView: View {
                 .onAppear(perform: viewModel.onAppear)
                 .fetchingOverlay(isFetching: $viewModel.fetching)
                 .alert("Error", isPresented: $viewModel.presentError) {
-                    if viewModel.offlineOnly {
+                    if viewModel.settings.offlineOnly {
                         Button("Ok") {
                             dismiss()
                         }
@@ -28,7 +28,7 @@ struct RandomPoemView: View {
                             dismiss()
                         }
                         Button("Use Offline") {
-                            viewModel.offlineOnly = true
+                            viewModel.settings.offlineOnly = true
                             viewModel.fetchRandomPoem()
                         }
                     }
