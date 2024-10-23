@@ -57,9 +57,29 @@ struct PoemView: View {
 }
 
 #Preview {
-    PoemView(
-        viewModel: .init(
-            poem: Poem(title: "My First", author: "Some One", lines: ["This is my first poem.", "The End"])
-        )
-    )
+    NavigationStack {
+        PoemView(viewModel: .makePreview())
+            .navigationDestinations()
+    }
+}
+
+#Preview("Very Short Poem") {
+    NavigationStack {
+        PoemView(viewModel: .makePreview(poem: PoetryStubs.veryShortPoem))
+            .navigationDestinations()
+    }
+}
+
+#Preview("Long Poem") {
+    NavigationStack {
+        PoemView(viewModel: .makePreview(poem: PoetryStubs.longPoem))
+            .navigationDestinations()
+    }
+}
+
+#Preview("Failing Network") {
+    NavigationStack {
+        PoemView(viewModel: .makePreview(mode: .failingNetwork))
+            .navigationDestinations()
+    }
 }

@@ -46,6 +46,7 @@
 		0F37D1432CC964CA00040379 /* Poem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1422CC964CA00040379 /* Poem.swift */; };
 		0F37D1452CC964F400040379 /* PoetryStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1442CC964F400040379 /* PoetryStubs.swift */; };
 		0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */; };
+		0F37D14A2CC9750F00040379 /* Chainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1492CC9750F00040379 /* Chainable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		0F37D1422CC964CA00040379 /* Poem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poem.swift; sourceTree = "<group>"; };
 		0F37D1442CC964F400040379 /* PoetryStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryStubs.swift; sourceTree = "<group>"; };
 		0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingNetworkPoetryService.swift; sourceTree = "<group>"; };
+		0F37D1492CC9750F00040379 /* Chainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chainable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 		0F37D10D2CC6635300040379 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0F37D1492CC9750F00040379 /* Chainable.swift */,
 				0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */,
 				0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */,
 				0F37D10A2CC6615500040379 /* Hashable+Extensions.swift */,
@@ -445,6 +448,7 @@
 				0F37D10B2CC6615500040379 /* Hashable+Extensions.swift in Sources */,
 				0F37D1372CC95B6100040379 /* SelectionRootViewModel.swift in Sources */,
 				0F37D0FC2CC6502600040379 /* DispatchQueue+Extensions.swift in Sources */,
+				0F37D14A2CC9750F00040379 /* Chainable.swift in Sources */,
 				0F37D1192CC7B9D200040379 /* OfflinePoetryStore.swift in Sources */,
 				0F37D1002CC650FB00040379 /* Navigation.swift in Sources */,
 				0F37D1022CC652F400040379 /* NetworkPoetryService.swift in Sources */,

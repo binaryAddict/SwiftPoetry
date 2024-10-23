@@ -70,6 +70,32 @@ struct RunnerView: View {
     }
 }
 
-//#Preview {
-//    RunnerView()
-//}
+#Preview {
+    NavigationStack {
+        RunnerView(
+            viewModel: .makePreview().with {
+                $0.start()
+            }
+        )
+    }
+}
+
+#Preview("Very Short Poem") {
+    NavigationStack {
+        RunnerView(
+            viewModel: .makePreview(poem: PoetryStubs.veryShortPoem).with {
+                $0.start()
+            }
+        )
+    }
+}
+
+#Preview("Long Poem") {
+    NavigationStack {
+        RunnerView(
+            viewModel: .makePreview(poem: PoetryStubs.longPoem).with {
+                $0.start()
+            }
+        )
+    }
+}

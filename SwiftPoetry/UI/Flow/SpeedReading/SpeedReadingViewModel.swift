@@ -16,7 +16,7 @@ struct RunInfo {
 
 @MainActor
 @Observable
-class SpeedReadingViewModel {
+class SpeedReadingViewModel: Chainable {
     
     var dismiss = {}
     var targetWordDuration: TimeInterval {
@@ -39,7 +39,7 @@ class SpeedReadingViewModel {
             displayLink.paused = isPaused
         }
     }
-    private(set) var runInfo = RunInfo()
+    var runInfo = RunInfo()
     private let displayLink = DisplayLinkController(paused: true)
     private var token: Any?
     private let poetryServiceProvider: PoetryServiceProvider
@@ -77,5 +77,17 @@ class SpeedReadingViewModel {
     
     func selectionRootNavigation() -> some Hashable {
         SelectionRootNavigation(poetryServiceProvider: poetryServiceProvider)
+    }
+}
+
+extension SpeedReadingViewModel {
+    static func makePreview(
+        poem: Poem = PoetryStubs.shortPoem,
+        mode: PoetryServiceProvider.TestMode = .offlineOnly) -> SpeedReadingViewModel
+    {
+        .init(
+            poem: poem,
+            poetryServiceProvider: .testPreview(mode: mode)
+        )
     }
 }

@@ -22,6 +22,30 @@ struct SpeedReadingView: View {
     }
 }
 
-//#Preview {
-//    SpeedReadingView()
-//}
+#Preview {
+    NavigationStack {
+        SpeedReadingView(viewModel: .makePreview())
+            .navigationDestinations()
+    }
+}
+
+#Preview("Very Short Poem") {
+    NavigationStack {
+        SpeedReadingView(viewModel: .makePreview(poem: PoetryStubs.veryShortPoem))
+            .navigationDestinations()
+    }
+}
+
+#Preview("Long Poem") {
+    NavigationStack {
+        SpeedReadingView(viewModel: .makePreview(poem: PoetryStubs.longPoem))
+            .navigationDestinations()
+    }
+}
+
+#Preview("Failing Network") {
+    NavigationStack {
+        SpeedReadingView(viewModel: .makePreview(mode: .failingNetwork))
+            .navigationDestinations()
+    }
+}

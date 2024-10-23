@@ -39,3 +39,16 @@ struct CompletionView: View {
         .padding(32)
     }
 }
+
+
+#Preview {
+    NavigationStack {
+        CompletionView(
+            viewModel: .makePreview().with {
+                $0.start()
+                $0.isPaused = true
+                $0.runInfo.totalDuration = 35
+            }
+        )
+    }
+}
