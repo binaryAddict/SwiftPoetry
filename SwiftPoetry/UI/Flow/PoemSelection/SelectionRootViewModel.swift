@@ -29,7 +29,7 @@ final class SelectionRootViewModel {
 }
 
 extension SelectionRootViewModel {
-    static func makePreview() -> SelectionRootViewModel {
-        .init(poetryServiceProvider: .offlineOnly)
+    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> SelectionRootViewModel {
+        .init(poetryServiceProvider: .testPreview(mode: mode))
     }
 }

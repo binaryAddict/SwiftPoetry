@@ -34,3 +34,10 @@ struct SelectionRootView: View {
             .navigationDestinations()
     }
 }
+
+#Preview("Failing Network") {
+    NavigationStack {
+        SelectionRootView(viewModel: .makePreview(mode: .failingNetwork))
+            .navigationDestinations()
+    }
+}

@@ -32,3 +32,10 @@ struct AuthorView: View {
             .navigationDestinations()
     }
 }
+
+#Preview("Failing Network") {
+    NavigationStack {
+        AuthorView(viewModel: .makePreview(mode: .failingNetwork))
+            .navigationDestinations()
+    }
+}

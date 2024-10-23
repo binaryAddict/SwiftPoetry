@@ -46,7 +46,7 @@ class AuthorViewModel {
 }
 
 extension AuthorViewModel {
-    static func makePreview() -> AuthorViewModel {
-        .init(author: PoetryStubs.authorJonathanSwift, poetryServiceProvider: .offlineOnly)
+    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> AuthorViewModel {
+        .init(author: PoetryStubs.authorJonathanSwift, poetryServiceProvider: .testPreview(mode: mode))
     }
 }

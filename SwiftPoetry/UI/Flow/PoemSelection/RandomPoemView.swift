@@ -27,3 +27,10 @@ struct RandomPoemView: View {
             .navigationDestinations()
     }
 }
+
+#Preview("Failing Network") {
+    NavigationStack {
+        RandomPoemView(viewModel: .makePreview(mode: .failingNetwork))
+            .navigationDestinations()
+    }
+}

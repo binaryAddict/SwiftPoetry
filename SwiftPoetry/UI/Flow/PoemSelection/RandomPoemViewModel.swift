@@ -44,7 +44,7 @@ class RandomPoemViewModel {
 }
 
 extension RandomPoemViewModel {
-    static func makePreview() -> RandomPoemViewModel {
-        .init(poetryServiceProvider: .offlineOnly)
+    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> RandomPoemViewModel {
+        .init(poetryServiceProvider: .testPreview(mode: mode))
     }
 }

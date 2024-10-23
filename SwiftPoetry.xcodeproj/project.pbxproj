@@ -45,6 +45,7 @@
 		0F37D1412CC95DCF00040379 /* OfflineOnlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1402CC95DCF00040379 /* OfflineOnlyView.swift */; };
 		0F37D1432CC964CA00040379 /* Poem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1422CC964CA00040379 /* Poem.swift */; };
 		0F37D1452CC964F400040379 /* PoetryStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1442CC964F400040379 /* PoetryStubs.swift */; };
+		0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		0F37D1402CC95DCF00040379 /* OfflineOnlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineOnlyView.swift; sourceTree = "<group>"; };
 		0F37D1422CC964CA00040379 /* Poem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poem.swift; sourceTree = "<group>"; };
 		0F37D1442CC964F400040379 /* PoetryStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryStubs.swift; sourceTree = "<group>"; };
+		0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingNetworkPoetryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,8 +231,8 @@
 		0F37D1272CC8050E00040379 /* PoetryService */ = {
 			isa = PBXGroup;
 			children = (
+				0F37D1462CC96AF900040379 /* Test */,
 				0F37D1422CC964CA00040379 /* Poem.swift */,
-				0F37D1442CC964F400040379 /* PoetryStubs.swift */,
 				0F37D1162CC7AE3800040379 /* PoetryService.swift */,
 				0F37D1252CC8050300040379 /* PoetryServiceProvider.swift */,
 				0F37D1212CC8043300040379 /* PoetryStore.swift */,
@@ -284,6 +286,15 @@
 				0F37D12A2CC912D600040379 /* RandomPoemView.swift */,
 			);
 			path = PoemSelection;
+			sourceTree = "<group>";
+		};
+		0F37D1462CC96AF900040379 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				0F37D1442CC964F400040379 /* PoetryStubs.swift */,
+				0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,6 +457,7 @@
 				0F37D1042CC6563800040379 /* AuthorsView.swift in Sources */,
 				0F37D1152CC7A0FE00040379 /* SelectionRootView.swift in Sources */,
 				0F37D1292CC82AA000040379 /* AppStorageKey.swift in Sources */,
+				0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */,
 				0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */,
 				0F37D1412CC95DCF00040379 /* OfflineOnlyView.swift in Sources */,
 				0F37D1092CC657BB00040379 /* PoemView.swift in Sources */,
