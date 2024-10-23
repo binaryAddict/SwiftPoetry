@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class AuthorsViewModel {
+final class AuthorsViewModel {
     
     var filter = ""
     var filteredAuthors: [String] {
@@ -51,5 +51,11 @@ class AuthorsViewModel {
     
     func navigationValue(author: String) -> some Hashable {
         AuthorNavigation(author: author, poetryServiceProvider: poetryServiceProvider)
+    }
+}
+
+extension AuthorsViewModel {
+    static func makePreview() -> AuthorsViewModel {
+        .init(poetryServiceProvider: .offlineOnly)
     }
 }

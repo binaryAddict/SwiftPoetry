@@ -21,3 +21,9 @@ struct RandomPoemView: View {
     }
 }
 
+#Preview {
+    NavigationStack {
+        RandomPoemView(viewModel: .makePreview())
+            .navigationDestinations()
+    }
+}

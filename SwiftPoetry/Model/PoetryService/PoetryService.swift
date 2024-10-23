@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct Poem: Hashable, Codable {
-    let title: String
-    let author: String
-    let lines: [String]
-}
-
 enum ServiceError: Error {
     case missingData
     case unclassified

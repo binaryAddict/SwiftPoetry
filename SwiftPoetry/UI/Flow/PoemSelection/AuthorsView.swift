@@ -29,5 +29,8 @@ struct AuthorsView: View {
 }
 
 #Preview {
-    AuthorsView(viewModel: .init())
+    NavigationStack {
+        AuthorsView(viewModel: .makePreview())
+            .navigationDestinations()
+    }
 }

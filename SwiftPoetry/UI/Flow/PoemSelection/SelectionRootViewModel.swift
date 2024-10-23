@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class SelectionRootViewModel {
+final class SelectionRootViewModel {
     
     @ObservationIgnored
     @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly
@@ -25,5 +25,11 @@ class SelectionRootViewModel {
     
     func authorsNavigationValue() -> some Hashable {
         AuthorsNavigation(poetryServiceProvider: poetryServiceProvider)
+    }
+}
+
+extension SelectionRootViewModel {
+    static func makePreview() -> SelectionRootViewModel {
+        .init(poetryServiceProvider: .offlineOnly)
     }
 }

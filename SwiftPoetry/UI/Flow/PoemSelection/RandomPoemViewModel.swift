@@ -41,5 +41,10 @@ class RandomPoemViewModel {
             }
         }
     }
-    
+}
+
+extension RandomPoemViewModel {
+    static func makePreview() -> RandomPoemViewModel {
+        .init(poetryServiceProvider: .offlineOnly)
+    }
 }

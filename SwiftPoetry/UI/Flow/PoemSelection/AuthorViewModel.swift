@@ -44,3 +44,9 @@ class AuthorViewModel {
         SpeedReederNavigation(poem: poem, poetryServiceProvider: poetryServiceProvider)
     }
 }
+
+extension AuthorViewModel {
+    static func makePreview() -> AuthorViewModel {
+        .init(author: PoetryStubs.authorJonathanSwift, poetryServiceProvider: .offlineOnly)
+    }
+}

@@ -9,6 +9,10 @@ import Foundation
 
 extension Decodable {
     
+    static func readTestJSONFile(_ name: String, bundle: Bundle = .main) -> Self {
+        try! readJSONFile(bundle.url(forResource: name, withExtension: "json")!)
+    }
+    
     static func readJSONString(_ text: String) throws -> Self {
         let data = text.data(using: .utf8)!
         let result = try JSONDecoder().decode(self, from: data)

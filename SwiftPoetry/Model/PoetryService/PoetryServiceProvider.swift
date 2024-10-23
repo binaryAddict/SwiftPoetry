@@ -17,3 +17,7 @@ struct PoetryServiceProvider {
         offlineOnly ? offline : main
     }
 }
+
+extension PoetryServiceProvider {
+    static let offlineOnly = PoetryServiceProvider(main: .offline, offline: .offline)
+}

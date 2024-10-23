@@ -29,5 +29,8 @@ struct SelectionRootView: View {
 }
 
 #Preview {
-    SelectionRootView(viewModel: SelectionRootViewModel())
+    NavigationStack {
+        SelectionRootView(viewModel: .makePreview())
+            .navigationDestinations()
+    }
 }
