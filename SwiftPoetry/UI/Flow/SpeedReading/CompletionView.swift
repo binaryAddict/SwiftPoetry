@@ -40,7 +40,6 @@ struct CompletionView: View {
     }
 }
 
-
 #Preview {
     NavigationStack {
         CompletionView(

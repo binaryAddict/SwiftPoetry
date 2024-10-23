@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct AuthorsView: View {
-    @State var isPresented = true
+    
     @Bindable var viewModel: AuthorsViewModel
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         VStack(spacing: 0) {
             List(viewModel.filteredAuthors, id: \.self) { author in
@@ -25,6 +27,24 @@ struct AuthorsView: View {
         .navigationTitle("Authors")
         .onAppear(perform: viewModel.onAppear)
         .searchable(text: $viewModel.filter)
+        .fetchingOverlay(isFetching: $viewModel.fetching)
+        .alert("Error", isPresented: $viewModel.presentError) {
+            if viewModel.offlineOnly {
+                Button("Ok") {
+                    dismiss()
+                }
+            } else {
+                Button("Cancel", role: .cancel) {
+                    dismiss()
+                }
+                Button("Use Offline") {
+                    viewModel.offlineOnly = true
+                    viewModel.fetchAuthors()
+                }
+            }
+        } message: {
+            Text("Unable to retrieve Authors")
+        }
     }
 }
 

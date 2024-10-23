@@ -18,7 +18,6 @@ struct RunInfo {
 @Observable
 class SpeedReadingViewModel: Chainable {
     
-    var dismiss = {}
     var targetWordDuration: TimeInterval {
         60 / TimeInterval(wordPerMinute.value)
     }

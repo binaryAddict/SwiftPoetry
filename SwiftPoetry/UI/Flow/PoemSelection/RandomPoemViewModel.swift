@@ -16,6 +16,7 @@ class RandomPoemViewModel {
     var speedReading: SpeedReadingViewModel?
     private let poetryServiceProvider: PoetryServiceProvider
     var fetching = false
+    var presentError = false
     
     init(poetryServiceProvider: PoetryServiceProvider) {
         self.poetryServiceProvider = poetryServiceProvider
@@ -37,7 +38,7 @@ class RandomPoemViewModel {
             case .success(let poem):
                 self.speedReading = .init(poem: poem)
             case .failure:
-                break
+                self.presentError = true
             }
         }
     }

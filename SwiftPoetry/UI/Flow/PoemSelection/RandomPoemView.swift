@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RandomPoemView: View {
     @State var viewModel: RandomPoemViewModel
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         if let speedReading = viewModel.speedReading {
             SpeedReadingView(viewModel: speedReading)
@@ -16,6 +18,23 @@ struct RandomPoemView: View {
             Spacer()
                 .onAppear(perform: viewModel.onAppear)
                 .fetchingOverlay(isFetching: $viewModel.fetching)
+                .alert("Error", isPresented: $viewModel.presentError) {
+                    if viewModel.offlineOnly {
+                        Button("Ok") {
+                            dismiss()
+                        }
+                    } else {
+                        Button("Cancel", role: .cancel) {
+                            dismiss()
+                        }
+                        Button("Use Offline") {
+                            viewModel.offlineOnly = true
+                            viewModel.fetchRandomPoem()
+                        }
+                    }
+                } message: {
+                    Text("Unable to retrieve a Poem")
+                }
         }
         
     }

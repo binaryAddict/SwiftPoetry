@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct AuthorView: View {
-    @Bindable var viewModel: AuthorViewModel
+struct AuthorPoemsView: View {
+    @Bindable var viewModel: AuthorPoemsViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         List {
@@ -22,20 +23,28 @@ struct AuthorView: View {
         }
         .searchable(text: $viewModel.filter)
         .navigationTitle(viewModel.author)
+        .fetchingOverlay(isFetching: $viewModel.fetching)
         .onAppear(perform: viewModel.onAppear)
+        .alert("Error", isPresented: $viewModel.presentError) {
+            Button("Ok") {
+                dismiss()
+            }
+        } message: {
+            Text("Unable to retrieve poems")
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        AuthorView(viewModel: .makePreview())
+        AuthorPoemsView(viewModel: .makePreview())
             .navigationDestinations()
     }
 }
 
 #Preview("Failing Network") {
     NavigationStack {
-        AuthorView(viewModel: .makePreview(mode: .failingNetwork))
+        AuthorPoemsView(viewModel: .makePreview(mode: .failingNetwork))
             .navigationDestinations()
     }
 }

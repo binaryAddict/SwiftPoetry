@@ -15,7 +15,8 @@ final class AuthorsViewModel {
     var filteredAuthors: [String] {
         filter.isEmpty ? authors : authors.filter { $0.localizedCaseInsensitiveContains(filter) }
     }
-    private(set) var fetching = false
+    var fetching = false
+    var presentError = false
     private(set) var authors: [String] = []
     private let poetryServiceProvider: PoetryServiceProvider
     @ObservationIgnored @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly {
@@ -35,6 +36,7 @@ final class AuthorsViewModel {
     func fetchAuthors() {
         let offlineOnly = self.offlineOnly
         fetching = true
+        authors.removeAll()
         DispatchQueue.main.asyncAwait {
             try await self.poetryServiceProvider.service(offlineOnly: offlineOnly).authors()
         } completion: { [weak self] val in
@@ -44,13 +46,13 @@ final class AuthorsViewModel {
             case .success(let val):
                 self.authors = val
             case .failure:
-                break
+                self.presentError = true
             }
         }
     }
     
     func navigationValue(author: String) -> some Hashable {
-        AuthorNavigation(author: author, poetryServiceProvider: poetryServiceProvider)
+        AuthorPoemsNavigation(author: author, poetryServiceProvider: poetryServiceProvider)
     }
 }
 

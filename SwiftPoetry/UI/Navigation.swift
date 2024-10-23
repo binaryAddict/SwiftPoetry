@@ -11,7 +11,7 @@ struct SelectionRootNavigation: Hashable {
     @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
 }
 
-struct AuthorNavigation: Hashable {
+struct AuthorPoemsNavigation: Hashable {
     let author: String
     @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
 }
@@ -34,8 +34,8 @@ extension View {
         navigationDestination(for: SelectionRootNavigation.self) {
             SelectionRootView(viewModel: .init(poetryServiceProvider: $0.poetryServiceProvider))
         }
-        .navigationDestination(for: AuthorNavigation.self) {
-            AuthorView(viewModel: .init(author: $0.author, poetryServiceProvider: $0.poetryServiceProvider))
+        .navigationDestination(for: AuthorPoemsNavigation.self) {
+            AuthorPoemsView(viewModel: .init(author: $0.author, poetryServiceProvider: $0.poetryServiceProvider))
         }
         .navigationDestination(for: AuthorsNavigation.self) {
             AuthorsView(viewModel: .init(poetryServiceProvider: $0.poetryServiceProvider))

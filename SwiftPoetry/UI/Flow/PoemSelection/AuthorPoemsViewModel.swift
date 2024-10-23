@@ -9,14 +9,15 @@ import SwiftUI
 
 @MainActor
 @Observable
-class AuthorViewModel {
+class AuthorPoemsViewModel {
     
-    private(set) var fetching = false
+    var fetching = false
     let author: String
     var filter = ""
     var filteredPoems: [Poem] {
         filter.isEmpty ? peoms : peoms.filter { $0.title.localizedCaseInsensitiveContains(filter) }
     }
+    var presentError = false
     private(set) var peoms: [Poem] = []
     private let poetryServiceProvider: PoetryServiceProvider
     
@@ -26,6 +27,7 @@ class AuthorViewModel {
     }
     
     func onAppear() {
+        fetching = true
         DispatchQueue.main.asyncAwait {
             try await self.poetryServiceProvider.service().poems(author: self.author)
         } completion: { [weak self] val in
@@ -35,7 +37,7 @@ class AuthorViewModel {
             case .success(let val):
                 self.peoms = val
             case .failure:
-                break
+                self.presentError = true
             }
         }
     }
@@ -45,8 +47,8 @@ class AuthorViewModel {
     }
 }
 
-extension AuthorViewModel {
-    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> AuthorViewModel {
+extension AuthorPoemsViewModel {
+    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> AuthorPoemsViewModel {
         .init(author: PoetryStubs.authorJonathanSwift, poetryServiceProvider: .testPreview(mode: mode))
     }
 }
