@@ -13,45 +13,46 @@ struct PoemView: View {
     var body: some View {
         VStack {
             List {
-                
                 Section {
                     ForEach(viewModel.poem.lines.indices, id: \.self) {
                         Text(viewModel.poem.lines[$0])
                             .font(.caption2)
                             .listRowSeparator(.hidden)
-//                            .listRowSpacing(0)
                             .padding(0)
                     }
-                    .listRowSeparator(.hidden)
-//                    .listRowSpacing(0)
                 } header: {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 8) {
                         Text(viewModel.poem.title)
                             .font(.headline)
                         Text(viewModel.poem.author)
                             .font(.subheadline)
-                    }            }
+                    }
+                }
+                
             }
-//            .listRowSpacing(0)
-            //        .list
             .listStyle(.plain)
             HStack {
                 Spacer()
-                Button {
-                    self.viewModel.start()
-                } label: {
-                    Image(systemName: "play")
-                        .resizable()
-                        .frame(width: 40, height: 40)
+                VStack(spacing: 32) {
+                    Button {
+                        viewModel.start()
+                    } label: {
+                        Image(systemName: "play.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                    }
+                    NavigationLink("Something else", value: viewModel.selectionRootNavigation())
                 }
                 Spacer()
             }
-            .padding(32)
-            .background(Color.white)
-            .shadow(radius: 10)
+            .padding(.top, 32)
+            .padding(.bottom, 16)
+            .background {
+                Color.white.ignoresSafeArea(edges: .bottom).shadow(radius: 10)
+            }
+            
         }
-//        .listRowSeparatorTint(.clear)
-        
+        .navigationTitle("Poem")
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  SelectionRootView.swift
 //  SwiftPoetry
 //
 //  Created by Dominic Campbell on 22/10/2024.
@@ -9,51 +9,18 @@ import SwiftUI
 
 @MainActor
 @Observable
-class HomeViewModel {
+class SelectionRootModel {
     
     @ObservationIgnored 
     @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly
-    {
-        didSet {
-            print("Hello")
-            fetchRandomPoem()
-        }
-    }
     private let poetryServiceProvider: PoetryServiceProvider
-    private(set) var poem: Poem?
-    var fetching = false
-    var disabled : Bool {
-        fetching || poem == nil
-    }
     
-    init(poetryService: PoetryServiceProvider = .shared) {
-        self.poetryServiceProvider = poetryService
-    }
-    
-    func onAppear() {
-        fetchRandomPoem()
-    }
-    
-    func fetchRandomPoem() {
-        let offlineOnly = self.offlineOnly
-        fetching = true
-        DispatchQueue.main.asyncAwait {
-            try await self.poetryServiceProvider.service(offlineOnly: offlineOnly).randomPoem()
-        } completion: { [weak self] result in
-            guard let self else { return }
-            self.fetching = false
-            switch result {
-            case .success(let poem):
-                self.poem = poem
-            case .failure:
-                break
-            }
-        }
+    init(poetryServiceProvider: PoetryServiceProvider = .shared) {
+        self.poetryServiceProvider = poetryServiceProvider
     }
     
     func randomPoemNavigation() -> some Hashable {
         RandomPoemNavigation(poetryServiceProvider: poetryServiceProvider)
-//        SpeedReederNavigation(poem: nil, poetryServiceProvider: poetryServiceProvider)
     }
     
     func authorsNavigationValue() -> some Hashable {
@@ -61,8 +28,8 @@ class HomeViewModel {
     }
 }
 
-struct HomeView: View {
-    @Bindable var viewModel: HomeViewModel
+struct SelectionRootView: View {
+    @Bindable var viewModel: SelectionRootModel
     var body: some View {
         ZStack {
             VStack(alignment: .center, spacing: 32) {
@@ -77,13 +44,10 @@ struct HomeView: View {
                 Spacer()
                 OfflineOnlyView(offlineOnly: $viewModel.offlineOnly)
             }
-            .fetchingOverlay(isFetching: $viewModel.fetching)
         }
-        .onAppear(perform: viewModel.onAppear)
+        .navigationTitle("Pick a Poem")
     }
 }
-
-
 
 struct OfflineOnlyView: View {
     @Binding var offlineOnly: Bool
@@ -99,5 +63,5 @@ struct OfflineOnlyView: View {
 }
 
 #Preview {
-    HomeView(viewModel: HomeViewModel())
+    SelectionRootView(viewModel: SelectionRootModel())
 }

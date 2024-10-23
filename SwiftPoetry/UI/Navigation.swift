@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+struct SelectionRootNavigation: Hashable {
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+}
+
 struct AuthorNavigation: Hashable {
     let author: String
     @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
@@ -27,7 +31,10 @@ struct SpeedReederNavigation: Hashable {
 
 extension View {
     @MainActor func navigationDestinations() -> some View {
-        navigationDestination(for: AuthorNavigation.self) {
+        navigationDestination(for: SelectionRootNavigation.self) {
+            SelectionRootView(viewModel: .init(poetryServiceProvider: $0.poetryServiceProvider))
+        }
+        .navigationDestination(for: AuthorNavigation.self) {
             AuthorView(viewModel: .init(author: $0.author, poetryServiceProvider: $0.poetryServiceProvider))
         }
         .navigationDestination(for: AuthorsNavigation.self) {

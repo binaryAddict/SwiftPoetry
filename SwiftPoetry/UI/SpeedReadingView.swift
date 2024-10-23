@@ -57,9 +57,11 @@ class SpeedReadingViewModel {
     private(set) var runInfo = RunInfo()
     private let displayLink = DisplayLinkController(paused: true)
     private var token: Any?
+    private let poetryServiceProvider: PoetryServiceProvider
     
-    init(poem: Poem) {
+    init(poem: Poem, poetryServiceProvider: PoetryServiceProvider = .shared) {
         self.poem = poem
+        self.poetryServiceProvider = poetryServiceProvider
         self.words = poem.lines.flatMap {
             $0.split(separator: " ")
         }
@@ -78,10 +80,18 @@ class SpeedReadingViewModel {
         start()
     }
     
-    func start() {
+    func reset() {
         runInfo = .init()
+    }
+    
+    func start() {
+        reset()
         runInfo.started = true
         isPaused = false
+    }
+    
+    func selectionRootNavigation() -> some Hashable {
+        SelectionRootNavigation(poetryServiceProvider: poetryServiceProvider)
     }
 }
 
@@ -91,18 +101,31 @@ struct RunnerView: View {
         ZStack {
             Text(viewModel.currentWord)
                 .font(.title2)
-                .ignoresSafeArea()
+//                .ignoresSafeArea()
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        viewModel.reset()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                    }
+                    .padding(16)
+                    .opacity(viewModel.isPaused ? 1 : 0)
+                }
+                Spacer()
+            }
             VStack {
                 Spacer()
-                HStack {
-                    Text("Finished")
-                        .opacity(viewModel.complete == 1 ? 1 : 0)
+                HStack(alignment: .bottom) {
+                    Spacer()
                     Spacer()
                     Button {
                         viewModel.isPaused.toggle()
                     } label: {
-                        Image(systemName: viewModel.isPaused ? "play" : "pause")
+                        Image(systemName: viewModel.isPaused ? "play.fill" : "pause.fill")
                     }
+                    .padding(16)
                     Spacer()
                     VStack(alignment: .center) {
                         Text("\(viewModel.wordPerMinute.value)")
@@ -132,15 +155,42 @@ struct RunnerView: View {
         .onAppear {
             viewModel.onAppear()
         }
-        .ignoresSafeArea(edges: .top)
-        .toolbar(viewModel.isPaused ? .visible : .hidden)
+//        .ignoresSafeArea(edges: .top)
+//        .toolbar(viewModel.isPaused ? .visible : .hidden)
+        .toolbar(.hidden)
     }
 }
 
 struct CompletionView: View {
     @State var viewModel: SpeedReadingViewModel
     var body: some View {
-        Text("Done")
+        VStack {
+            HStack {
+                VStack {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(viewModel.poem.title)
+                            .font(.headline)
+                        Text(viewModel.poem.author)
+                            .font(.subheadline)
+                    }
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("words: \(viewModel.words.count)")
+                        Text("time: \(viewModel.runInfo.totalDuration)")
+                        Text("average words per minute: \(TimeInterval(viewModel.words.count) * 60 / viewModel.runInfo.totalDuration)")
+                    }
+                }
+                Spacer()
+            }
+            Spacer()
+            Text("Congrats")
+                .font(.largeTitle)
+            Spacer()
+            Button("Ok") {
+                viewModel.reset()
+            }
+        }
+        .toolbar(.hidden)
+        .padding(32)
     }
 }
 

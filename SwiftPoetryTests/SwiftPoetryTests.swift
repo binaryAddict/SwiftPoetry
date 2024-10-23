@@ -20,14 +20,14 @@ final class SwiftPoetryTests: XCTestCase {
 
     @MainActor func testExample() throws {
         AppStorageKey.removeAllValues()
-        var model = HomeViewModel()
+        var model = SelectionRootModel()
         XCTAssert(model.offlineOnly == false)
         model.offlineOnly = true
         XCTAssert(model.offlineOnly)
-        model = HomeViewModel()
+        model = SelectionRootModel()
         XCTAssert(model.offlineOnly)
         AppStorageKey.removeAllValues()
-        model = HomeViewModel()
+        model = SelectionRootModel()
         XCTAssert(model.offlineOnly == false)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
