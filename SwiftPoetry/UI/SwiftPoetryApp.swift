@@ -13,9 +13,9 @@ struct SwiftPoetryApp: App {
         WindowGroup {
             NavigationStack {
                 HomeView(viewModel: .init())
-//                AuthorsView(viewModel: .init())
                     .navigationDestinations()
             }
+            
         }
     }
 }

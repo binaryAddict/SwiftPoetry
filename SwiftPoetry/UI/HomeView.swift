@@ -9,17 +9,19 @@ import SwiftUI
 
 @MainActor
 @Observable
-class HomeViewModel: ObservableObject {
+class HomeViewModel {
     
-    @ObservationIgnored @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly 
+    @ObservationIgnored 
+    @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly
     {
         didSet {
+            print("Hello")
             fetchRandomPoem()
         }
     }
     private let poetryServiceProvider: PoetryServiceProvider
     private(set) var poem: Poem?
-    private(set) var fetching = false
+    var fetching = false
     var disabled : Bool {
         fetching || poem == nil
     }
@@ -49,36 +51,50 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func poemNavigationValue() -> (some Hashable)? {
-        poem
+    func randomPoemNavigation() -> some Hashable {
+        RandomPoemNavigation(poetryServiceProvider: poetryServiceProvider)
+//        SpeedReederNavigation(poem: nil, poetryServiceProvider: poetryServiceProvider)
+    }
+    
+    func authorsNavigationValue() -> some Hashable {
+        AuthorsNavigation(poetryServiceProvider: poetryServiceProvider)
     }
 }
 
 struct HomeView: View {
     @Bindable var viewModel: HomeViewModel
     var body: some View {
-        NavigationLink(value: viewModel.poemNavigationValue()) {
-            ZStack {
-                VStack(alignment: .center) {
+        ZStack {
+            VStack(alignment: .center, spacing: 32) {
+                Spacer()
+                NavigationLink(value: viewModel.randomPoemNavigation()) {
                     Text("Suprise Me!!")
-                    HStack(spacing: 16) {
-                        Text("Offline only")
-                        Toggle("Offline only", isOn: $viewModel.offlineOnly)
-                            .labelsHidden()
-                    }
+                        .font(.largeTitle)
                 }
-                .padding(16)
-                if viewModel.fetching {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background {
-                            Color.white.opacity(0.7)
-                        }
+                NavigationLink(value: viewModel.authorsNavigationValue()) {
+                    Text("Let me choose")
                 }
+                Spacer()
+                OfflineOnlyView(offlineOnly: $viewModel.offlineOnly)
             }
+            .fetchingOverlay(isFetching: $viewModel.fetching)
         }
-        .disabled(viewModel.disabled)
         .onAppear(perform: viewModel.onAppear)
+    }
+}
+
+
+
+struct OfflineOnlyView: View {
+    @Binding var offlineOnly: Bool
+    var body: some View {
+        HStack(spacing: 16) {
+            Text("Offline only")
+            Toggle("Offline only", isOn: $offlineOnly)
+                .labelsHidden()
+            Spacer()
+        }
+        .padding(16)
     }
 }
 

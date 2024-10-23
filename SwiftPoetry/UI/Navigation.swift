@@ -12,14 +12,32 @@ struct AuthorNavigation: Hashable {
     @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
 }
 
+struct AuthorsNavigation: Hashable {
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+}
+
+struct RandomPoemNavigation: Hashable {
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+}
+
+struct SpeedReederNavigation: Hashable {
+    let poem: Poem
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+}
+
 extension View {
     @MainActor func navigationDestinations() -> some View {
         navigationDestination(for: AuthorNavigation.self) {
             AuthorView(viewModel: .init(author: $0.author, poetryServiceProvider: $0.poetryServiceProvider))
         }
-        .navigationDestination(for: Poem.self) {
-//            PoemView(poem: $0)
-            SpeedReadingView(viewModel: .init(poem: $0))
+        .navigationDestination(for: AuthorsNavigation.self) {
+            AuthorsView(viewModel: .init(poetryServiceProvider: $0.poetryServiceProvider))
+        }
+        .navigationDestination(for: RandomPoemNavigation.self) {
+            RandomPoemView(viewModel: .init(poetryServiceProvider: $0.poetryServiceProvider))
+        }
+        .navigationDestination(for: SpeedReederNavigation.self) {
+            SpeedReadingView(viewModel: .init(poem: $0.poem))
         }
     }
 }

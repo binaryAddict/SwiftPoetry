@@ -42,7 +42,7 @@ actor OfflinePoetryStore: PoetryStore {
         offlineURL.appending(path: "Poems").appending(path: author + ".json")
     }
     
-    // only load during an async task
+    // only load during an async tasks
     private func perform<T>(_ action: () throws -> T ) throws -> T {
         if authors.isEmpty {
             try? FileManager.default.createDirectoryIfRequired(baseURL)

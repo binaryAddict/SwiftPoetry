@@ -9,15 +9,57 @@ import SwiftUI
 import Combine
 
 struct PoemView: View {
-    let poem: Poem
+    let viewModel: SpeedReadingViewModel
     var body: some View {
-        List(poem.lines.indices, id: \.self) {
-            Text(poem.lines[$0])
+        VStack {
+            List {
+                
+                Section {
+                    ForEach(viewModel.poem.lines.indices, id: \.self) {
+                        Text(viewModel.poem.lines[$0])
+                            .font(.caption2)
+                            .listRowSeparator(.hidden)
+//                            .listRowSpacing(0)
+                            .padding(0)
+                    }
+                    .listRowSeparator(.hidden)
+//                    .listRowSpacing(0)
+                } header: {
+                    VStack(alignment: .leading) {
+                        Text(viewModel.poem.title)
+                            .font(.headline)
+                        Text(viewModel.poem.author)
+                            .font(.subheadline)
+                    }            }
+            }
+//            .listRowSpacing(0)
+            //        .list
+            .listStyle(.plain)
+            HStack {
+                Spacer()
+                Button {
+                    self.viewModel.start()
+                } label: {
+                    Image(systemName: "play")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                }
+                Spacer()
+            }
+            .padding(32)
+            .background(Color.white)
+            .shadow(radius: 10)
         }
+//        .listRowSeparatorTint(.clear)
+        
     }
 }
 
 #Preview {
-    PoemView(poem: Poem(title: "My First", author: "Some One", lines: ["This is my first poem.", "The End"]))
+    PoemView(
+        viewModel: .init(
+            poem: Poem(title: "My First", author: "Some One", lines: ["This is my first poem.", "The End"])
+        )
+    )
 }
 

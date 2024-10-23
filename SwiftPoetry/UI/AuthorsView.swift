@@ -10,16 +10,28 @@ import SwiftUI
 @MainActor
 @Observable
 class AuthorsViewModel {
+    var filter = ""
+    var filteredAuthors: [String] {
+        filter.isEmpty ? authors : authors.filter { $0.localizedCaseInsensitiveContains(filter) }
+    }
     private(set) var fetching = false
     private(set) var authors: [String] = []
     private let poetryServiceProvider: PoetryServiceProvider
-    @ObservationIgnored @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly
+    @ObservationIgnored @AppStorage(AppStorageKey.offlineOnly.rawValue) var offlineOnly = AppStorageDefaultValue.offlineOnly {
+        didSet {
+            fetchAuthors()
+        }
+    }
     
     init(poetryServiceProvider: PoetryServiceProvider = .shared) {
         self.poetryServiceProvider = poetryServiceProvider
     }
     
     func onAppear() {
+        fetchAuthors()
+    }
+    
+    func fetchAuthors() {
         let offlineOnly = self.offlineOnly
         fetching = true
         DispatchQueue.main.asyncAwait {
@@ -42,14 +54,23 @@ class AuthorsViewModel {
 }
 
 struct AuthorsView: View {
-    let viewModel: AuthorsViewModel
+    @State var isPresented = true
+    @Bindable var viewModel: AuthorsViewModel
     var body: some View {
-        List(viewModel.authors, id: \.self) { author in
-            NavigationLink(value: viewModel.navigationValue(author: author)) {
-                Text(author)
+        VStack(spacing: 0) {
+            List(viewModel.filteredAuthors, id: \.self) { author in
+                NavigationLink(value: viewModel.navigationValue(author: author)) {
+                    Text(author)
+                }
             }
+            
+            OfflineOnlyView(offlineOnly: $viewModel.offlineOnly)
+                .background(Color.white)
+                .shadow(radius: 12)
         }
+        .navigationTitle("Authors")
         .onAppear(perform: viewModel.onAppear)
+        .searchable(text: $viewModel.filter)
     }
 }
 

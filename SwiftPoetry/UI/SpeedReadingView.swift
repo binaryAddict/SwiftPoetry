@@ -7,27 +7,54 @@
 
 import SwiftUI
 
+struct SpeedReadingView: View {
+    @State var viewModel: SpeedReadingViewModel
+    var body: some View {
+        if viewModel.runInfo.started == false {
+            PoemView(viewModel: viewModel)
+        } else {
+            if viewModel.complete == 1 {
+                CompletionView(viewModel: viewModel)
+            } else {
+                RunnerView(viewModel: viewModel)
+            }
+        }
+    }
+}
+
+struct RunInfo {
+    var started = false
+    var wordIndex = 0
+    var totalDuration = TimeInterval(0)
+    var duration = TimeInterval(0)
+}
+
 @MainActor
 @Observable
 class SpeedReadingViewModel {
     
-    var wordDuration: TimeInterval {
+    var dismiss = {}
+    var targetWordDuration: TimeInterval {
         60 / TimeInterval(wordPerMinute.value)
     }
     var currentWord: Substring {
-        words[wordIndex]
+        words[runInfo.wordIndex]
     }
     var complete: Float {
-        let lastWord: Float = duration >= wordDuration ? 1 : 0
-        return (lastWord + Float(wordIndex)) / Float(words.count)
+        let lastWord: Float = runInfo.duration >= targetWordDuration ? 1 : 0
+        return (lastWord + Float(runInfo.wordIndex)) / Float(words.count)
     }
+    
+    @ObservationIgnored @AppStorage(AppStorageKey.wordsPerMinute.rawValue) var wordPerMinute = AppStorageDefaultValue.wordsPerMinute
     
     let poem: Poem
     let words: [Substring]
-    @ObservationIgnored @AppStorage(AppStorageKey.wordsPerMinute.rawValue) var wordPerMinute = AppStorageDefaultValue.wordsPerMinute
-    private(set) var wordIndex = 0
-    
-    private var duration = TimeInterval(0)
+    var isPaused = true {
+        didSet {
+            displayLink.paused = isPaused
+        }
+    }
+    private(set) var runInfo = RunInfo()
     private let displayLink = DisplayLinkController(paused: true)
     private var token: Any?
     
@@ -38,27 +65,23 @@ class SpeedReadingViewModel {
         }
         token = displayLink.update.sink { [weak self] change in
             guard let self else { return }
-            duration += change.duration
-            guard duration > wordDuration, complete != 1 else { return }
-            
-            duration -= wordDuration
-            wordIndex += 1
+            guard complete != 1 else { return }
+            runInfo.duration += change.duration
+            runInfo.totalDuration += change.duration
+            guard runInfo.duration > targetWordDuration, complete != 1 else { return }
+            runInfo.duration -= targetWordDuration
+            runInfo.wordIndex += 1
         }
     }
     
     func onAppear() {
-        displayLink.paused = false
+        start()
     }
-}
-
-struct SpeedReadingView: View {
-    @State var viewModel: SpeedReadingViewModel
-    var body: some View {
-        if viewModel.complete == 1 {
-            CompletionView(viewModel: viewModel)
-        } else {
-            RunnerView(viewModel: viewModel)
-        }
+    
+    func start() {
+        runInfo = .init()
+        runInfo.started = true
+        isPaused = false
     }
 }
 
@@ -68,14 +91,22 @@ struct RunnerView: View {
         ZStack {
             Text(viewModel.currentWord)
                 .font(.title2)
+                .ignoresSafeArea()
             VStack {
                 Spacer()
                 HStack {
                     Text("Finished")
                         .opacity(viewModel.complete == 1 ? 1 : 0)
                     Spacer()
+                    Button {
+                        viewModel.isPaused.toggle()
+                    } label: {
+                        Image(systemName: viewModel.isPaused ? "play" : "pause")
+                    }
+                    Spacer()
                     VStack(alignment: .center) {
                         Text("\(viewModel.wordPerMinute.value)")
+                            .opacity(viewModel.isPaused ? 1 : 0)
                         HStack(spacing: 16) {
                             Button {
                                 viewModel.wordPerMinute.value -= 10
@@ -95,10 +126,14 @@ struct RunnerView: View {
                     .padding(16)
                 }
                 ProgressView(value: viewModel.complete)
-                    .animation(.linear(duration: viewModel.wordDuration), value:  viewModel.complete)
+                    .animation(.linear(duration: viewModel.targetWordDuration), value:  viewModel.complete)
             }
         }
-        .onAppear(perform: viewModel.onAppear)
+        .onAppear {
+            viewModel.onAppear()
+        }
+        .ignoresSafeArea(edges: .top)
+        .toolbar(viewModel.isPaused ? .visible : .hidden)
     }
 }
 

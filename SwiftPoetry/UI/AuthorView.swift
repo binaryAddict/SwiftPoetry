@@ -12,6 +12,10 @@ import SwiftUI
 class AuthorViewModel {
     private(set) var fetching = false
     let author: String
+    var filter = ""
+    var filteredPoems: [Poem] {
+        filter.isEmpty ? peoms : peoms.filter { $0.title.localizedCaseInsensitiveContains(filter) }
+    }
     private(set) var peoms: [Poem] = []
     private let poetryServiceProvider: PoetryServiceProvider
     
@@ -36,20 +40,26 @@ class AuthorViewModel {
     }
     
     func navigationValue(poem: Poem) -> some Hashable {
-        poem
+        SpeedReederNavigation(poem: poem, poetryServiceProvider: poetryServiceProvider)
     }
 }
 
 
 struct AuthorView: View {
-    let viewModel: AuthorViewModel
+    @Bindable var viewModel: AuthorViewModel
     
     var body: some View {
-        List(viewModel.peoms, id: \.title) { poem in
-            NavigationLink(value: viewModel.navigationValue(poem: poem)) {
-                Text(poem.title)
+        List {
+            Section("Poems") {
+                ForEach(viewModel.filteredPoems, id: \.title) { poem in
+                    NavigationLink(value: viewModel.navigationValue(poem: poem)) {
+                        Text(poem.title)
+                    }
+                }
             }
         }
+        .searchable(text: $viewModel.filter)
+        .navigationTitle(viewModel.author)
         .onAppear(perform: viewModel.onAppear)
     }
 }
