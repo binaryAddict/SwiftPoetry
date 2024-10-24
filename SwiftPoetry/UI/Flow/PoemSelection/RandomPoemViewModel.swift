@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class RandomPoemViewModel: ObjectInstanceHashable {
+class RandomPoemViewModel {
 
     var settings: Settings
     var speedReading: SpeedReadingViewModel?

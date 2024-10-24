@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-final class AuthorsViewModel: ObjectInstanceHashable {
+final class AuthorsViewModel {
     
     var filter = ""
     var filteredAuthors: [String] {
@@ -57,7 +57,7 @@ final class AuthorsViewModel: ObjectInstanceHashable {
     }
     
     func navigationValue(author: String) -> some Hashable {
-        AuthorPoemsViewModel(author: author, poetryServiceProvider: poetryServiceProvider, settings: settings)
+        AuthorPoemsNavigation(author: author, poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
 

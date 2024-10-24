@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class AuthorPoemsViewModel: ObjectInstanceHashable {
+class AuthorPoemsViewModel {
     
     var fetching = false
     let author: String
@@ -45,7 +45,7 @@ class AuthorPoemsViewModel: ObjectInstanceHashable {
     }
     
     func navigationValue(poem: Poem) -> some Hashable {
-        SpeedReadingViewModel(poem: poem, poetryServiceProvider: poetryServiceProvider, settings: settings)
+        PoemNavigation(poem: poem, poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
 

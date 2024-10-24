@@ -20,7 +20,7 @@
 		0F37D1042CC6563800040379 /* AuthorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1032CC6563800040379 /* AuthorsView.swift */; };
 		0F37D1072CC6571600040379 /* AuthorPoemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1062CC6571600040379 /* AuthorPoemsView.swift */; };
 		0F37D1092CC657BB00040379 /* PoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1082CC657BB00040379 /* PoemView.swift */; };
-		0F37D10B2CC6615500040379 /* Hashable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D10A2CC6615500040379 /* Hashable+Extensions.swift */; };
+		0F37D10B2CC6615500040379 /* HashableIgnored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D10A2CC6615500040379 /* HashableIgnored.swift */; };
 		0F37D10F2CC6E9B100040379 /* DisplayLinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */; };
 		0F37D1112CC6E9F200040379 /* SpeedReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */; };
 		0F37D1152CC7A0FE00040379 /* SelectionRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1142CC7A0FE00040379 /* SelectionRootView.swift */; };
@@ -55,6 +55,8 @@
 		0FDA301D2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */; };
 		0FDA301F2CCA7C4A00551EEF /* Color+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA301E2CCA7C4A00551EEF /* Color+AppColors.swift */; };
 		0FDA30222CCA811900551EEF /* DefaultPreviewParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30212CCA811900551EEF /* DefaultPreviewParent.swift */; };
+		0FDA30242CCAB1C200551EEF /* PoemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30232CCAB1C200551EEF /* PoemViewModel.swift */; };
+		0FDA30262CCAC39B00551EEF /* AnyTransition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30252CCAC39B00551EEF /* AnyTransition+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +94,7 @@
 		0F37D1032CC6563800040379 /* AuthorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsView.swift; sourceTree = "<group>"; };
 		0F37D1062CC6571600040379 /* AuthorPoemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPoemsView.swift; sourceTree = "<group>"; };
 		0F37D1082CC657BB00040379 /* PoemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemView.swift; sourceTree = "<group>"; };
-		0F37D10A2CC6615500040379 /* Hashable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hashable+Extensions.swift"; sourceTree = "<group>"; };
+		0F37D10A2CC6615500040379 /* HashableIgnored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashableIgnored.swift; sourceTree = "<group>"; };
 		0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkController.swift; sourceTree = "<group>"; };
 		0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedReadingView.swift; sourceTree = "<group>"; };
 		0F37D1142CC7A0FE00040379 /* SelectionRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionRootView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,8 @@
 		0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+UIExtensions.swift"; sourceTree = "<group>"; };
 		0FDA301E2CCA7C4A00551EEF /* Color+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AppColors.swift"; sourceTree = "<group>"; };
 		0FDA30212CCA811900551EEF /* DefaultPreviewParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreviewParent.swift; sourceTree = "<group>"; };
+		0FDA30232CCAB1C200551EEF /* PoemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemViewModel.swift; sourceTree = "<group>"; };
+		0FDA30252CCAC39B00551EEF /* AnyTransition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +243,7 @@
 				0F37D1492CC9750F00040379 /* Chainable.swift */,
 				0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */,
 				0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */,
-				0F37D10A2CC6615500040379 /* Hashable+Extensions.swift */,
+				0F37D10A2CC6615500040379 /* HashableIgnored.swift */,
 				0F37D10E2CC6E9B100040379 /* DisplayLinkController.swift */,
 				0F37D11D2CC7EF2500040379 /* FileManager+Extensions.swift */,
 				0F37D1232CC804CB00040379 /* URL+Extensions.swift */,
@@ -280,6 +284,7 @@
 				0FDA301A2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift */,
 				0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */,
 				0FDA301E2CCA7C4A00551EEF /* Color+AppColors.swift */,
+				0FDA30252CCAC39B00551EEF /* AnyTransition+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 			children = (
 				0F37D1322CC95AA500040379 /* SpeedReadingViewModel.swift */,
 				0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */,
+				0FDA30232CCAB1C200551EEF /* PoemViewModel.swift */,
 				0F37D1082CC657BB00040379 /* PoemView.swift */,
 				0F37D1342CC95AF100040379 /* RunnerView.swift */,
 				0F37D13E2CC95CFA00040379 /* CompletionView.swift */,
@@ -499,7 +505,7 @@
 				0F37D1202CC7FEA900040379 /* MixedPoetryService.swift in Sources */,
 				0FDA30182CC9A3BF00551EEF /* Settings.swift in Sources */,
 				0F37D1352CC95AF200040379 /* RunnerView.swift in Sources */,
-				0F37D10B2CC6615500040379 /* Hashable+Extensions.swift in Sources */,
+				0F37D10B2CC6615500040379 /* HashableIgnored.swift in Sources */,
 				0F37D1372CC95B6100040379 /* SelectionRootViewModel.swift in Sources */,
 				0F37D0FC2CC6502600040379 /* DispatchQueue+Extensions.swift in Sources */,
 				0F37D14A2CC9750F00040379 /* Chainable.swift in Sources */,
@@ -518,6 +524,8 @@
 				0FDA30162CC9A39A00551EEF /* UnbackedSettingsStore.swift in Sources */,
 				0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */,
 				0FDA30222CCA811900551EEF /* DefaultPreviewParent.swift in Sources */,
+				0FDA30262CCAC39B00551EEF /* AnyTransition+Extensions.swift in Sources */,
+				0FDA30242CCAB1C200551EEF /* PoemViewModel.swift in Sources */,
 				0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */,
 				0F37D1412CC95DCF00040379 /* OfflineOnlyView.swift in Sources */,
 				0F37D1092CC657BB00040379 /* PoemView.swift in Sources */,

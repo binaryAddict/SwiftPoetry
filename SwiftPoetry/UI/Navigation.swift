@@ -7,24 +7,78 @@
 
 import SwiftUI
 
+struct RandomPoemNavigation: Hashable {
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+    @HashableIgnored var settings: Settings
+}
+
+struct AuthorsNavigation: Hashable {
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+    @HashableIgnored var settings: Settings
+}
+
+struct AuthorPoemsNavigation: Hashable {
+    let author: String
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+    @HashableIgnored var settings: Settings
+}
+
+struct PoemNavigation: Hashable {
+    let poem: Poem
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+    @HashableIgnored var settings: Settings
+}
+
+struct SpeedReadingNavigation: Hashable {
+    let poem: Poem
+    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
+    @HashableIgnored var settings: Settings
+}
+
 extension View {
     @MainActor func navigationDestinations() -> some View {
-        tint(.appTint)
-        .navigationDestination(for: SelectionRootViewModel.self) {
-            SelectionRootView(viewModel: $0)
+        navigationDestination(for: AuthorPoemsNavigation.self) {
+            AuthorPoemsView(
+                viewModel: .init(
+                    author: $0.author,
+                    poetryServiceProvider: $0.poetryServiceProvider,
+                    settings: $0.settings
+                )
+            )
         }
-        .navigationDestination(for: AuthorPoemsViewModel.self) {
-            AuthorPoemsView(viewModel: $0)
+        .navigationDestination(for: AuthorsNavigation.self) {
+            AuthorsView(
+                viewModel: .init(
+                    poetryServiceProvider: $0.poetryServiceProvider,
+                    settings: $0.settings
+                )
+            )
         }
-        .navigationDestination(for: AuthorsViewModel.self) {
-            AuthorsView(viewModel: $0)
+        .navigationDestination(for: RandomPoemNavigation.self) {
+            RandomPoemView(
+                viewModel: .init(
+                    poetryServiceProvider: $0.poetryServiceProvider,
+                    settings: $0.settings
+                )
+            )
         }
-        .navigationDestination(for: RandomPoemViewModel.self) {
-            RandomPoemView(viewModel: $0)
+        .navigationDestination(for: PoemNavigation.self) {
+            PoemView(
+                viewModel: .init(
+                    poem: $0.poem,
+                    poetryServiceProvider: $0.poetryServiceProvider,
+                    settings: $0.settings
+                )
+            )
         }
-        .navigationDestination(for: SpeedReadingViewModel.self) {
-            SpeedReadingView(viewModel: $0)
+        .navigationDestination(for: SpeedReadingNavigation.self) {
+            SpeedReadingView(
+                viewModel: .init(
+                    poem: $0.poem,
+                    poetryServiceProvider: $0.poetryServiceProvider,
+                    settings: $0.settings
+                )
+            )
         }
-        .tint(.appTint)
     }
 }

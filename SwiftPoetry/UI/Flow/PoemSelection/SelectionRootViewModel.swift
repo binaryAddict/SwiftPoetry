@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-final class SelectionRootViewModel: ObjectInstanceHashable {
+final class SelectionRootViewModel {
     
     private let poetryServiceProvider: PoetryServiceProvider
     var settings: Settings
@@ -20,11 +20,11 @@ final class SelectionRootViewModel: ObjectInstanceHashable {
     }
     
     func randomPoemNavigation() -> some Hashable {
-        RandomPoemViewModel(poetryServiceProvider: poetryServiceProvider, settings: settings)
+        RandomPoemNavigation(poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
     
     func authorsNavigationValue() -> some Hashable {
-        AuthorsViewModel(poetryServiceProvider: poetryServiceProvider, settings: settings)
+        AuthorsNavigation(poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
 

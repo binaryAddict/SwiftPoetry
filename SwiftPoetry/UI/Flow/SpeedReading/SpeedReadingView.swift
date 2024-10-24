@@ -9,14 +9,19 @@ import SwiftUI
 
 struct SpeedReadingView: View {
     @State var viewModel: SpeedReadingViewModel
+    @State private var complete = Float(0.0)
+    
     var body: some View {
-        if viewModel.runInfo.started == false {
-            PoemView(viewModel: viewModel)
-        } else {
-            if viewModel.complete == 1 {
-                CompletionView(viewModel: viewModel)
+        Group {
+            if complete == 1 {
+                CompletionView(viewModel: viewModel).transition(.reveredSlide)
             } else {
-                RunnerView(viewModel: viewModel)
+                RunnerView(viewModel: viewModel).transition(.reveredSlide)
+            }
+        }
+        .onChange(of: viewModel.complete) {  _, newValue in
+            withAnimation(.easeInOut(duration: 0.4)) {
+                complete = newValue
             }
         }
     }

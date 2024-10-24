@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct PoemView: View {
-    let viewModel: SpeedReadingViewModel
+    let viewModel: PoemViewModel
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
@@ -23,36 +23,32 @@ struct PoemView: View {
                     HStack {
                         Spacer()
                         Text("estimate: \(viewModel.estimatedDuration.durationFormatted)")
+                            .bold()
+                            .foregroundStyle(Color.appTint)
                             .font(.footnote)
                     }
                     .padding(.bottom, 32)
                     ForEach(viewModel.poem.lines.indices, id: \.self) {
                         Text(viewModel.poem.lines[$0])
-                            .padding(0)
-
                     }
                 }
                 .padding(32)
             }
+            
             HStack {
-                Spacer()
-                VStack(spacing: 16) {
-                    Button {
-                        viewModel.start()
-                    } label: {
-                        Image(systemName: "play.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .padding()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .cornerRadius(16)
-                    NavigationLink("Something else", value: viewModel.selectionRootNavigation())
+                NavigationLink(value: viewModel.speedReederNavigation()) {
+                    Text("Start")
+                        .font(.title)
+                        .bold()
+                        .frame(maxWidth: .infinity)
+                        .padding(8)
                 }
-                Spacer()
+                .buttonStyle(.borderedProminent)
+                .cornerRadius(32)
+                .shadow(radius: 10)
+                .padding(16)
             }
-            .padding(.top, 32)
-            .padding(.bottom, 16)
+            .padding(8)
             .background {
                 Color.white
                     .cornerRadius(32)
@@ -60,7 +56,6 @@ struct PoemView: View {
                     .shadow(radius: 10)
             }
         }
-        .navigationTitle("Poem")
     }
 }
 

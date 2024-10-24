@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RunInfo {
-    var started = false
     var wordIndex = 0
     var totalDuration = TimeInterval(0)
     var duration = TimeInterval(0)
@@ -16,7 +15,7 @@ struct RunInfo {
 
 @MainActor
 @Observable
-class SpeedReadingViewModel: ObjectInstanceHashable, Chainable {
+class SpeedReadingViewModel: Chainable {
     
     var targetWordDuration: TimeInterval {
         60 / TimeInterval(settings.wordsPerMinute.value)
@@ -32,10 +31,7 @@ class SpeedReadingViewModel: ObjectInstanceHashable, Chainable {
         let words = complete == 1 ? words.count : runInfo.wordIndex
         return Float(words) * 60 / Float(runInfo.totalDuration)
     }
-    var estimatedDuration: TimeInterval {
-        (TimeInterval(words.count) * 60)  / TimeInterval(settings.wordsPerMinute.value)
-    }
-    
+   
     let poem: Poem
     let words: [Substring]
     var isPaused = true {
@@ -68,21 +64,12 @@ class SpeedReadingViewModel: ObjectInstanceHashable, Chainable {
     }
     
     func onAppear() {
-//        start()
-    }
-    
-    func reset() {
-        runInfo = .init()
+        start()
     }
     
     func start() {
-        reset()
-        runInfo.started = true
+        runInfo = .init()
         isPaused = false
-    }
-    
-    func selectionRootNavigation() -> some Hashable {
-        SelectionRootViewModel(poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
 

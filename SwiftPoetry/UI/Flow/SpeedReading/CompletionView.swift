@@ -19,6 +19,7 @@ private extension SpeedReadingViewModel {
 
 struct CompletionView: View {
     @State var viewModel: SpeedReadingViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -58,7 +59,7 @@ struct CompletionView: View {
             Spacer()
         
             Button {
-                viewModel.reset()
+                dismiss()
             } label: {
                 Text("Ok")
                     .font(.title)
@@ -87,8 +88,6 @@ struct CompletionView: View {
     DefaultPreviewParent {
         CompletionView(
             viewModel: .makePreview().with {
-                $0.start()
-                $0.isPaused = true
                 $0.runInfo.wordIndex = $0.words.count - 1
                 $0.runInfo.duration += 1
                 $0.runInfo.totalDuration = 35
@@ -101,8 +100,6 @@ struct CompletionView: View {
     DefaultPreviewParent {
         CompletionView(
             viewModel: .makePreview().with {
-                $0.start()
-                $0.isPaused = true
                 $0.runInfo.wordIndex = $0.words.count - 1
                 $0.runInfo.duration += 1
                 $0.runInfo.totalDuration = 135
