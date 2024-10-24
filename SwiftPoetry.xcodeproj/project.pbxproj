@@ -53,6 +53,8 @@
 		0FDA30182CC9A3BF00551EEF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30172CC9A3BF00551EEF /* Settings.swift */; };
 		0FDA301B2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA301A2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift */; };
 		0FDA301D2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */; };
+		0FDA301F2CCA7C4A00551EEF /* Color+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA301E2CCA7C4A00551EEF /* Color+AppColors.swift */; };
+		0FDA30222CCA811900551EEF /* DefaultPreviewParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30212CCA811900551EEF /* DefaultPreviewParent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		0FDA30172CC9A3BF00551EEF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0FDA301A2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+UIExtensions.swift"; sourceTree = "<group>"; };
 		0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+UIExtensions.swift"; sourceTree = "<group>"; };
+		0FDA301E2CCA7C4A00551EEF /* Color+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AppColors.swift"; sourceTree = "<group>"; };
+		0FDA30212CCA811900551EEF /* DefaultPreviewParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreviewParent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,10 +274,12 @@
 		0F37D12F2CC95A0C00040379 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0FDA30202CCA810900551EEF /* Test */,
 				0F37D12C2CC9167200040379 /* View+Extensions.swift */,
 				0F37D1402CC95DCF00040379 /* OfflineOnlyView.swift */,
 				0FDA301A2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift */,
 				0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */,
+				0FDA301E2CCA7C4A00551EEF /* Color+AppColors.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -330,6 +336,14 @@
 			isa = PBXGroup;
 			children = (
 				0FDA30152CC9A39A00551EEF /* UnbackedSettingsStore.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		0FDA30202CCA810900551EEF /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				0FDA30212CCA811900551EEF /* DefaultPreviewParent.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -475,6 +489,7 @@
 				0FDA301B2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift in Sources */,
 				0F37D12D2CC9167200040379 /* View+Extensions.swift in Sources */,
 				0F37D0FE2CC650A200040379 /* Codable+Extensions.swift in Sources */,
+				0FDA301F2CCA7C4A00551EEF /* Color+AppColors.swift in Sources */,
 				0F37D1392CC95B9200040379 /* AuthorsViewModel.swift in Sources */,
 				0F37D13F2CC95CFA00040379 /* CompletionView.swift in Sources */,
 				0F37D13B2CC95C5C00040379 /* AuthorPoemsViewModel.swift in Sources */,
@@ -502,6 +517,7 @@
 				0F37D1152CC7A0FE00040379 /* SelectionRootView.swift in Sources */,
 				0FDA30162CC9A39A00551EEF /* UnbackedSettingsStore.swift in Sources */,
 				0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */,
+				0FDA30222CCA811900551EEF /* DefaultPreviewParent.swift in Sources */,
 				0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */,
 				0F37D1412CC95DCF00040379 /* OfflineOnlyView.swift in Sources */,
 				0F37D1092CC657BB00040379 /* PoemView.swift in Sources */,

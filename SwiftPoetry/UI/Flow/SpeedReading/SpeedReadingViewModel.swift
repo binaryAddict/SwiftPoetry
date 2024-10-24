@@ -68,7 +68,7 @@ class SpeedReadingViewModel: ObjectInstanceHashable, Chainable {
     }
     
     func onAppear() {
-        start()
+//        start()
     }
     
     func reset() {

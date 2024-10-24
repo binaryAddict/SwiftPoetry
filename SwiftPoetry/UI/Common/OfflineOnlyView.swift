@@ -14,8 +14,19 @@ struct OfflineOnlyView: View {
             Text("Offline only")
             Toggle("Offline only", isOn: $offlineOnly)
                 .labelsHidden()
-            Spacer()
+           
         }
-        .padding(16)
     }
+}
+
+#Preview {
+    struct WrapperView: View {
+        @State var toggle = false
+        var body: some View {
+            OfflineOnlyView(offlineOnly: $toggle)
+        }
+    }
+    return WrapperView()
+        .background(Color.white)
+        .navigationDestinations()
 }

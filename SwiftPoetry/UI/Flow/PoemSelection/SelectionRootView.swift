@@ -9,35 +9,68 @@ import SwiftUI
 
 struct SelectionRootView: View {
     @Bindable var viewModel: SelectionRootViewModel
+    
     var body: some View {
         ZStack {
             VStack(alignment: .center, spacing: 32) {
                 Spacer()
-                NavigationLink(value: viewModel.randomPoemNavigation()) {
-                    Text("Suprise Me!!")
+                VStack(spacing: 32) {
+                    Text("Pick a Poem")
                         .font(.largeTitle)
+                        .bold()
+                        .padding(.bottom, 16)
+                    NavigationLink(value: viewModel.randomPoemNavigation()) {
+                        Text("Suprise Me!!")
+                            .font(.largeTitle)
+                            .padding(8)
+                    }
+                    .buttonBorderShape(.capsule)
+                    .buttonStyle(.borderedProminent)
+                    NavigationLink(value: viewModel.authorsNavigationValue()) {
+                        Text("Let me choose")
+                            .font(.title3)
+                    }
                 }
-                NavigationLink(value: viewModel.authorsNavigationValue()) {
-                    Text("Let me choose")
-                }
+                .padding(.vertical, 48)
+                .padding(.horizontal, 32)
+                .background(Color.white)
+                .cornerRadius(16, antialiased: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                .shadow(radius: 10)
                 Spacer()
-                OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
+                HStack {
+                    OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
+                        .padding(16)
+                        .background(Color.white)
+                        .cornerRadius(16)
+                        .shadow(radius: 10)
+                        .padding(16)
+                    Spacer()
+                }
             }
+            
         }
-        .navigationTitle("Pick a Poem")
+//        .navigationTitle("Pick a Poem")
+        .background {
+            Image(.backdrop4)
+                .resizable()
+                .opacity(0.8)
+//                .colorMultiply(.init(red: 0.9, green:  0.9, blue:  0.9))
+                .ignoresSafeArea()
+                .scaledToFill()
+                .blur(radius: 4)
+            
+        }
     }
 }
 
 #Preview {
-    NavigationStack {
+    DefaultPreviewParent {
         SelectionRootView(viewModel: .makePreview())
-            .navigationDestinations()
     }
 }
 
 #Preview("Failing Network") {
-    NavigationStack {
+    DefaultPreviewParent {
         SelectionRootView(viewModel: .makePreview(mode: .failingNetwork))
-            .navigationDestinations()
     }
 }

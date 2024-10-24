@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RunnerView: View {
 
-    var viewModel: SpeedReadingViewModel
+    @State var viewModel: SpeedReadingViewModel
     var body: some View {
         ZStack {
             Text(viewModel.currentWord)
@@ -31,14 +31,19 @@ struct RunnerView: View {
                 Spacer()
                 HStack(alignment: .bottom) {
                     Spacer()
-                    Spacer()
+                       
+                        .frame(idealWidth: .infinity)
+                        .layoutPriority(1)
                     Button {
                         viewModel.isPaused.toggle()
                     } label: {
                         Image(systemName: viewModel.isPaused ? "play.fill" : "pause.fill")
                     }
+                    
                     .padding(16)
-                    Spacer()
+                    .frame(idealWidth: .infinity)
+                    .layoutPriority(1)
+//                    Spacer()
                     VStack(alignment: .center) {
                         Text("\(viewModel.settings.wordsPerMinute.value)")
                             .opacity(viewModel.isPaused ? 1 : 0)
@@ -59,7 +64,10 @@ struct RunnerView: View {
                     }
                     .disabled(viewModel.complete == 1)
                     .padding(16)
+                    .frame(idealWidth: .infinity)
+                    .layoutPriority(1)
                 }
+                .frame(idealWidth: .infinity)
                 ProgressView(value: viewModel.complete)
                     .animation(.linear(duration: viewModel.targetWordDuration), value:  viewModel.complete)
             }
@@ -72,7 +80,7 @@ struct RunnerView: View {
 }
 
 #Preview {
-    NavigationStack {
+    DefaultPreviewParent {
         RunnerView(
             viewModel: .makePreview().with {
                 $0.start()
@@ -81,8 +89,19 @@ struct RunnerView: View {
     }
 }
 
+#Preview("Paused") {
+    DefaultPreviewParent {
+        RunnerView(
+            viewModel: .makePreview().with {
+                $0.start()
+                $0.isPaused = true
+            }
+        )
+    }
+}
+
 #Preview("Very Short Poem") {
-    NavigationStack {
+    DefaultPreviewParent {
         RunnerView(
             viewModel: .makePreview(poem: PoetryStubs.veryShortPoem).with {
                 $0.start()
@@ -92,7 +111,7 @@ struct RunnerView: View {
 }
 
 #Preview("Long Poem") {
-    NavigationStack {
+    DefaultPreviewParent {
         RunnerView(
             viewModel: .makePreview(poem: PoetryStubs.longPoem).with {
                 $0.start()

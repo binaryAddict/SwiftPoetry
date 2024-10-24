@@ -41,7 +41,7 @@ struct CompletionView: View {
 }
 
 #Preview {
-    NavigationStack {
+    DefaultPreviewParent {
         CompletionView(
             viewModel: .makePreview().with {
                 $0.start()
@@ -55,7 +55,7 @@ struct CompletionView: View {
 }
 
 #Preview {
-    NavigationStack {
+    DefaultPreviewParent {
         CompletionView(
             viewModel: .makePreview().with {
                 $0.start()

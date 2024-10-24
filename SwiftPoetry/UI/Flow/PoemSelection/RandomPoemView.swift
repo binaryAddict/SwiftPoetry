@@ -41,15 +41,13 @@ struct RandomPoemView: View {
 }
 
 #Preview {
-    NavigationStack {
+    DefaultPreviewParent {
         RandomPoemView(viewModel: .makePreview())
-            .navigationDestinations()
     }
 }
 
 #Preview("Failing Network") {
-    NavigationStack {
+    DefaultPreviewParent {
         RandomPoemView(viewModel: .makePreview(mode: .failingNetwork))
-            .navigationDestinations()
     }
 }

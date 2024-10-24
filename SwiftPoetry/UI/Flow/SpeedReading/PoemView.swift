@@ -11,85 +11,79 @@ import Combine
 struct PoemView: View {
     let viewModel: SpeedReadingViewModel
     var body: some View {
-        VStack {
-            List {
-                Section {
-                    ForEach(viewModel.poem.lines.indices, id: \.self) {
-                        Text(viewModel.poem.lines[$0])
-                            .font(.caption2)
-                            .listRowSeparator(.hidden)
-                            .padding(0)
-                    }
-                } header: {
+        VStack(spacing: 0) {
+            ScrollView {
+                LazyVStack(alignment: .leading) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(viewModel.poem.title)
                             .font(.headline)
                         Text(viewModel.poem.author)
                             .font(.subheadline)
                     }
-                }
-                
-            }
-            .listStyle(.plain)
-            VStack {
-                HStack {
-                    Spacer()
-                    VStack(alignment: .trailing) {
-                        Text("estimate:")
-                        Text("\(viewModel.estimatedDuration.durationFormatted)")
+                    HStack {
+                        Spacer()
+                        Text("estimate: \(viewModel.estimatedDuration.durationFormatted)")
+                            .font(.footnote)
                     }
-                }
-                .padding([.top, .trailing], 16)
-                HStack {
-                    Spacer()
-                    VStack(spacing: 32) {
-                        Button {
-                            viewModel.start()
-                        } label: {
-                            Image(systemName: "play.fill")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                        }
-                        NavigationLink("Something else", value: viewModel.selectionRootNavigation())
-                    }
-                    Spacer()
-                }
-            }
+                    .padding(.bottom, 32)
+                    ForEach(viewModel.poem.lines.indices, id: \.self) {
+                        Text(viewModel.poem.lines[$0])
+                            .padding(0)
 
+                    }
+                }
+                .padding(32)
+            }
+            HStack {
+                Spacer()
+                VStack(spacing: 16) {
+                    Button {
+                        viewModel.start()
+                    } label: {
+                        Image(systemName: "play.fill")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .padding()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .cornerRadius(16)
+                    NavigationLink("Something else", value: viewModel.selectionRootNavigation())
+                }
+                Spacer()
+            }
+            .padding(.top, 32)
             .padding(.bottom, 16)
             .background {
-                Color.white.ignoresSafeArea(edges: .bottom).shadow(radius: 10)
+                Color.white
+                    .cornerRadius(32)
+                    .ignoresSafeArea(edges: .bottom)
+                    .shadow(radius: 10)
             }
-            
         }
         .navigationTitle("Poem")
     }
 }
 
 #Preview {
-    NavigationStack {
+    DefaultPreviewParent {
         PoemView(viewModel: .makePreview())
-            .navigationDestinations()
     }
 }
 
 #Preview("Very Short Poem") {
-    NavigationStack {
+    DefaultPreviewParent {
         PoemView(viewModel: .makePreview(poem: PoetryStubs.veryShortPoem))
-            .navigationDestinations()
     }
 }
 
 #Preview("Long Poem") {
-    NavigationStack {
+    DefaultPreviewParent {
         PoemView(viewModel: .makePreview(poem: PoetryStubs.longPoem))
-            .navigationDestinations()
     }
 }
 
 #Preview("Failing Network") {
-    NavigationStack {
+    DefaultPreviewParent {
         PoemView(viewModel: .makePreview(mode: .failingNetwork))
-            .navigationDestinations()
     }
 }

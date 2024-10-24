@@ -15,6 +15,7 @@ struct SwiftPoetryApp: App {
                 SelectionRootView(viewModel: .init())
                     .navigationDestinations()
             }
+            .tint(.appTint)
         }
     }
 }

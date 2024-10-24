@@ -19,10 +19,13 @@ struct AuthorsView: View {
                     Text(author)
                 }
             }
-            
-            OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
-                .background(Color.white)
-                .shadow(radius: 12)
+            HStack {
+                OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
+                    .padding(16)
+                Spacer()
+            }
+            .background(Color.white)
+            .shadow(radius: 12)
         }
         .navigationTitle("Authors")
         .onAppear(perform: viewModel.onAppear)
@@ -53,12 +56,27 @@ struct AuthorsView: View {
         AuthorsView(viewModel: .makePreview())
             .navigationDestinations()
     }
+    .tint(.appTint)
 }
-
 
 #Preview("Failing Network") {
     NavigationStack {
         AuthorsView(viewModel: .makePreview(mode: .failingNetwork))
             .navigationDestinations()
     }
+    .tint(.appTint)
 }
+
+
+// TODO fix issue using DefaultPreviewParent with Bindable
+//#Preview {
+//    DefaultPreviewParent() {
+//        AuthorsView(viewModel: .makePreview())
+//    }
+//}
+//
+//#Preview("Failing Network") {
+//    DefaultPreviewParent {
+//        AuthorsView(viewModel: .makePreview(mode: .failingNetwork))
+//    }
+//}

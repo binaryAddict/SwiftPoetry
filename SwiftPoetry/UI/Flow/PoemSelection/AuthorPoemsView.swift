@@ -36,9 +36,9 @@ struct AuthorPoemsView: View {
 }
 
 #Preview {
-    NavigationStack {
+    DefaultPreviewParent() {
         AuthorPoemsView(viewModel: .makePreview())
-            .navigationDestinations()
+//            .navigationDestinations()
     }
 }
 

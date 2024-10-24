@@ -9,7 +9,8 @@ import SwiftUI
 
 extension View {
     @MainActor func navigationDestinations() -> some View {
-        navigationDestination(for: SelectionRootViewModel.self) {
+        tint(.appTint)
+        .navigationDestination(for: SelectionRootViewModel.self) {
             SelectionRootView(viewModel: $0)
         }
         .navigationDestination(for: AuthorPoemsViewModel.self) {
@@ -24,5 +25,6 @@ extension View {
         .navigationDestination(for: SpeedReadingViewModel.self) {
             SpeedReadingView(viewModel: $0)
         }
+        .tint(.appTint)
     }
 }
