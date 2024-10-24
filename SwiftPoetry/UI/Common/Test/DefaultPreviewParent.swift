@@ -14,7 +14,6 @@ struct DefaultPreviewParent<T: View>: View {
         NavigationStack {
             content()
                 .navigationDestinations()
-                .tint(.appTint)
         }
         .tint(.appTint)
     }

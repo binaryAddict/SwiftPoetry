@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+private extension Image {
+    func imageSize(_ size: CGFloat) -> some View {
+        resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(width: size, height: size)
+    }
+}
+
 struct RunnerView: View {
     
     @State var viewModel: SpeedReadingViewModel
@@ -18,6 +26,7 @@ struct RunnerView: View {
                 .font(.title2)
             VStack {
                 Spacer()
+                
                 Text("\(viewModel.settings.wordsPerMinute.value) words per minute")
                     .foregroundStyle(Color.white)
                     .padding(.vertical, 8)
@@ -35,34 +44,32 @@ struct RunnerView: View {
                             }
                         }
                     }
+                
                 VStack(spacing: 16) {
                     HStack {
                         Button {
                             viewModel.settings.wordsPerMinute.value -= 10
                         } label: {
                             Image(systemName: "minus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 20)
+                                .imageSize(20)
                         }
                         .disabled(viewModel.settings.wordsPerMinute.value == WordsPerMinute.min)
                         Spacer()
+
                         Button {
                             viewModel.isPaused.toggle()
                         } label: {
                             Image(systemName: viewModel.isPaused ? "play.fill" : "pause.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30)
+                                .imageSize(30)
                         }
+                        .id(viewModel.isPaused ? "pausedButton" : "playButton")
+                        
                         Spacer()
                         Button {
                             viewModel.settings.wordsPerMinute.value += 10
                         } label: {
                             Image(systemName: "plus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 20)
+                                .imageSize(20)
                         }
                         .disabled(viewModel.settings.wordsPerMinute.value == WordsPerMinute.max)
                     }
@@ -77,8 +84,8 @@ struct RunnerView: View {
                         .shadow(radius: 10)
                 }
                 .padding(16)
+                
                 ProgressView(value: viewModel.complete)
-                    .animation(.linear(duration: viewModel.targetWordDuration), value:  viewModel.complete)
                     .shadow(radius: 10)
                     .padding(.horizontal, 48)
             }

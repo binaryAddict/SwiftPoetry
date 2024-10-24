@@ -273,6 +273,7 @@
 		0F37D12E2CC959F800040379 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				0FDA302B2CCAE0A100551EEF /* Poem */,
 				0F37D1312CC95A3400040379 /* PoemSelection */,
 				0F37D1302CC95A2800040379 /* SpeedReading */,
 			);
@@ -300,8 +301,6 @@
 			children = (
 				0F37D1322CC95AA500040379 /* SpeedReadingViewModel.swift */,
 				0F37D1102CC6E9F200040379 /* SpeedReadingView.swift */,
-				0FDA30232CCAB1C200551EEF /* PoemViewModel.swift */,
-				0F37D1082CC657BB00040379 /* PoemView.swift */,
 				0F37D1342CC95AF100040379 /* RunnerView.swift */,
 				0F37D13E2CC95CFA00040379 /* CompletionView.swift */,
 			);
@@ -358,6 +357,15 @@
 				0FDA30212CCA811900551EEF /* DefaultPreviewParent.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		0FDA302B2CCAE0A100551EEF /* Poem */ = {
+			isa = PBXGroup;
+			children = (
+				0FDA30232CCAB1C200551EEF /* PoemViewModel.swift */,
+				0F37D1082CC657BB00040379 /* PoemView.swift */,
+			);
+			path = Poem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
