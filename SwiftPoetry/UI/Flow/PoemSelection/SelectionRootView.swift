@@ -36,6 +36,7 @@ struct SelectionRootView: View {
                 .background(Color.white)
                 .cornerRadius(16, antialiased: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 .shadow(radius: 10)
+                
                 Spacer()
                 HStack {
                     OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
@@ -49,12 +50,10 @@ struct SelectionRootView: View {
             }
             
         }
-//        .navigationTitle("Pick a Poem")
         .background {
             Image(.backdrop4)
                 .resizable()
                 .opacity(0.8)
-//                .colorMultiply(.init(red: 0.9, green:  0.9, blue:  0.9))
                 .ignoresSafeArea()
                 .scaledToFill()
                 .blur(radius: 4)

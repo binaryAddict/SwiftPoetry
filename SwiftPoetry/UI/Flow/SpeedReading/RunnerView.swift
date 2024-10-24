@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RunnerView: View {
-
     
     @State var viewModel: SpeedReadingViewModel
     @State private var wordsPerMinuteOpacity = 0.0
