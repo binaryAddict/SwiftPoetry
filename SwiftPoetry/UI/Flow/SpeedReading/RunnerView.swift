@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct RunnerView: View {
-//    @State 
+
     var viewModel: SpeedReadingViewModel
-    var settings: Settings
-    init(viewModel: SpeedReadingViewModel) {
-        self.viewModel = viewModel
-        self.settings = viewModel.settings
-    }
     var body: some View {
         ZStack {
             Text(viewModel.currentWord)

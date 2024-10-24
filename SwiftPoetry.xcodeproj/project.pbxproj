@@ -51,6 +51,8 @@
 		0FDA30142CC9A36F00551EEF /* UserDefaultsSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */; };
 		0FDA30162CC9A39A00551EEF /* UnbackedSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30152CC9A39A00551EEF /* UnbackedSettingsStore.swift */; };
 		0FDA30182CC9A3BF00551EEF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30172CC9A3BF00551EEF /* Settings.swift */; };
+		0FDA301B2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA301A2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift */; };
+		0FDA301D2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettingsStore.swift; sourceTree = "<group>"; };
 		0FDA30152CC9A39A00551EEF /* UnbackedSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnbackedSettingsStore.swift; sourceTree = "<group>"; };
 		0FDA30172CC9A3BF00551EEF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		0FDA301A2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+UIExtensions.swift"; sourceTree = "<group>"; };
+		0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+UIExtensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +272,8 @@
 			children = (
 				0F37D12C2CC9167200040379 /* View+Extensions.swift */,
 				0F37D1402CC95DCF00040379 /* OfflineOnlyView.swift */,
+				0FDA301A2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift */,
+				0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -311,13 +317,21 @@
 		0FDA300E2CC9A31100551EEF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				0FDA30192CCA393C00551EEF /* Test */,
 				0FDA30172CC9A3BF00551EEF /* Settings.swift */,
 				0FDA30112CC9A34400551EEF /* SettingsStore.swift */,
 				0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */,
-				0FDA30152CC9A39A00551EEF /* UnbackedSettingsStore.swift */,
 				0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		0FDA30192CCA393C00551EEF /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				0FDA30152CC9A39A00551EEF /* UnbackedSettingsStore.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,6 +472,7 @@
 				0F37D13D2CC95CB900040379 /* RandomPoemViewModel.swift in Sources */,
 				0FDA30122CC9A34400551EEF /* SettingsStore.swift in Sources */,
 				0F37D1332CC95AA500040379 /* SpeedReadingViewModel.swift in Sources */,
+				0FDA301B2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift in Sources */,
 				0F37D12D2CC9167200040379 /* View+Extensions.swift in Sources */,
 				0F37D0FE2CC650A200040379 /* Codable+Extensions.swift in Sources */,
 				0F37D1392CC95B9200040379 /* AuthorsViewModel.swift in Sources */,
@@ -465,6 +480,7 @@
 				0F37D13B2CC95C5C00040379 /* AuthorPoemsViewModel.swift in Sources */,
 				0F37D1072CC6571600040379 /* AuthorPoemsView.swift in Sources */,
 				0F37D11E2CC7EF2500040379 /* FileManager+Extensions.swift in Sources */,
+				0FDA301D2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift in Sources */,
 				0F37D1202CC7FEA900040379 /* MixedPoetryService.swift in Sources */,
 				0FDA30182CC9A3BF00551EEF /* Settings.swift in Sources */,
 				0F37D1352CC95AF200040379 /* RunnerView.swift in Sources */,

@@ -31,21 +31,31 @@ struct PoemView: View {
                 
             }
             .listStyle(.plain)
-            HStack {
-                Spacer()
-                VStack(spacing: 32) {
-                    Button {
-                        viewModel.start()
-                    } label: {
-                        Image(systemName: "play.fill")
-                            .resizable()
-                            .frame(width: 40, height: 40)
+            VStack {
+                HStack {
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text("estimate:")
+                        Text("\(viewModel.estimatedDuration.durationFormatted)")
                     }
-                    NavigationLink("Something else", value: viewModel.selectionRootNavigation())
                 }
-                Spacer()
+                .padding([.top, .trailing], 16)
+                HStack {
+                    Spacer()
+                    VStack(spacing: 32) {
+                        Button {
+                            viewModel.start()
+                        } label: {
+                            Image(systemName: "play.fill")
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                        }
+                        NavigationLink("Something else", value: viewModel.selectionRootNavigation())
+                    }
+                    Spacer()
+                }
             }
-            .padding(.top, 32)
+
             .padding(.bottom, 16)
             .background {
                 Color.white.ignoresSafeArea(edges: .bottom).shadow(radius: 10)

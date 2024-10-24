@@ -21,8 +21,8 @@ struct CompletionView: View {
                     }
                     VStack(alignment: .leading, spacing: 8) {
                         Text("words: \(viewModel.words.count)")
-                        Text("time: \(viewModel.runInfo.totalDuration)")
-                        Text("average words per minute: \(TimeInterval(viewModel.words.count) * 60 / viewModel.runInfo.totalDuration)")
+                        Text("time: \(viewModel.runInfo.totalDuration.durationFormatted)")
+                        Text("average words per minute: \(NumberFormatter.averageWordsPerMinute.string(for: viewModel.averageWordPerMinute ) ?? "")")
                     }
                 }
                 Spacer()
@@ -46,8 +46,25 @@ struct CompletionView: View {
             viewModel: .makePreview().with {
                 $0.start()
                 $0.isPaused = true
+                $0.runInfo.wordIndex = $0.words.count - 1
+                $0.runInfo.duration += 1
                 $0.runInfo.totalDuration = 35
             }
         )
     }
 }
+
+#Preview {
+    NavigationStack {
+        CompletionView(
+            viewModel: .makePreview().with {
+                $0.start()
+                $0.isPaused = true
+                $0.runInfo.wordIndex = $0.words.count - 1
+                $0.runInfo.duration += 1
+                $0.runInfo.totalDuration = 135
+            }
+        )
+    }
+}
+

@@ -14,7 +14,7 @@ struct RunInfo {
     var duration = TimeInterval(0)
 }
 
-//@MainActor
+@MainActor
 @Observable
 class SpeedReadingViewModel: ObjectInstanceHashable, Chainable {
     
@@ -27,6 +27,13 @@ class SpeedReadingViewModel: ObjectInstanceHashable, Chainable {
     var complete: Float {
         let lastWord: Float = runInfo.duration >= targetWordDuration ? 1 : 0
         return (lastWord + Float(runInfo.wordIndex)) / Float(words.count)
+    }
+    var averageWordPerMinute: Float {
+        let words = complete == 1 ? words.count : runInfo.wordIndex
+        return Float(words) * 60 / Float(runInfo.totalDuration)
+    }
+    var estimatedDuration: TimeInterval {
+        (TimeInterval(words.count) * 60)  / TimeInterval(settings.wordsPerMinute.value)
     }
     
     let poem: Poem
@@ -74,7 +81,7 @@ class SpeedReadingViewModel: ObjectInstanceHashable, Chainable {
         isPaused = false
     }
     
-    @MainActor func selectionRootNavigation() -> some Hashable {
+    func selectionRootNavigation() -> some Hashable {
         SelectionRootViewModel(poetryServiceProvider: poetryServiceProvider, settings: settings)
     }
 }
