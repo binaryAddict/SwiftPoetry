@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 extension View {
     func fetchingOverlay(isFetching: Binding<Bool>) -> some View {
         disabled(isFetching.wrappedValue)
@@ -19,5 +20,30 @@ extension View {
                         }
                 }
             }
+    }
+    
+    func groupedArea() -> some View {
+        background {
+            Color.white
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .shadow(radius: 10)
+                .ignoresSafeArea(edges: .bottom)
+        }
+    }
+}
+
+extension Text {
+    func primaryButtonLabelStyle() -> some View {
+        font(.title)
+        .bold()
+        .padding(8)
+    }
+}
+
+extension View {
+    func primaryButtonContainerStyle() -> some View {
+        buttonBorderShape(.capsule)
+        .buttonStyle(.borderedProminent)
+        .shadow(radius: 10)
     }
 }

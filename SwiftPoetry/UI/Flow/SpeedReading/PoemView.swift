@@ -38,23 +38,14 @@ struct PoemView: View {
             HStack {
                 NavigationLink(value: viewModel.speedReederNavigation()) {
                     Text("Start")
-                        .font(.title)
-                        .bold()
+                        .primaryButtonLabelStyle()
                         .frame(maxWidth: .infinity)
-                        .padding(8)
                 }
-                .buttonStyle(.borderedProminent)
-                .cornerRadius(32)
-                .shadow(radius: 10)
+                .primaryButtonContainerStyle()
                 .padding(16)
             }
             .padding(8)
-            .background {
-                Color.white
-                    .cornerRadius(32)
-                    .ignoresSafeArea(edges: .bottom)
-                    .shadow(radius: 10)
-            }
+            .groupedArea()
         }
     }
 }

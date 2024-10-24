@@ -24,8 +24,7 @@ struct AuthorsView: View {
                     .padding(16)
                 Spacer()
             }
-            .background(Color.white)
-            .shadow(radius: 12)
+            .groupedArea()
         }
         .navigationTitle("Authors")
         .onAppear(perform: viewModel.onAppear)

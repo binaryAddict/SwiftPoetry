@@ -23,7 +23,7 @@ struct RunnerView: View {
                     .padding(.vertical, 8)
                     .padding(.horizontal, 16)
                     .background {
-                        Color.gray.cornerRadius(24)
+                        Color.gray.clipShape(Capsule())
                     }
                     .opacity(wordsPerMinuteOpacity)
                     .onChange(of: viewModel.settings.wordsPerMinute.value) {
@@ -73,13 +73,13 @@ struct RunnerView: View {
                 .background {
                     Color
                         .appTint
-                        .cornerRadius(64)
-                        .shadow(radius: 8)
+                        .clipShape(Capsule())
+                        .shadow(radius: 10)
                 }
                 .padding(16)
                 ProgressView(value: viewModel.complete)
                     .animation(.linear(duration: viewModel.targetWordDuration), value:  viewModel.complete)
-                    .shadow(radius: 8)
+                    .shadow(radius: 10)
                     .padding(.horizontal, 48)
             }
         }

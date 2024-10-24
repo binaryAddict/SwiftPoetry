@@ -9,11 +9,19 @@ import SwiftUI
 
 extension Color {
     
-    static let color1 = Color(red: 0x75, green: 0x8E, blue: 0xA2)
-    static let color2 = Color(red: 0x54, green: 0x6A, blue: 0x7b)
+    private static let traditionalB_option1 = Color(red: 0x75, green: 0x8E, blue: 0xA2)
+    private static let traditionalB_option2 = Color(red: 0x54, green: 0x6A, blue: 0x7B)
+    private static let moderTint = Color(red: 0x6F, green: 0x2F, blue: 0xDC)
+    
     static var appTint: Color {
-        .pink
-//        .color2
+        switch AppStyle.current {
+        case .modern:
+            return .moderTint
+        case .traditionalA:
+            return .pink
+        case .traditionalB:
+            return .traditionalB_option1
+        }
     }
     
     init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {

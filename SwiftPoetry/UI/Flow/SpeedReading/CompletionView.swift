@@ -52,9 +52,7 @@ struct CompletionView: View {
             }
             .padding(.vertical, 32)
             .padding(.horizontal, 32)
-            .background(Color.white)
-            .cornerRadius(16, antialiased: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-            .shadow(radius: 10)
+            .groupedArea()
             
             Spacer()
         
@@ -62,24 +60,15 @@ struct CompletionView: View {
                 dismiss()
             } label: {
                 Text("Ok")
-                    .font(.title)
-                    .bold()
+                    .primaryButtonLabelStyle()
                     .frame(maxWidth: .infinity)
-                    .padding(8)
             }
-            .buttonStyle(.borderedProminent)
-            .cornerRadius(32)
-            .shadow(radius: 10)
+            .primaryButtonContainerStyle()
         }
         .toolbar(.hidden)
         .padding(16)
         .background {
-            Image(.backdrop4)
-                .resizable()
-                .opacity(0.8)
-                .ignoresSafeArea()
-                .scaledToFill()
-                .blur(radius: 4)
+            BackgroundView()
         }
     }
 }

@@ -57,6 +57,8 @@
 		0FDA30222CCA811900551EEF /* DefaultPreviewParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30212CCA811900551EEF /* DefaultPreviewParent.swift */; };
 		0FDA30242CCAB1C200551EEF /* PoemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30232CCAB1C200551EEF /* PoemViewModel.swift */; };
 		0FDA30262CCAC39B00551EEF /* AnyTransition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30252CCAC39B00551EEF /* AnyTransition+Extensions.swift */; };
+		0FDA30282CCAD37400551EEF /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30272CCAD37400551EEF /* BackgroundView.swift */; };
+		0FDA302A2CCAD4E200551EEF /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30292CCAD4E200551EEF /* AppStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,8 @@
 		0FDA30212CCA811900551EEF /* DefaultPreviewParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreviewParent.swift; sourceTree = "<group>"; };
 		0FDA30232CCAB1C200551EEF /* PoemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemViewModel.swift; sourceTree = "<group>"; };
 		0FDA30252CCAC39B00551EEF /* AnyTransition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Extensions.swift"; sourceTree = "<group>"; };
+		0FDA30272CCAD37400551EEF /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		0FDA30292CCAD4E200551EEF /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,11 +284,13 @@
 			children = (
 				0FDA30202CCA810900551EEF /* Test */,
 				0F37D12C2CC9167200040379 /* View+Extensions.swift */,
+				0FDA30292CCAD4E200551EEF /* AppStyle.swift */,
 				0F37D1402CC95DCF00040379 /* OfflineOnlyView.swift */,
 				0FDA301A2CCA3D2400551EEF /* NumberFormatter+UIExtensions.swift */,
 				0FDA301C2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift */,
 				0FDA301E2CCA7C4A00551EEF /* Color+AppColors.swift */,
 				0FDA30252CCAC39B00551EEF /* AnyTransition+Extensions.swift */,
+				0FDA30272CCAD37400551EEF /* BackgroundView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -485,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FDA30282CCAD37400551EEF /* BackgroundView.swift in Sources */,
 				0F37D1452CC964F400040379 /* PoetryStubs.swift in Sources */,
 				0F37D12B2CC912D600040379 /* RandomPoemView.swift in Sources */,
 				0FDA30142CC9A36F00551EEF /* UserDefaultsSettingsStore.swift in Sources */,
@@ -499,6 +506,7 @@
 				0F37D1392CC95B9200040379 /* AuthorsViewModel.swift in Sources */,
 				0F37D13F2CC95CFA00040379 /* CompletionView.swift in Sources */,
 				0F37D13B2CC95C5C00040379 /* AuthorPoemsViewModel.swift in Sources */,
+				0FDA302A2CCAD4E200551EEF /* AppStyle.swift in Sources */,
 				0F37D1072CC6571600040379 /* AuthorPoemsView.swift in Sources */,
 				0F37D11E2CC7EF2500040379 /* FileManager+Extensions.swift in Sources */,
 				0FDA301D2CCA3F4400551EEF /* TimeInterval+UIExtensions.swift in Sources */,
