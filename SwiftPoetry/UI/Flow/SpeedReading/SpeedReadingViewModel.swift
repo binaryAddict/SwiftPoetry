@@ -40,15 +40,22 @@ class SpeedReadingViewModel: Chainable {
         }
     }
     var runInfo = RunInfo()
-    private let displayLink = DisplayLinkController(paused: true)
+    private let displayLink: DisplayLinkControllerProtocol
     private var token: Any?
     private let poetryServiceProvider: PoetryServiceProvider
     var settings: Settings
     
-    init(poem: Poem, poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
+    init(
+        poem: Poem,
+        poetryServiceProvider: PoetryServiceProvider = .shared,
+        settings: Settings = .shared,
+        displayLink: DisplayLinkControllerProtocol = DisplayLinkController(paused: true)
+    )
+    {
         self.poem = poem
         self.poetryServiceProvider = poetryServiceProvider
         self.settings = settings
+        self.displayLink = displayLink
         self.words = poem.lines.flatMap {
             $0.split(separator: " ")
         }

@@ -13,7 +13,12 @@ struct DisplayLinkUpdate: Hashable {
     let duration: TimeInterval
 }
 
-@objc class DisplayLinkController: NSObject {
+protocol DisplayLinkControllerProtocol: AnyObject {
+    var update: PassthroughSubject<DisplayLinkUpdate, Never> { get }
+    var paused: Bool { get set }
+}
+
+@objc class DisplayLinkController: NSObject, DisplayLinkControllerProtocol {
     
     // CADisplayLink retains the target which is DisplayLinkController
     private(set) unowned var displayLink: CADisplayLink!
