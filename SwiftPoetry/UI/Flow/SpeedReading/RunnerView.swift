@@ -9,7 +9,10 @@ import SwiftUI
 
 struct RunnerView: View {
 
+    
     @State var viewModel: SpeedReadingViewModel
+    @State private var wordsPerMinuteOpacity = 0.0
+    
     var body: some View {
         ZStack {
             Text(viewModel.currentWord)
@@ -21,55 +24,78 @@ struct RunnerView: View {
                         viewModel.reset()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
                     }
                     .padding(16)
-                    .opacity(viewModel.isPaused ? 1 : 0)
                 }
                 Spacer()
             }
             VStack {
                 Spacer()
-                HStack(alignment: .bottom) {
-                    Spacer()
-                       
-                        .frame(idealWidth: .infinity)
-                        .layoutPriority(1)
-                    Button {
-                        viewModel.isPaused.toggle()
-                    } label: {
-                        Image(systemName: viewModel.isPaused ? "play.fill" : "pause.fill")
+                Text("\(viewModel.settings.wordsPerMinute.value) words per minute")
+                    .foregroundStyle(Color.white)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 16)
+                    .background {
+                        Color.gray.cornerRadius(24).shadow(radius: 4)
                     }
-                    
-                    .padding(16)
-                    .frame(idealWidth: .infinity)
-                    .layoutPriority(1)
-//                    Spacer()
-                    VStack(alignment: .center) {
-                        Text("\(viewModel.settings.wordsPerMinute.value)")
-                            .opacity(viewModel.isPaused ? 1 : 0)
-                        HStack(spacing: 16) {
-                            Button {
-                                viewModel.settings.wordsPerMinute.value -= 10
-                            } label: {
-                                Image(systemName: "minus")
+                    .opacity(wordsPerMinuteOpacity)
+                    .onChange(of: viewModel.settings.wordsPerMinute.value) {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            wordsPerMinuteOpacity = 0.9
+                        } completion: {
+                            withAnimation(.easeInOut(duration: 0.5).delay(1.5)) {
+                                wordsPerMinuteOpacity = 0.0
                             }
-                            .disabled(viewModel.settings.wordsPerMinute.value == WordsPerMinute.min)
-                            Button {
-                                viewModel.settings.wordsPerMinute.value += 10
-                            } label: {
-                                Image(systemName: "plus")
-                            }
-                            .disabled(viewModel.settings.wordsPerMinute.value == WordsPerMinute.max)
                         }
                     }
-                    .disabled(viewModel.complete == 1)
-                    .padding(16)
-                    .frame(idealWidth: .infinity)
-                    .layoutPriority(1)
+                VStack(spacing: 16) {
+                    HStack {
+                        Button {
+                            viewModel.settings.wordsPerMinute.value -= 10
+                        } label: {
+                            Image(systemName: "minus")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        .disabled(viewModel.settings.wordsPerMinute.value == WordsPerMinute.min)
+                        Spacer()
+                        Button {
+                            viewModel.isPaused.toggle()
+                        } label: {
+                            Image(systemName: viewModel.isPaused ? "play.fill" : "pause.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30, height: 30)
+                        }
+                        Spacer()
+                        Button {
+                            viewModel.settings.wordsPerMinute.value += 10
+                        } label: {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        .disabled(viewModel.settings.wordsPerMinute.value == WordsPerMinute.max)
+                    }
                 }
-                .frame(idealWidth: .infinity)
+                .padding(.vertical, 24)
+                .padding(.horizontal, 32)
+                .tint(.white)
+                .background {
+                    Color
+                        .appTint
+                        .cornerRadius(64)
+                        .shadow(radius: 8)
+                }
+                .padding(16)
                 ProgressView(value: viewModel.complete)
                     .animation(.linear(duration: viewModel.targetWordDuration), value:  viewModel.complete)
+                    .shadow(radius: 8)
+                    .padding(.horizontal, 48)
             }
         }
         .onAppear {

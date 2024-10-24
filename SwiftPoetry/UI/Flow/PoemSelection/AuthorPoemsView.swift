@@ -38,13 +38,11 @@ struct AuthorPoemsView: View {
 #Preview {
     DefaultPreviewParent() {
         AuthorPoemsView(viewModel: .makePreview())
-//            .navigationDestinations()
     }
 }
 
 #Preview("Failing Network") {
-    NavigationStack {
+    DefaultPreviewParent {
         AuthorPoemsView(viewModel: .makePreview(mode: .failingNetwork))
-            .navigationDestinations()
     }
 }
