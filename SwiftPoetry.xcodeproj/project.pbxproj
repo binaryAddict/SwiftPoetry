@@ -10,7 +10,6 @@
 		0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0D02CC5798300040379 /* SwiftPoetryApp.swift */; };
 		0F37D0D52CC5798400040379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F37D0D42CC5798400040379 /* Assets.xcassets */; };
 		0F37D0D92CC5798400040379 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F37D0D82CC5798400040379 /* Preview Assets.xcassets */; };
-		0F37D0E32CC5798400040379 /* SwiftPoetryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0E22CC5798400040379 /* SwiftPoetryTests.swift */; };
 		0F37D0ED2CC5798400040379 /* SwiftPoetryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0EC2CC5798400040379 /* SwiftPoetryUITests.swift */; };
 		0F37D0EF2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0EE2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift */; };
 		0F37D0FC2CC6502600040379 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */; };
@@ -46,6 +45,7 @@
 		0F37D1452CC964F400040379 /* PoetryStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1442CC964F400040379 /* PoetryStubs.swift */; };
 		0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */; };
 		0F37D14A2CC9750F00040379 /* Chainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1492CC9750F00040379 /* Chainable.swift */; };
+		0FC10DF22CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */; };
 		0FDA30102CC9A32400551EEF /* WordsPerMinute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */; };
 		0FDA30122CC9A34400551EEF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30112CC9A34400551EEF /* SettingsStore.swift */; };
 		0FDA30142CC9A36F00551EEF /* UserDefaultsSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */; };
@@ -85,7 +85,6 @@
 		0F37D0D62CC5798400040379 /* SwiftPoetry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftPoetry.entitlements; sourceTree = "<group>"; };
 		0F37D0D82CC5798400040379 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0F37D0DE2CC5798400040379 /* SwiftPoetryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPoetryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F37D0E22CC5798400040379 /* SwiftPoetryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPoetryTests.swift; sourceTree = "<group>"; };
 		0F37D0E82CC5798400040379 /* SwiftPoetryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPoetryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F37D0EC2CC5798400040379 /* SwiftPoetryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPoetryUITests.swift; sourceTree = "<group>"; };
 		0F37D0EE2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPoetryUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingNetworkPoetryService.swift; sourceTree = "<group>"; };
 		0F37D1492CC9750F00040379 /* Chainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chainable.swift; sourceTree = "<group>"; };
 		0FC10DF02CCAE9B1005E90E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedReadingViewModelTests.swift; sourceTree = "<group>"; };
 		0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPerMinute.swift; sourceTree = "<group>"; };
 		0FDA30112CC9A34400551EEF /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettingsStore.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		0F37D0E12CC5798400040379 /* SwiftPoetryTests */ = {
 			isa = PBXGroup;
 			children = (
-				0F37D0E22CC5798400040379 /* SwiftPoetryTests.swift */,
+				0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */,
 			);
 			path = SwiftPoetryTests;
 			sourceTree = "<group>";
@@ -554,7 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F37D0E32CC5798400040379 /* SwiftPoetryTests.swift in Sources */,
+				0FC10DF22CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +784,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
@@ -806,6 +807,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MACOSX_DEPLOYMENT_TARGET = 14.5;

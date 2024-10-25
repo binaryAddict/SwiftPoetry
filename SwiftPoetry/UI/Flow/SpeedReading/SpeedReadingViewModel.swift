@@ -23,13 +23,13 @@ class SpeedReadingViewModel: Chainable {
     var currentWord: Substring {
         words[runInfo.wordIndex]
     }
-    var complete: Float {
-        let lastWord: Float = runInfo.duration >= targetWordDuration ? 1 : 0
-        return (lastWord + Float(runInfo.wordIndex)) / Float(words.count)
+    var complete: Double {
+        let lastWord = max(0, min(1, runInfo.duration / targetWordDuration))
+        return (lastWord + Double(runInfo.wordIndex)) / Double(words.count)
     }
-    var averageWordPerMinute: Float {
+    var averageWordPerMinute: Double {
         let words = complete == 1 ? words.count : runInfo.wordIndex
-        return Float(words) * 60 / Float(runInfo.totalDuration)
+        return Double(words) * 60 / runInfo.totalDuration
     }
    
     let poem: Poem
@@ -64,7 +64,7 @@ class SpeedReadingViewModel: Chainable {
             guard complete != 1 else { return }
             runInfo.duration += change.duration
             runInfo.totalDuration += change.duration
-            guard runInfo.duration > targetWordDuration, complete != 1 else { return }
+            guard runInfo.duration >= targetWordDuration, complete != 1 else { return }
             runInfo.duration -= targetWordDuration
             runInfo.wordIndex += 1
         }

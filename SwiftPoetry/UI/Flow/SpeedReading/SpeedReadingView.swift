@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SpeedReadingView: View {
     @State var viewModel: SpeedReadingViewModel
-    @State private var complete = Float(0.0)
+    @State private var complete = 0.0
     
     var body: some View {
         Group {
