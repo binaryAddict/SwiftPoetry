@@ -48,6 +48,8 @@
 		0FC10DF62CCBB3DA005E90E0 /* DelayedPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF52CCBB3DA005E90E0 /* DelayedPoetryService.swift */; };
 		0FC10DF82CCBB7FD005E90E0 /* RandomPoemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF72CCBB7FD005E90E0 /* RandomPoemViewModelTests.swift */; };
 		0FC10DFA2CCBD77D005E90E0 /* DependacySource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF92CCBD77D005E90E0 /* DependacySource.swift */; };
+		0FC10E002CCBE285005E90E0 /* AuthorPoemsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DFF2CCBE285005E90E0 /* AuthorPoemsViewModelTests.swift */; };
+		0FC10E042CCBE603005E90E0 /* MixedPoetryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10E032CCBE603005E90E0 /* MixedPoetryServiceTests.swift */; };
 		0FDA30102CC9A32400551EEF /* WordsPerMinute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */; };
 		0FDA30122CC9A34400551EEF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30112CC9A34400551EEF /* SettingsStore.swift */; };
 		0FDA30142CC9A36F00551EEF /* UserDefaultsSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */; };
@@ -119,6 +121,8 @@
 		0FC10DF52CCBB3DA005E90E0 /* DelayedPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedPoetryService.swift; sourceTree = "<group>"; };
 		0FC10DF72CCBB7FD005E90E0 /* RandomPoemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPoemViewModelTests.swift; sourceTree = "<group>"; };
 		0FC10DF92CCBD77D005E90E0 /* DependacySource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependacySource.swift; sourceTree = "<group>"; };
+		0FC10DFF2CCBE285005E90E0 /* AuthorPoemsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPoemsViewModelTests.swift; sourceTree = "<group>"; };
+		0FC10E032CCBE603005E90E0 /* MixedPoetryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedPoetryServiceTests.swift; sourceTree = "<group>"; };
 		0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPerMinute.swift; sourceTree = "<group>"; };
 		0FDA30112CC9A34400551EEF /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettingsStore.swift; sourceTree = "<group>"; };
@@ -196,9 +200,8 @@
 		0F37D0E12CC5798400040379 /* SwiftPoetryTests */ = {
 			isa = PBXGroup;
 			children = (
-				0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */,
-				0FC10DF32CCBA90F005E90E0 /* AuthorsViewModelTests.swift */,
-				0FC10DF72CCBB7FD005E90E0 /* RandomPoemViewModelTests.swift */,
+				0FC10E012CCBE445005E90E0 /* Model */,
+				0FC10DFB2CCBDE84005E90E0 /* UI */,
 			);
 			path = SwiftPoetryTests;
 			sourceTree = "<group>";
@@ -313,6 +316,57 @@
 				0FC10DF52CCBB3DA005E90E0 /* DelayedPoetryService.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		0FC10DFB2CCBDE84005E90E0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0FC10DFC2CCBDE92005E90E0 /* Flow */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0FC10DFC2CCBDE92005E90E0 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				0FC10DFD2CCBDEA2005E90E0 /* PoemSelection */,
+				0FC10DFE2CCBDEB5005E90E0 /* SpeedReading */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		0FC10DFD2CCBDEA2005E90E0 /* PoemSelection */ = {
+			isa = PBXGroup;
+			children = (
+				0FC10DF32CCBA90F005E90E0 /* AuthorsViewModelTests.swift */,
+				0FC10DFF2CCBE285005E90E0 /* AuthorPoemsViewModelTests.swift */,
+				0FC10DF72CCBB7FD005E90E0 /* RandomPoemViewModelTests.swift */,
+			);
+			path = PoemSelection;
+			sourceTree = "<group>";
+		};
+		0FC10DFE2CCBDEB5005E90E0 /* SpeedReading */ = {
+			isa = PBXGroup;
+			children = (
+				0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */,
+			);
+			path = SpeedReading;
+			sourceTree = "<group>";
+		};
+		0FC10E012CCBE445005E90E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0FC10E022CCBE451005E90E0 /* PoetryService */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0FC10E022CCBE451005E90E0 /* PoetryService */ = {
+			isa = PBXGroup;
+			children = (
+				0FC10E032CCBE603005E90E0 /* MixedPoetryServiceTests.swift */,
+			);
+			path = PoetryService;
 			sourceTree = "<group>";
 		};
 		0FDA300E2CC9A31100551EEF /* Settings */ = {
@@ -508,8 +562,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC10E002CCBE285005E90E0 /* AuthorPoemsViewModelTests.swift in Sources */,
 				0FC10DF22CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift in Sources */,
 				0FC10DF42CCBA90F005E90E0 /* AuthorsViewModelTests.swift in Sources */,
+				0FC10E042CCBE603005E90E0 /* MixedPoetryServiceTests.swift in Sources */,
 				0FC10DF82CCBB7FD005E90E0 /* RandomPoemViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

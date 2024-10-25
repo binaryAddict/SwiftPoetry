@@ -29,9 +29,16 @@ class AuthorPoemsViewModel {
     }
     
     func onAppear() {
+        fetchPoems()
+    }
+    
+    func fetchPoems() {
         fetching = true
+        // Not really needed since if they exist offline it will already be used
+        // So a failure here is a failure of both services
+        let offlineOnly = settings.offlineOnly
         DispatchQueue.main.asyncAwait {
-            try await self.poetryServiceProvider.service().poems(author: self.author)
+            try await self.poetryServiceProvider.service(offlineOnly: offlineOnly).poems(author: self.author)
         } completion: { [weak self] val in
             guard let self else { return }
             self.fetching = false

@@ -30,14 +30,14 @@ struct SpeedReadingNavigation: Hashable {
  */
 extension View {
     @MainActor func navigationDestinations(dependacySource: DependacySource) -> some View {
-        navigationDestination(for: AuthorPoemsNavigation.self) {
-            AuthorPoemsView(viewModel: .make(author: $0.author, dependacySource: dependacySource))
+        navigationDestination(for: RandomPoemNavigation.self) { _ in
+            RandomPoemView(viewModel: .make(dependacySource: dependacySource))
         }
         .navigationDestination(for: AuthorsNavigation.self) { _ in
             AuthorsView(viewModel: .make(dependacySource: dependacySource))
         }
-        .navigationDestination(for: RandomPoemNavigation.self) { _ in
-            RandomPoemView(viewModel: .make(dependacySource: dependacySource))
+        .navigationDestination(for: AuthorPoemsNavigation.self) {
+            AuthorPoemsView(viewModel: .make(author: $0.author, dependacySource: dependacySource))
         }
         .navigationDestination(for: PoemNavigation.self) {
             PoemView(viewModel: .make(poem: $0.poem, dependacySource: dependacySource))

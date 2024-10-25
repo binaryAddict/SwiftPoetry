@@ -13,7 +13,7 @@ struct PoetryServiceProvider {
     let main: any PoetryService
     let offline: any PoetryService
     
-    func service(offlineOnly: Bool = false) -> any PoetryService {
+    func service(offlineOnly: Bool) -> any PoetryService {
         offlineOnly ? offline : main
     }
 }
