@@ -67,9 +67,3 @@ struct PoemView: View {
         PoemView(viewModel: .makePreview(poem: PoetryStubs.longPoem))
     }
 }
-
-#Preview("Failing Network") {
-    DefaultPreviewParent {
-        PoemView(viewModel: .makePreview(mode: .failingNetwork))
-    }
-}

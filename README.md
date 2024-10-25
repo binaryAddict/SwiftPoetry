@@ -2,11 +2,11 @@
 
 ## Purpose
 
-The project is purly an exercise as part of a job interview process. The task is to pick an API I find interesting and make an App, a suggested set of APIs was provided https://github.com/public-apis/public-apis/blob/master/README.md.
+The project is purely an exercise as part of a job interview process. The task is to pick an API I find interesting and make an App, a suggested set of APIs was provided https://github.com/public-apis/public-apis/blob/master/README.md.
 
 ## Assumptions
 
-- By API, this means server API to demostrate standard URL fetching.
+- By API, this means server API to demonstrate standard URL fetching.
 - It NEEDS to be testable, but unit tests are a NICE TO HAVE given time limits.
 - A JSON viewer App is fine given time, doing something beyond is a NICE TO HAVE.
 - The UI code needs to be structurally sound, but good UI/UX is a NICE TO HAVE.
