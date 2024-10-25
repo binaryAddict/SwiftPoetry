@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthorsView: View {
     
-    @Bindable var viewModel: AuthorsViewModel
+    @State var viewModel: AuthorsViewModel
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -20,7 +20,7 @@ struct AuthorsView: View {
                 }
             }
             HStack {
-                OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
+                OfflineOnlyView(settings: viewModel.settings)
                     .padding(16)
                 Spacer()
             }
@@ -41,7 +41,6 @@ struct AuthorsView: View {
                 }
                 Button("Use Offline") {
                     viewModel.settings.offlineOnly = true
-                    viewModel.fetchAuthors()
                 }
             }
         } message: {
@@ -51,31 +50,13 @@ struct AuthorsView: View {
 }
 
 #Preview {
-    NavigationStack {
+    DefaultPreviewParent() {
         AuthorsView(viewModel: .makePreview())
-            .navigationDestinations()
     }
-    .tint(.appTint)
 }
 
 #Preview("Failing Network") {
-    NavigationStack {
+    DefaultPreviewParent {
         AuthorsView(viewModel: .makePreview(mode: .failingNetwork))
-            .navigationDestinations()
     }
-    .tint(.appTint)
 }
-
-
-// TODO fix issue using DefaultPreviewParent with Bindable
-//#Preview {
-//    DefaultPreviewParent() {
-//        AuthorsView(viewModel: .makePreview())
-//    }
-//}
-//
-//#Preview("Failing Network") {
-//    DefaultPreviewParent {
-//        AuthorsView(viewModel: .makePreview(mode: .failingNetwork))
-//    }
-//}

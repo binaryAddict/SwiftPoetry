@@ -8,25 +8,18 @@
 import SwiftUI
 
 struct OfflineOnlyView: View {
-    @Binding var offlineOnly: Bool
+    @Bindable var settings: Settings
     var body: some View {
         HStack(spacing: 16) {
             Text("Offline only")
-            Toggle("Offline only", isOn: $offlineOnly)
+            Toggle("Offline only", isOn: $settings.offlineOnly)
                 .labelsHidden()
-           
         }
     }
 }
 
 #Preview {
-    struct WrapperView: View {
-        @State var toggle = false
-        var body: some View {
-            OfflineOnlyView(offlineOnly: $toggle)
-        }
+    DefaultPreviewParent {
+        OfflineOnlyView(settings: .makeUnbacked())
     }
-    return WrapperView()
-        .background(Color.white)
-        .navigationDestinations()
 }

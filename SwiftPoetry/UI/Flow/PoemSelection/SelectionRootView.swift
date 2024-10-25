@@ -39,7 +39,7 @@ struct SelectionRootView: View {
             
             Spacer()
             HStack {
-                OfflineOnlyView(offlineOnly: $viewModel.settings.offlineOnly)
+                OfflineOnlyView(settings: viewModel.settings)
                     .padding(16)
                     .groupedArea()
                     .padding(16)
