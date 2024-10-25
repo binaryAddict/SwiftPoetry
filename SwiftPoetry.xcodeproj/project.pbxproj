@@ -10,8 +10,6 @@
 		0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0D02CC5798300040379 /* SwiftPoetryApp.swift */; };
 		0F37D0D52CC5798400040379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F37D0D42CC5798400040379 /* Assets.xcassets */; };
 		0F37D0D92CC5798400040379 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F37D0D82CC5798400040379 /* Preview Assets.xcassets */; };
-		0F37D0ED2CC5798400040379 /* SwiftPoetryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0EC2CC5798400040379 /* SwiftPoetryUITests.swift */; };
-		0F37D0EF2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0EE2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift */; };
 		0F37D0FC2CC6502600040379 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */; };
 		0F37D0FE2CC650A200040379 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */; };
 		0F37D1002CC650FB00040379 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D0FF2CC650FB00040379 /* Navigation.swift */; };
@@ -73,13 +71,6 @@
 			remoteGlobalIDString = 0F37D0CC2CC5798300040379;
 			remoteInfo = SwiftPoetry;
 		};
-		0F37D0E92CC5798400040379 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F37D0C52CC5798300040379 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F37D0CC2CC5798300040379;
-			remoteInfo = SwiftPoetry;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -89,9 +80,6 @@
 		0F37D0D62CC5798400040379 /* SwiftPoetry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftPoetry.entitlements; sourceTree = "<group>"; };
 		0F37D0D82CC5798400040379 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0F37D0DE2CC5798400040379 /* SwiftPoetryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPoetryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F37D0E82CC5798400040379 /* SwiftPoetryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPoetryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F37D0EC2CC5798400040379 /* SwiftPoetryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPoetryUITests.swift; sourceTree = "<group>"; };
-		0F37D0EE2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPoetryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0F37D0FB2CC6502600040379 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		0F37D0FD2CC650A200040379 /* Codable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		0F37D0FF2CC650FB00040379 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -161,13 +149,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F37D0E52CC5798400040379 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -176,7 +157,6 @@
 			children = (
 				0F37D0CF2CC5798300040379 /* SwiftPoetry */,
 				0F37D0E12CC5798400040379 /* SwiftPoetryTests */,
-				0F37D0EB2CC5798400040379 /* SwiftPoetryUITests */,
 				0F37D0CE2CC5798300040379 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -186,7 +166,6 @@
 			children = (
 				0F37D0CD2CC5798300040379 /* SwiftPoetry.app */,
 				0F37D0DE2CC5798400040379 /* SwiftPoetryTests.xctest */,
-				0F37D0E82CC5798400040379 /* SwiftPoetryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,15 +201,6 @@
 				0FC10DF72CCBB7FD005E90E0 /* RandomPoemViewModelTests.swift */,
 			);
 			path = SwiftPoetryTests;
-			sourceTree = "<group>";
-		};
-		0F37D0EB2CC5798400040379 /* SwiftPoetryUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0F37D0EC2CC5798400040379 /* SwiftPoetryUITests.swift */,
-				0F37D0EE2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift */,
-			);
-			path = SwiftPoetryUITests;
 			sourceTree = "<group>";
 		};
 		0F37D1052CC656AD00040379 /* UI */ = {
@@ -420,24 +390,6 @@
 			productReference = 0F37D0DE2CC5798400040379 /* SwiftPoetryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0F37D0E72CC5798400040379 /* SwiftPoetryUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0F37D0F82CC5798400040379 /* Build configuration list for PBXNativeTarget "SwiftPoetryUITests" */;
-			buildPhases = (
-				0F37D0E42CC5798400040379 /* Sources */,
-				0F37D0E52CC5798400040379 /* Frameworks */,
-				0F37D0E62CC5798400040379 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0F37D0EA2CC5798400040379 /* PBXTargetDependency */,
-			);
-			name = SwiftPoetryUITests;
-			productName = SwiftPoetryUITests;
-			productReference = 0F37D0E82CC5798400040379 /* SwiftPoetryUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -452,10 +404,6 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					0F37D0DD2CC5798400040379 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = 0F37D0CC2CC5798300040379;
-					};
-					0F37D0E72CC5798400040379 = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = 0F37D0CC2CC5798300040379;
 					};
@@ -476,7 +424,6 @@
 			targets = (
 				0F37D0CC2CC5798300040379 /* SwiftPoetry */,
 				0F37D0DD2CC5798400040379 /* SwiftPoetryTests */,
-				0F37D0E72CC5798400040379 /* SwiftPoetryUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -493,13 +440,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0F37D0DC2CC5798400040379 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F37D0E62CC5798400040379 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -574,15 +514,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F37D0E42CC5798400040379 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F37D0ED2CC5798400040379 /* SwiftPoetryUITests.swift in Sources */,
-				0F37D0EF2CC5798400040379 /* SwiftPoetryUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -590,11 +521,6 @@
 			isa = PBXTargetDependency;
 			target = 0F37D0CC2CC5798300040379 /* SwiftPoetry */;
 			targetProxy = 0F37D0DF2CC5798400040379 /* PBXContainerItemProxy */;
-		};
-		0F37D0EA2CC5798400040379 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F37D0CC2CC5798300040379 /* SwiftPoetry */;
-			targetProxy = 0F37D0E92CC5798400040379 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -839,48 +765,6 @@
 			};
 			name = Release;
 		};
-		0F37D0F92CC5798400040379 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hackerandco.SwiftPoetryUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwiftPoetry;
-			};
-			name = Debug;
-		};
-		0F37D0FA2CC5798400040379 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hackerandco.SwiftPoetryUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SwiftPoetry;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -907,15 +791,6 @@
 			buildConfigurations = (
 				0F37D0F62CC5798400040379 /* Debug */,
 				0F37D0F72CC5798400040379 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0F37D0F82CC5798400040379 /* Build configuration list for PBXNativeTarget "SwiftPoetryUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0F37D0F92CC5798400040379 /* Debug */,
-				0F37D0FA2CC5798400040379 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
