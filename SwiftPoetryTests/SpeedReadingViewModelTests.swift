@@ -20,7 +20,6 @@ final class SpeedReadingViewModelTests: XCTestCase {
         let displayLink = DisplayLinkControllerMock()
         let sut = SpeedReadingViewModel(
             poem: PoetryStubs.veryShortPoem,
-            poetryServiceProvider: .offlineOnly,
             settings: .makeUnbacked(),
             displayLink: displayLink
         )
@@ -34,14 +33,13 @@ final class SpeedReadingViewModelTests: XCTestCase {
     
     @MainActor func testDisplayLink_Update() throws {
         let displayLink = DisplayLinkControllerMock()
-        let settings = Settings.makeUnbacked()
         let sut = SpeedReadingViewModel(
             poem: PoetryStubs.veryShortPoem,
-            poetryServiceProvider: .offlineOnly,
-            settings: settings,
+            settings: .makeUnbacked().with {
+                $0.wordsPerMinute.value = 60
+            },
             displayLink: displayLink
         )
-        settings.wordsPerMinute.value = 60
         sut.start()
         XCTAssertEqual(sut.words.count, 2)
         XCTAssertEqual(sut.targetWordDuration, 1)

@@ -25,13 +25,11 @@ struct AuthorPoemsNavigation: Hashable {
 
 struct PoemNavigation: Hashable {
     let poem: Poem
-    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
     @HashableIgnored var settings: Settings
 }
 
 struct SpeedReadingNavigation: Hashable {
     let poem: Poem
-    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
     @HashableIgnored var settings: Settings
 }
 
@@ -66,7 +64,6 @@ extension View {
             PoemView(
                 viewModel: .init(
                     poem: $0.poem,
-                    poetryServiceProvider: $0.poetryServiceProvider,
                     settings: $0.settings
                 )
             )
@@ -75,7 +72,6 @@ extension View {
             SpeedReadingView(
                 viewModel: .init(
                     poem: $0.poem,
-                    poetryServiceProvider: $0.poetryServiceProvider,
                     settings: $0.settings
                 )
             )

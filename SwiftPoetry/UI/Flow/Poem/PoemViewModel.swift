@@ -17,32 +17,24 @@ class PoemViewModel: Chainable {
     
     let poem: Poem
     private let wordsCount: Int
-    private let poetryServiceProvider: PoetryServiceProvider
     private let settings: Settings
     
-    init(poem: Poem, poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
+    init(poem: Poem, settings: Settings = .shared) {
         self.poem = poem
         self.wordsCount = poem.lines.reduce(0) {
             $0 + $1.split(separator: " ").count
         }
-        self.poetryServiceProvider = poetryServiceProvider
         self.settings = settings
     }
     
     func speedReederNavigation() -> some Hashable {
-        SpeedReadingNavigation(poem: poem, poetryServiceProvider: poetryServiceProvider, settings: settings)
+        SpeedReadingNavigation(poem: poem, settings: settings)
     }
 }
 
 extension PoemViewModel {
-    static func makePreview(
-        poem: Poem = PoetryStubs.shortPoem,
-        mode: PoetryServiceProvider.TestMode = .offlineOnly) -> PoemViewModel
+    static func makePreview(poem: Poem = PoetryStubs.shortPoem) -> PoemViewModel
     {
-        .init(
-            poem: poem,
-            poetryServiceProvider: .testPreview(mode: mode),
-            settings: .makeUnbacked()
-        )
+        .init(poem: poem, settings: .makeUnbacked())
     }
 }

@@ -42,18 +42,15 @@ class SpeedReadingViewModel: Chainable {
     var runInfo = RunInfo()
     private let displayLink: DisplayLinkControllerProtocol
     private var token: Any?
-    private let poetryServiceProvider: PoetryServiceProvider
     var settings: Settings
     
     init(
         poem: Poem,
-        poetryServiceProvider: PoetryServiceProvider = .shared,
         settings: Settings = .shared,
         displayLink: DisplayLinkControllerProtocol = DisplayLinkController(paused: true)
     )
     {
         self.poem = poem
-        self.poetryServiceProvider = poetryServiceProvider
         self.settings = settings
         self.displayLink = displayLink
         self.words = poem.lines.flatMap {
@@ -81,14 +78,7 @@ class SpeedReadingViewModel: Chainable {
 }
 
 extension SpeedReadingViewModel {
-    static func makePreview(
-        poem: Poem = PoetryStubs.shortPoem,
-        mode: PoetryServiceProvider.TestMode = .offlineOnly) -> SpeedReadingViewModel
-    {
-        .init(
-            poem: poem,
-            poetryServiceProvider: .testPreview(mode: mode),
-            settings: .makeUnbacked()
-        )
+    static func makePreview(poem: Poem = PoetryStubs.shortPoem) -> SpeedReadingViewModel {
+        .init(poem: poem, settings: .makeUnbacked())
     }
 }

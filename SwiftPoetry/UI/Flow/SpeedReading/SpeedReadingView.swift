@@ -44,9 +44,3 @@ struct SpeedReadingView: View {
         SpeedReadingView(viewModel: .makePreview(poem: PoetryStubs.longPoem))
     }
 }
-
-#Preview("Failing Network") {
-    DefaultPreviewParent {
-        SpeedReadingView(viewModel: .makePreview(mode: .failingNetwork))
-    }
-}

@@ -45,7 +45,7 @@ class AuthorPoemsViewModel {
     }
     
     func navigationValue(poem: Poem) -> some Hashable {
-        PoemNavigation(poem: poem, poetryServiceProvider: poetryServiceProvider, settings: settings)
+        PoemNavigation(poem: poem, settings: settings)
     }
 }
 
