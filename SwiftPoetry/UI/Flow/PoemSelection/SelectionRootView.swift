@@ -58,6 +58,12 @@ struct SelectionRootView: View {
     }
 }
 
+#Preview("Delayed Network") {
+    DefaultPreviewParent {
+        SelectionRootView(viewModel: .makePreview(mode: .delayedNetwork))
+    }
+}
+
 #Preview("Failing Network") {
     DefaultPreviewParent {
         SelectionRootView(viewModel: .makePreview(mode: .failingNetwork))

@@ -55,6 +55,12 @@ struct RandomPoemView: View {
     }
 }
 
+#Preview("Delayed Network") {
+    DefaultPreviewParent {
+        RandomPoemView(viewModel: .makePreview(mode: .delayedNetwork))
+    }
+}
+
 #Preview("Failing Network") {
     DefaultPreviewParent {
         RandomPoemView(viewModel: .makePreview(mode: .failingNetwork))

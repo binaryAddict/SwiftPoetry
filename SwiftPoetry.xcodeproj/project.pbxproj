@@ -43,10 +43,11 @@
 		0F37D1412CC95DCF00040379 /* OfflineOnlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1402CC95DCF00040379 /* OfflineOnlyView.swift */; };
 		0F37D1432CC964CA00040379 /* Poem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1422CC964CA00040379 /* Poem.swift */; };
 		0F37D1452CC964F400040379 /* PoetryStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1442CC964F400040379 /* PoetryStubs.swift */; };
-		0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */; };
+		0F37D1482CC96B2300040379 /* FailingPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1472CC96B2300040379 /* FailingPoetryService.swift */; };
 		0F37D14A2CC9750F00040379 /* Chainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1492CC9750F00040379 /* Chainable.swift */; };
 		0FC10DF22CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */; };
 		0FC10DF42CCBA90F005E90E0 /* AuthorsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF32CCBA90F005E90E0 /* AuthorsViewModelTests.swift */; };
+		0FC10DF62CCBB3DA005E90E0 /* DelayedPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF52CCBB3DA005E90E0 /* DelayedPoetryService.swift */; };
 		0FDA30102CC9A32400551EEF /* WordsPerMinute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */; };
 		0FDA30122CC9A34400551EEF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30112CC9A34400551EEF /* SettingsStore.swift */; };
 		0FDA30142CC9A36F00551EEF /* UserDefaultsSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */; };
@@ -120,11 +121,12 @@
 		0F37D1402CC95DCF00040379 /* OfflineOnlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineOnlyView.swift; sourceTree = "<group>"; };
 		0F37D1422CC964CA00040379 /* Poem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poem.swift; sourceTree = "<group>"; };
 		0F37D1442CC964F400040379 /* PoetryStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryStubs.swift; sourceTree = "<group>"; };
-		0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingNetworkPoetryService.swift; sourceTree = "<group>"; };
+		0F37D1472CC96B2300040379 /* FailingPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingPoetryService.swift; sourceTree = "<group>"; };
 		0F37D1492CC9750F00040379 /* Chainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chainable.swift; sourceTree = "<group>"; };
 		0FC10DF02CCAE9B1005E90E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedReadingViewModelTests.swift; sourceTree = "<group>"; };
 		0FC10DF32CCBA90F005E90E0 /* AuthorsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsViewModelTests.swift; sourceTree = "<group>"; };
+		0FC10DF52CCBB3DA005E90E0 /* DelayedPoetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedPoetryService.swift; sourceTree = "<group>"; };
 		0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPerMinute.swift; sourceTree = "<group>"; };
 		0FDA30112CC9A34400551EEF /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettingsStore.swift; sourceTree = "<group>"; };
@@ -331,7 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				0F37D1442CC964F400040379 /* PoetryStubs.swift */,
-				0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */,
+				0F37D1472CC96B2300040379 /* FailingPoetryService.swift */,
+				0FC10DF52CCBB3DA005E90E0 /* DelayedPoetryService.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -543,9 +546,10 @@
 				0FDA30102CC9A32400551EEF /* WordsPerMinute.swift in Sources */,
 				0F37D1152CC7A0FE00040379 /* SelectionRootView.swift in Sources */,
 				0FDA30162CC9A39A00551EEF /* UnbackedSettingsStore.swift in Sources */,
-				0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */,
+				0F37D1482CC96B2300040379 /* FailingPoetryService.swift in Sources */,
 				0FDA30222CCA811900551EEF /* DefaultPreviewParent.swift in Sources */,
 				0FDA30262CCAC39B00551EEF /* AnyTransition+Extensions.swift in Sources */,
+				0FC10DF62CCBB3DA005E90E0 /* DelayedPoetryService.swift in Sources */,
 				0FDA30242CCAB1C200551EEF /* PoemViewModel.swift in Sources */,
 				0F37D0D12CC5798300040379 /* SwiftPoetryApp.swift in Sources */,
 				0F37D1412CC95DCF00040379 /* OfflineOnlyView.swift in Sources */,

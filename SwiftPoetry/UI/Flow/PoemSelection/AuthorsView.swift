@@ -56,6 +56,12 @@ struct AuthorsView: View {
     }
 }
 
+#Preview("Delayed Network") {
+    DefaultPreviewParent {
+        AuthorsView(viewModel: .makePreview(mode: .delayedNetwork))
+    }
+}
+
 #Preview("Failing Network") {
     DefaultPreviewParent {
         AuthorsView(viewModel: .makePreview(mode: .failingNetwork))
