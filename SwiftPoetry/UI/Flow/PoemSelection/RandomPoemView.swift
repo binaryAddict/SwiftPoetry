@@ -14,8 +14,8 @@ struct RandomPoemView: View {
     
     var body: some View {
         Group {
-            if loaded, let speedReading = viewModel.speedReading {
-                PoemView(viewModel: .init(poem: speedReading.poem))
+            if loaded, let poem = viewModel.poem {
+                PoemView(viewModel: .init(poem: poem))
                     .transition(.reveredSlide)
             } else {
                 Spacer()
@@ -23,24 +23,25 @@ struct RandomPoemView: View {
                     .fetchingOverlay(isFetching: $viewModel.fetching)
             }
         }
-        .onChange(of: viewModel.speedReading != nil) { _, newValue in
+        .onChange(of: viewModel.poem != nil) { _, newValue in
             withAnimation {
                 loaded = newValue
             }
         }
-        .alert("Error", isPresented: $viewModel.presentError) {
-            if viewModel.settings.offlineOnly {
-                Button("Ok") {
-                    dismiss()
-                }
-            } else {
-                Button("Cancel", role: .cancel) {
-                    dismiss()
-                }
-                Button("Use Offline") {
-                    viewModel.settings.offlineOnly = true
-                    viewModel.fetchRandomPoem()
-                }
+        .alert("Error", isPresented: $viewModel.presentNetworkedError) {
+            Button("Cancel", role: .cancel) {
+                dismiss()
+            }
+            Button("Use Offline") {
+                viewModel.settings.offlineOnly = true
+                viewModel.fetchRandomPoem()
+            }
+        } message: {
+            Text("Unable to retrieve a Poem")
+        }
+        .alert("Error", isPresented: $viewModel.presentOfflineError) {
+            Button("Ok") {
+                dismiss()
             }
         } message: {
             Text("Unable to retrieve a Poem")
@@ -64,5 +65,15 @@ struct RandomPoemView: View {
 #Preview("Failing Network") {
     DefaultPreviewParent {
         RandomPoemView(viewModel: .makePreview(mode: .failingNetwork))
+    }
+}
+
+#Preview("Failing Offline") {
+    DefaultPreviewParent {
+        RandomPoemView(
+            viewModel: .makePreview(mode: .failingOffline).with {
+                $0.settings.offlineOnly = true
+            }
+        )
     }
 }

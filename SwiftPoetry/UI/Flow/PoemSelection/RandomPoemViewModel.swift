@@ -9,13 +9,14 @@ import SwiftUI
 
 @MainActor
 @Observable
-class RandomPoemViewModel {
+class RandomPoemViewModel: Chainable {
 
     var settings: Settings
-    var speedReading: SpeedReadingViewModel?
+    var poem: Poem?
     private let poetryServiceProvider: PoetryServiceProvider
     var fetching = false
-    var presentError = false
+    var presentNetworkedError = false
+    var presentOfflineError = false
     
     init(poetryServiceProvider: PoetryServiceProvider, settings: Settings = .shared) {
         self.poetryServiceProvider = poetryServiceProvider
@@ -36,9 +37,10 @@ class RandomPoemViewModel {
             self.fetching = false
             switch result {
             case .success(let poem):
-                self.speedReading = .init(poem: poem)
+                self.poem = poem
             case .failure:
-                self.presentError = true
+                self.presentNetworkedError = offlineOnly == false
+                self.presentOfflineError = offlineOnly
             }
         }
     }
