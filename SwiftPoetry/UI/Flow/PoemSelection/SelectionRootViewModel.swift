@@ -11,28 +11,25 @@ import SwiftUI
 @Observable
 final class SelectionRootViewModel {
     
-    private let poetryServiceProvider: PoetryServiceProvider
     var settings: Settings
     
-    init(poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
-        self.poetryServiceProvider = poetryServiceProvider
+    init(settings: Settings) {
         self.settings = settings
     }
     
     func randomPoemNavigation() -> some Hashable {
-        RandomPoemNavigation(poetryServiceProvider: poetryServiceProvider, settings: settings)
+        RandomPoemNavigation()
     }
     
     func authorsNavigationValue() -> some Hashable {
-        AuthorsNavigation(poetryServiceProvider: poetryServiceProvider, settings: settings)
+        AuthorsNavigation()
     }
 }
 
 extension SelectionRootViewModel {
-    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> SelectionRootViewModel {
-        .init(
-            poetryServiceProvider: .testPreview(mode: mode),
-            settings: .makeUnbacked()
+    static func make(dependacySource: DependacySource) -> SelectionRootViewModel {
+        SelectionRootViewModel(
+            settings: dependacySource.settings
         )
     }
 }

@@ -46,7 +46,7 @@ class SpeedReadingViewModel: Chainable {
     
     init(
         poem: Poem,
-        settings: Settings = .shared,
+        settings: Settings,
         displayLink: DisplayLinkControllerProtocol = DisplayLinkController(paused: true)
     )
     {
@@ -78,7 +78,7 @@ class SpeedReadingViewModel: Chainable {
 }
 
 extension SpeedReadingViewModel {
-    static func makePreview(poem: Poem = PoetryStubs.shortPoem) -> SpeedReadingViewModel {
-        .init(poem: poem, settings: .makeUnbacked())
+    static func make(poem: Poem, dependacySource: DependacySource) -> SpeedReadingViewModel {
+        .init(poem: poem, settings: dependacySource.settings)
     }
 }

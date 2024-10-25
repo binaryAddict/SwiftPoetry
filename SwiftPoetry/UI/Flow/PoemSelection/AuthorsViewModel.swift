@@ -23,7 +23,7 @@ final class AuthorsViewModel: Chainable {
     var settings: Settings
     private var token: Any?
     
-    init(poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
+    init(poetryServiceProvider: PoetryServiceProvider, settings: Settings) {
         self.poetryServiceProvider = poetryServiceProvider
         self.settings = settings
         token = withObservationTracking {
@@ -59,15 +59,15 @@ final class AuthorsViewModel: Chainable {
     }
     
     func navigationValue(author: String) -> some Hashable {
-        AuthorPoemsNavigation(author: author, poetryServiceProvider: poetryServiceProvider, settings: settings)
+        AuthorPoemsNavigation(author: author)
     }
 }
 
 extension AuthorsViewModel {
-    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> AuthorsViewModel {
+    static func make(dependacySource: DependacySource) -> AuthorsViewModel {
         .init(
-            poetryServiceProvider: .testPreview(mode: mode),
-            settings: .makeUnbacked()
+            poetryServiceProvider: dependacySource.poetryServiceProvider,
+            settings: dependacySource.settings
         )
     }
 }

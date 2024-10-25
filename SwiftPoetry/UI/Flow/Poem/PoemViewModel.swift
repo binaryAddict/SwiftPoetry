@@ -19,7 +19,7 @@ class PoemViewModel: Chainable {
     private let wordsCount: Int
     private let settings: Settings
     
-    init(poem: Poem, settings: Settings = .shared) {
+    init(poem: Poem, settings: Settings) {
         self.poem = poem
         self.wordsCount = poem.lines.reduce(0) {
             $0 + $1.split(separator: " ").count
@@ -28,13 +28,12 @@ class PoemViewModel: Chainable {
     }
     
     func speedReederNavigation() -> some Hashable {
-        SpeedReadingNavigation(poem: poem, settings: settings)
+        SpeedReadingNavigation(poem: poem)
     }
 }
 
 extension PoemViewModel {
-    static func makePreview(poem: Poem = PoetryStubs.shortPoem) -> PoemViewModel
-    {
-        .init(poem: poem, settings: .makeUnbacked())
+    static func make(poem: Poem, dependacySource: DependacySource) -> PoemViewModel {
+        .init(poem: poem, settings: dependacySource.settings)
     }
 }

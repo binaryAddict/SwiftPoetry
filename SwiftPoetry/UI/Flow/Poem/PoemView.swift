@@ -52,18 +52,18 @@ struct PoemView: View {
 
 #Preview {
     DefaultPreviewParent {
-        PoemView(viewModel: .makePreview())
+        PoemView(viewModel: .make(poem: PoetryStubs.shortPoem, dependacySource: $0))
     }
 }
 
 #Preview("Very Short Poem") {
     DefaultPreviewParent {
-        PoemView(viewModel: .makePreview(poem: PoetryStubs.veryShortPoem))
+        PoemView(viewModel: .make(poem: PoetryStubs.veryShortPoem, dependacySource: $0))
     }
 }
 
 #Preview("Long Poem") {
     DefaultPreviewParent {
-        PoemView(viewModel: .makePreview(poem: PoetryStubs.longPoem))
+        PoemView(viewModel: .make(poem: PoetryStubs.longPoem, dependacySource: $0))
     }
 }

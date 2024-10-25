@@ -22,7 +22,7 @@ class AuthorPoemsViewModel {
     private let poetryServiceProvider: PoetryServiceProvider
     private let settings: Settings
     
-    init(author: String, poetryServiceProvider: PoetryServiceProvider = .shared, settings: Settings = .shared) {
+    init(author: String, poetryServiceProvider: PoetryServiceProvider, settings: Settings) {
         self.author = author
         self.poetryServiceProvider = poetryServiceProvider
         self.settings = settings
@@ -45,16 +45,16 @@ class AuthorPoemsViewModel {
     }
     
     func navigationValue(poem: Poem) -> some Hashable {
-        PoemNavigation(poem: poem, settings: settings)
+        PoemNavigation(poem: poem)
     }
 }
 
 extension AuthorPoemsViewModel {
-    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> AuthorPoemsViewModel {
+    static func make(author: String, dependacySource: DependacySource) -> AuthorPoemsViewModel {
         .init(
-            author: PoetryStubs.authorJonathanSwift,
-            poetryServiceProvider: .testPreview(mode: mode),
-            settings: .makeUnbacked()
+            author: author,
+            poetryServiceProvider: dependacySource.poetryServiceProvider,
+            settings: dependacySource.settings
         )
     }
 }

@@ -15,7 +15,7 @@ struct RandomPoemView: View {
     var body: some View {
         Group {
             if loaded, let poem = viewModel.poem {
-                PoemView(viewModel: .init(poem: poem))
+                PoemView(viewModel: .init(poem: poem, settings: viewModel.settings))
                     .transition(.reveredSlide)
             } else {
                 Spacer()
@@ -52,28 +52,31 @@ struct RandomPoemView: View {
 
 #Preview {
     DefaultPreviewParent {
-        RandomPoemView(viewModel: .makePreview())
+        RandomPoemView(viewModel: .make(dependacySource: $0))
     }
 }
 
 #Preview("Delayed Network") {
     DefaultPreviewParent {
-        RandomPoemView(viewModel: .makePreview(mode: .delayedNetwork))
+        RandomPoemView(viewModel: .make(dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .delayedNetwork
     }
 }
 
 #Preview("Failing Network") {
     DefaultPreviewParent {
-        RandomPoemView(viewModel: .makePreview(mode: .failingNetwork))
+        RandomPoemView(viewModel: .make(dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .failingNetwork
     }
 }
 
 #Preview("Failing Offline") {
     DefaultPreviewParent {
-        RandomPoemView(
-            viewModel: .makePreview(mode: .failingOffline).with {
-                $0.settings.offlineOnly = true
-            }
-        )
+        RandomPoemView(viewModel: .make(dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .failingOffline
+        $0.settings.offlineOnly = true
     }
 }

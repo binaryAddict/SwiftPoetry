@@ -7,74 +7,43 @@
 
 import SwiftUI
 
-struct RandomPoemNavigation: Hashable {
-    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
-    @HashableIgnored var settings: Settings
-}
+struct RandomPoemNavigation: Hashable {}
 
-struct AuthorsNavigation: Hashable {
-    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
-    @HashableIgnored var settings: Settings
-}
+struct AuthorsNavigation: Hashable {}
 
 struct AuthorPoemsNavigation: Hashable {
     let author: String
-    @HashableIgnored var poetryServiceProvider: PoetryServiceProvider
-    @HashableIgnored var settings: Settings
 }
 
 struct PoemNavigation: Hashable {
     let poem: Poem
-    @HashableIgnored var settings: Settings
 }
 
 struct SpeedReadingNavigation: Hashable {
     let poem: Poem
-    @HashableIgnored var settings: Settings
 }
 
+/** 
+ I could used Enviroment or EnviromentObject for dependacies,
+ but would need a wrapper view for each destination or have to deal with more optionals.
+ Of the two I would pick the wrapper views, but would wait till it is worth the extra work
+ */
 extension View {
-    @MainActor func navigationDestinations() -> some View {
+    @MainActor func navigationDestinations(dependacySource: DependacySource) -> some View {
         navigationDestination(for: AuthorPoemsNavigation.self) {
-            AuthorPoemsView(
-                viewModel: .init(
-                    author: $0.author,
-                    poetryServiceProvider: $0.poetryServiceProvider,
-                    settings: $0.settings
-                )
-            )
+            AuthorPoemsView(viewModel: .make(author: $0.author, dependacySource: dependacySource))
         }
-        .navigationDestination(for: AuthorsNavigation.self) {
-            AuthorsView(
-                viewModel: .init(
-                    poetryServiceProvider: $0.poetryServiceProvider,
-                    settings: $0.settings
-                )
-            )
+        .navigationDestination(for: AuthorsNavigation.self) { _ in
+            AuthorsView(viewModel: .make(dependacySource: dependacySource))
         }
-        .navigationDestination(for: RandomPoemNavigation.self) {
-            RandomPoemView(
-                viewModel: .init(
-                    poetryServiceProvider: $0.poetryServiceProvider,
-                    settings: $0.settings
-                )
-            )
+        .navigationDestination(for: RandomPoemNavigation.self) { _ in
+            RandomPoemView(viewModel: .make(dependacySource: dependacySource))
         }
         .navigationDestination(for: PoemNavigation.self) {
-            PoemView(
-                viewModel: .init(
-                    poem: $0.poem,
-                    settings: $0.settings
-                )
-            )
+            PoemView(viewModel: .make(poem: $0.poem, dependacySource: dependacySource))
         }
         .navigationDestination(for: SpeedReadingNavigation.self) {
-            SpeedReadingView(
-                viewModel: .init(
-                    poem: $0.poem,
-                    settings: $0.settings
-                )
-            )
+            SpeedReadingView(viewModel: .make(poem: $0.poem, dependacySource: dependacySource))
         }
     }
 }

@@ -37,18 +37,22 @@ struct AuthorPoemsView: View {
 
 #Preview {
     DefaultPreviewParent() {
-        AuthorPoemsView(viewModel: .makePreview())
+        AuthorPoemsView(viewModel: .make(author: PoetryStubs.authorJonathanSwift, dependacySource: $0))
     }
 }
 
 #Preview("Delayed Network") {
     DefaultPreviewParent {
-        AuthorPoemsView(viewModel: .makePreview(mode: .delayedNetwork))
+        AuthorPoemsView(viewModel: .make(author: PoetryStubs.authorJonathanSwift, dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .delayedNetwork
     }
 }
 
 #Preview("Failing Network") {
     DefaultPreviewParent {
-        AuthorPoemsView(viewModel: .makePreview(mode: .failingNetwork))
+        AuthorPoemsView(viewModel: .make(author: PoetryStubs.authorJonathanSwift, dependacySource: $0))
+    }  with: {
+        $0.poetryServiceProvider = .failingNetwork
     }
 }

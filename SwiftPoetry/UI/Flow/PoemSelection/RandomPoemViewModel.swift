@@ -18,7 +18,7 @@ class RandomPoemViewModel: Chainable {
     var presentNetworkedError = false
     var presentOfflineError = false
     
-    init(poetryServiceProvider: PoetryServiceProvider, settings: Settings = .shared) {
+    init(poetryServiceProvider: PoetryServiceProvider, settings: Settings) {
         self.poetryServiceProvider = poetryServiceProvider
         self.settings = settings
     }
@@ -47,10 +47,10 @@ class RandomPoemViewModel: Chainable {
 }
 
 extension RandomPoemViewModel {
-    static func makePreview(mode: PoetryServiceProvider.TestMode = .offlineOnly) -> RandomPoemViewModel {
+    static func make(dependacySource: DependacySource) -> RandomPoemViewModel {
         .init(
-            poetryServiceProvider: .testPreview(mode: mode),
-            settings: .makeUnbacked()
+            poetryServiceProvider: dependacySource.poetryServiceProvider,
+            settings: dependacySource.settings
         )
     }
 }

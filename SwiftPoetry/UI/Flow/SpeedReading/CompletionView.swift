@@ -76,7 +76,7 @@ struct CompletionView: View {
 #Preview {
     DefaultPreviewParent {
         CompletionView(
-            viewModel: .makePreview().with {
+            viewModel: .make(poem: PoetryStubs.shortPoem, dependacySource: $0).with {
                 $0.runInfo.wordIndex = $0.words.count - 1
                 $0.runInfo.duration += 1
                 $0.runInfo.totalDuration = 35
@@ -88,7 +88,7 @@ struct CompletionView: View {
 #Preview {
     DefaultPreviewParent {
         CompletionView(
-            viewModel: .makePreview().with {
+            viewModel: .make(poem: PoetryStubs.shortPoem, dependacySource: $0).with {
                 $0.runInfo.wordIndex = $0.words.count - 1
                 $0.runInfo.duration += 1
                 $0.runInfo.totalDuration = 135

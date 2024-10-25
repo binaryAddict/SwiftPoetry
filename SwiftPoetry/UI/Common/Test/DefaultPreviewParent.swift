@@ -8,12 +8,28 @@
 import SwiftUI
 
 struct DefaultPreviewParent<T: View>: View {
-    @State var state: Any?
-    var content: () -> T
+    private var dependacySource = DependacySource(
+        poetryServiceProvider: .offlineOnly,
+        settings: .makeUnbacked()
+    )
+    
+    var content: (DependacySource) -> T
+    
+    init(content:  @escaping (DependacySource) -> T, with: @escaping (inout DependacySource) -> Void = { _ in } ) {
+        self.content = content
+        with(&dependacySource)
+    }
+    
+    init(content: @escaping () -> T) {
+        self.content = { _ in
+            content()
+        }
+    }
+    
     var body: some View {
         NavigationStack {
-            content()
-                .navigationDestinations()
+            content(dependacySource)
+                .navigationDestinations(dependacySource: dependacySource)
         }
         .tint(.appTint)
     }

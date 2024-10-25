@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct SwiftPoetryApp: App {
+
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                SelectionRootView(viewModel: .init())
-                    .navigationDestinations()
+                SelectionRootView(viewModel: .make(dependacySource: .shared))
+                    .navigationDestinations(dependacySource: .shared)
             }
             .tint(.appTint)
         }

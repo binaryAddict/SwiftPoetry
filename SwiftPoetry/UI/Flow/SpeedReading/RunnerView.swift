@@ -99,7 +99,7 @@ struct RunnerView: View {
 #Preview {
     DefaultPreviewParent {
         RunnerView(
-            viewModel: .makePreview()
+            viewModel: .make(poem: PoetryStubs.shortPoem, dependacySource: $0)
         )
     }
 }
@@ -107,7 +107,7 @@ struct RunnerView: View {
 #Preview("Paused") {
     DefaultPreviewParent {
         RunnerView(
-            viewModel: .makePreview().with { vm in
+            viewModel: .make(poem: PoetryStubs.shortPoem, dependacySource: $0).with { vm in
                 DispatchQueue.main.async {
                     vm.isPaused = true
                 }
@@ -119,7 +119,7 @@ struct RunnerView: View {
 #Preview("Very Short Poem") {
     DefaultPreviewParent {
         RunnerView(
-            viewModel: .makePreview(poem: PoetryStubs.veryShortPoem)
+            viewModel: .make(poem: PoetryStubs.veryShortPoem, dependacySource: $0)
         )
     }
 }
@@ -127,7 +127,7 @@ struct RunnerView: View {
 #Preview("Long Poem") {
     DefaultPreviewParent {
         RunnerView(
-            viewModel: .makePreview(poem: PoetryStubs.longPoem)
+            viewModel: .make(poem: PoetryStubs.longPoem, dependacySource: $0)
         )
     }
 }

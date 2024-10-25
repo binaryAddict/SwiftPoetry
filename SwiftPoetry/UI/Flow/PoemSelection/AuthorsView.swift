@@ -51,29 +51,32 @@ struct AuthorsView: View {
 }
 
 #Preview {
-    DefaultPreviewParent() {
-        AuthorsView(viewModel: .makePreview())
+    DefaultPreviewParent {
+        AuthorsView(viewModel: .make(dependacySource: $0))
     }
 }
 
 #Preview("Delayed Network") {
     DefaultPreviewParent {
-        AuthorsView(viewModel: .makePreview(mode: .delayedNetwork))
+        AuthorsView(viewModel: .make(dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .delayedNetwork
     }
 }
 
 #Preview("Failing Network") {
     DefaultPreviewParent {
-        AuthorsView(viewModel: .makePreview(mode: .failingNetwork))
+        AuthorsView(viewModel: .make(dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .failingNetwork
     }
 }
 
 #Preview("Failing Offine") {
     DefaultPreviewParent {
-        AuthorsView(
-            viewModel: .makePreview(mode: .failingOffline).with {
-                $0.settings.offlineOnly = true
-            }
-        )
+        AuthorsView(viewModel: .make(dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .failingOffline
+        $0.settings.offlineOnly = true
     }
 }

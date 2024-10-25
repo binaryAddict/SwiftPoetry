@@ -54,18 +54,22 @@ struct SelectionRootView: View {
 
 #Preview {
     DefaultPreviewParent {
-        SelectionRootView(viewModel: .makePreview())
+        SelectionRootView(viewModel: .make(dependacySource: $0))
     }
 }
 
 #Preview("Delayed Network") {
     DefaultPreviewParent {
-        SelectionRootView(viewModel: .makePreview(mode: .delayedNetwork))
+        SelectionRootView(viewModel: .make(dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .delayedNetwork
     }
 }
 
 #Preview("Failing Network") {
     DefaultPreviewParent {
-        SelectionRootView(viewModel: .makePreview(mode: .failingNetwork))
+        SelectionRootView(viewModel: .make(dependacySource: $0))
+    } with: {
+        $0.poetryServiceProvider = .failingNetwork
     }
 }

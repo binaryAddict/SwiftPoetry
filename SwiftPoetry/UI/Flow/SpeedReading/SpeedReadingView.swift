@@ -29,18 +29,18 @@ struct SpeedReadingView: View {
 
 #Preview {
     DefaultPreviewParent {
-        SpeedReadingView(viewModel: .makePreview())
+        SpeedReadingView(viewModel: .make(poem: PoetryStubs.shortPoem, dependacySource: $0))
     }
 }
 
 #Preview("Very Short Poem") {
     DefaultPreviewParent {
-        SpeedReadingView(viewModel: .makePreview(poem: PoetryStubs.veryShortPoem))
+        SpeedReadingView(viewModel: .make(poem: PoetryStubs.veryShortPoem, dependacySource: $0))
     }
 }
 
 #Preview("Long Poem") {
     DefaultPreviewParent {
-        SpeedReadingView(viewModel: .makePreview(poem: PoetryStubs.longPoem))
+        SpeedReadingView(viewModel: .make(poem: PoetryStubs.longPoem, dependacySource: $0))
     }
 }
