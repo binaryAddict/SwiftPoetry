@@ -30,18 +30,19 @@ struct AuthorsView: View {
         .onAppear(perform: viewModel.onAppear)
         .searchable(text: $viewModel.filter)
         .fetchingOverlay(isFetching: $viewModel.fetching)
-        .alert("Error", isPresented: $viewModel.presentError) {
-            if viewModel.settings.offlineOnly {
-                Button("Ok") {
-                    dismiss()
-                }
-            } else {
-                Button("Cancel", role: .cancel) {
-                    dismiss()
-                }
-                Button("Use Offline") {
-                    viewModel.settings.offlineOnly = true
-                }
+        .alert("Error", isPresented: $viewModel.presentNetworkedError) {
+            Button("Cancel", role: .cancel) {
+                dismiss()
+            }
+            Button("Use Offline") {
+                viewModel.settings.offlineOnly = true
+            }
+        } message: {
+            Text("Unable to retrieve Authors")
+        }
+        .alert("Error", isPresented: $viewModel.presentOfflineError) {
+            Button("Ok") {
+                dismiss()
             }
         } message: {
             Text("Unable to retrieve Authors")
@@ -58,5 +59,15 @@ struct AuthorsView: View {
 #Preview("Failing Network") {
     DefaultPreviewParent {
         AuthorsView(viewModel: .makePreview(mode: .failingNetwork))
+    }
+}
+
+#Preview("Failing Offine") {
+    DefaultPreviewParent {
+        AuthorsView(
+            viewModel: .makePreview(mode: .failingOffline).with {
+                $0.settings.offlineOnly = true
+            }
+        )
     }
 }

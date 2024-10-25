@@ -23,10 +23,12 @@ extension PoetryServiceProvider {
         case real
         case offlineOnly
         case failingNetwork
+        case failingOffline
     }
     
     static let offlineOnly = PoetryServiceProvider(main: .offline, offline: .offline)
     static let failingNetwork = PoetryServiceProvider(main: .failingNetwork, offline: .offline)
+    static let failingOffline = PoetryServiceProvider(main: .offline, offline: .failingNetwork)
     static func testPreview(mode: TestMode = .offlineOnly) -> PoetryServiceProvider {
         switch mode {
         case .real:
@@ -35,6 +37,8 @@ extension PoetryServiceProvider {
             return offlineOnly
         case .failingNetwork:
             return .failingNetwork
+        case .failingOffline:
+            return .failingOffline
         }
     }
 }

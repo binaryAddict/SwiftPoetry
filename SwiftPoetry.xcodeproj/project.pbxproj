@@ -46,6 +46,7 @@
 		0F37D1482CC96B2300040379 /* FailingNetworkPoetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1472CC96B2300040379 /* FailingNetworkPoetryService.swift */; };
 		0F37D14A2CC9750F00040379 /* Chainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37D1492CC9750F00040379 /* Chainable.swift */; };
 		0FC10DF22CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */; };
+		0FC10DF42CCBA90F005E90E0 /* AuthorsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC10DF32CCBA90F005E90E0 /* AuthorsViewModelTests.swift */; };
 		0FDA30102CC9A32400551EEF /* WordsPerMinute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */; };
 		0FDA30122CC9A34400551EEF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30112CC9A34400551EEF /* SettingsStore.swift */; };
 		0FDA30142CC9A36F00551EEF /* UserDefaultsSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */; };
@@ -123,6 +124,7 @@
 		0F37D1492CC9750F00040379 /* Chainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chainable.swift; sourceTree = "<group>"; };
 		0FC10DF02CCAE9B1005E90E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedReadingViewModelTests.swift; sourceTree = "<group>"; };
+		0FC10DF32CCBA90F005E90E0 /* AuthorsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsViewModelTests.swift; sourceTree = "<group>"; };
 		0FDA300F2CC9A32400551EEF /* WordsPerMinute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPerMinute.swift; sourceTree = "<group>"; };
 		0FDA30112CC9A34400551EEF /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		0FDA30132CC9A36F00551EEF /* UserDefaultsSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettingsStore.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				0FC10DF12CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift */,
+				0FC10DF32CCBA90F005E90E0 /* AuthorsViewModelTests.swift */,
 			);
 			path = SwiftPoetryTests;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FC10DF22CCBA0B9005E90E0 /* SpeedReadingViewModelTests.swift in Sources */,
+				0FC10DF42CCBA90F005E90E0 /* AuthorsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

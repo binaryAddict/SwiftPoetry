@@ -9,14 +9,15 @@ import SwiftUI
 
 @MainActor
 @Observable
-final class AuthorsViewModel {
+final class AuthorsViewModel: Chainable {
     
     var filter = ""
     var filteredAuthors: [String] {
         filter.isEmpty ? authors : authors.filter { $0.localizedCaseInsensitiveContains(filter) }
     }
     var fetching = false
-    var presentError = false
+    var presentNetworkedError = false
+    var presentOfflineError = false
     private(set) var authors: [String] = []
     private let poetryServiceProvider: PoetryServiceProvider
     var settings: Settings
@@ -51,7 +52,8 @@ final class AuthorsViewModel {
             case .success(let val):
                 self.authors = val
             case .failure:
-                self.presentError = true
+                self.presentNetworkedError = offlineOnly == false
+                self.presentOfflineError = offlineOnly
             }
         }
     }
