@@ -23,7 +23,7 @@ actor MixedPoetryService: PoetryService {
     private let offline: any PoetryStore
     private var authors: [String]?
     
-    init(server: any PoetryService = NetworkPoetryService.shared, offline: any PoetryStore = OfflinePoetryStore()) {
+    init(server: any PoetryService = NetworkPoetryService.shared, offline: any PoetryStore = OfflinePoetryStore.shared) {
         self.server = server
         self.offline = offline
     }

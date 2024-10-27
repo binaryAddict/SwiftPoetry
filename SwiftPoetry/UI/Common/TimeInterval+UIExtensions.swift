@@ -9,6 +9,6 @@ import Foundation
 
 extension TimeInterval {
     var durationFormatted: String {
-        Duration.seconds(self).formatted(.units(allowed: [.minutes, .seconds]))
+        Duration.seconds(self).formatted(.units(allowed: [.hours, .minutes, .seconds]))
     }
 }

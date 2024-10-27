@@ -79,7 +79,10 @@ actor OfflinePoetryStore: PoetryStore {
             authors.append(author)
             authors.sort()
             self.poems[author] = poems
-            try poems.writeJSONFile(poemsURL(author: author))
+            let data = try poems.jsonData()
+            // This may take a second to parse on some devices when later loaded
+            assert(data.count < 20_000_000, "Maybe consider splitting poems into individual files. Data size: \(data.count)")
+            try data.write(to: poemsURL(author: author))
             try authors.writeJSONFile(authorsURL)
         }
     }

@@ -17,7 +17,7 @@ final class AuthorPoemsViewModelTests: XCTestCase {
             poetryServiceProvider: .offlineOnly,
             settings: .makeUnbacked()
         )
-        XCTAssert(sut.peoms.isEmpty)
+        XCTAssert(sut.poems.isEmpty)
         XCTAssertFalse(sut.fetching)
         
         sut.fetchPoems()
@@ -26,7 +26,7 @@ final class AuthorPoemsViewModelTests: XCTestCase {
         let completion = XCTestExpectation()
         _ = withObservationTracking {
             (
-                sut.peoms,
+                sut.poems,
                 sut.presentError
             )
         } onChange: {
@@ -36,7 +36,7 @@ final class AuthorPoemsViewModelTests: XCTestCase {
         
         XCTAssertFalse(sut.fetching)
         XCTAssertFalse(sut.presentError)
-        XCTAssertFalse(sut.peoms.isEmpty)
+        XCTAssertFalse(sut.poems.isEmpty)
     }
     
     @MainActor
@@ -48,7 +48,7 @@ final class AuthorPoemsViewModelTests: XCTestCase {
                 $0.offlineOnly = false
             }
         )
-        XCTAssert(sut.peoms.isEmpty)
+        XCTAssert(sut.poems.isEmpty)
         XCTAssertFalse(sut.fetching)
         
         sut.fetchPoems()
@@ -57,7 +57,7 @@ final class AuthorPoemsViewModelTests: XCTestCase {
         let completion = XCTestExpectation()
         _ = withObservationTracking {
             (
-                sut.peoms,
+                sut.poems,
                 sut.presentError
             )
         } onChange: {

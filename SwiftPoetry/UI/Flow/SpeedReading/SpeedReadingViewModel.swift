@@ -53,9 +53,12 @@ class SpeedReadingViewModel: Chainable {
         self.poem = poem
         self.settings = settings
         self.displayLink = displayLink
+        // Above this maybe above 0.3 seconds on some devices
+        assert(poem.lines.count < 40_000, "Maybe reconder parsing lines on main thread. Line count: \(poem.lines.count)")
         self.words = poem.lines.flatMap {
             $0.split(separator: " ")
         }
+        assert(self.words.count < 400_000, "Maybe reconder parsing lines on main thread. Word count: \(self.words.count)")
         token = displayLink.update.sink { [weak self] change in
             guard let self else { return }
             guard complete != 1 else { return }

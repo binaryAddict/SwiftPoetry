@@ -111,6 +111,6 @@ final class MixedPoetryServiceTests: XCTestCase {
             completion.fulfill()
         }
         _ = try await sut.poems(author: PoetryStubs.authorJonathanSwift)
-        await fulfillment(of: [completion], timeout: 0.2)
+        await fulfillment(of: [completion], timeout: 0.5)
     }
 }

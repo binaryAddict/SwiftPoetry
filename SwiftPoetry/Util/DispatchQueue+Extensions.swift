@@ -8,7 +8,7 @@
 import Foundation
 
 extension DispatchQueue {
-    func asyncAwait<T>(operation: @escaping () async throws -> T, completion: @escaping (Result<T, Error>) -> Void) {
+    func throwingAsyncAwait<T>(operation: @escaping () async throws -> T, completion: @escaping (Result<T, Error>) -> Void) {
         Task {
             func action(_ result: Result<T, Error>) {
                self.async {
@@ -19,6 +19,15 @@ extension DispatchQueue {
                 action(.success(try await operation()))
             } catch {
                 action(.failure(error))
+            }
+        }
+    }
+    
+    func asyncAwait<T>(operation: @escaping () async -> T, completion: @escaping (T) -> Void) {
+        Task {
+            let value = await operation()
+            self.async {
+                completion(value)
             }
         }
     }

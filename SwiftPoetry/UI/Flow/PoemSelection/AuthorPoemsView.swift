@@ -14,9 +14,11 @@ struct AuthorPoemsView: View {
     var body: some View {
         List {
             Section("Poems") {
-                ForEach(viewModel.filteredPoems, id: \.title) { poem in
-                    NavigationLink(value: viewModel.navigationValue(poem: poem)) {
-                        Text(poem.title)
+                // Some authors repeat titles particularly since some poems are letters; hence using indices
+                let filteredPoems = viewModel.filteredPoems
+                ForEach(filteredPoems.indices, id: \.self) { i in
+                    NavigationLink(value: viewModel.navigationValue(poem: filteredPoems[i])) {
+                        Text(filteredPoems[i].title)
                     }
                 }
             }

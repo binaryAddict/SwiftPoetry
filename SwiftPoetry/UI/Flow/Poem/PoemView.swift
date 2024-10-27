@@ -26,8 +26,17 @@ struct PoemView: View {
                             .bold()
                             .foregroundStyle(Color.appTint)
                             .font(.footnote)
+                            .opacity(viewModel.estimatedReady ? 1 : 0)
                     }
                     .padding(.bottom, 32)
+                    
+                    /*
+                     One big Text view will choke with large text if all lines are concat into one string.
+                     TextEditor is an option but then there are restrictions how you can layout the page.
+                     
+                     A Text for each line seems a reasonable option
+                     - tested with Lord Byron - Don Juan (18k+ lines, 120k+ words) on iPhone 12 pro
+                     */
                     ForEach(viewModel.poem.lines.indices, id: \.self) {
                         Text(viewModel.poem.lines[$0])
                     }
@@ -47,6 +56,7 @@ struct PoemView: View {
             .padding(8)
             .groupedArea()
         }
+        .onAppear(perform: viewModel.onAppear)
     }
 }
 

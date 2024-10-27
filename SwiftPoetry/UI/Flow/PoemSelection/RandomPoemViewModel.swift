@@ -30,7 +30,7 @@ class RandomPoemViewModel: Chainable {
     func fetchRandomPoem() {
         let offlineOnly = settings.offlineOnly
         fetching = true
-        DispatchQueue.main.asyncAwait {
+        DispatchQueue.main.throwingAsyncAwait {
             try await self.poetryServiceProvider.service(offlineOnly: offlineOnly).randomPoem()
         } completion: { [weak self] result in
             guard let self else { return }

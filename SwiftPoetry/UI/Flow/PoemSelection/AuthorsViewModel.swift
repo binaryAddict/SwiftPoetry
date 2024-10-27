@@ -13,7 +13,8 @@ final class AuthorsViewModel: Chainable {
     
     var filter = ""
     var filteredAuthors: [String] {
-        filter.isEmpty ? authors : authors.filter { $0.localizedCaseInsensitiveContains(filter) }
+        assert(authors.count < 1000, "Time to consider throttling and/or persisting filter results")
+        return filter.isEmpty ? authors : authors.filter { $0.localizedCaseInsensitiveContains(filter) }
     }
     var fetching = false
     var presentNetworkedError = false
@@ -43,7 +44,7 @@ final class AuthorsViewModel: Chainable {
         let offlineOnly = settings.offlineOnly
         fetching = true
         authors.removeAll()
-        DispatchQueue.main.asyncAwait {
+        DispatchQueue.main.throwingAsyncAwait {
             try await self.poetryServiceProvider.service(offlineOnly: offlineOnly).authors()
         } completion: { [weak self] val in
             guard let self else { return }

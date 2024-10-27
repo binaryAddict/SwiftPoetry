@@ -15,10 +15,11 @@ class AuthorPoemsViewModel {
     let author: String
     var filter = ""
     var filteredPoems: [Poem] {
-        filter.isEmpty ? peoms : peoms.filter { $0.title.localizedCaseInsensitiveContains(filter) }
+        assert(poems.count < 1000, "Time to consider throttling and/or persisting filter results")
+        return filter.isEmpty ? poems : poems.filter { $0.title.localizedCaseInsensitiveContains(filter) }
     }
     var presentError = false
-    private(set) var peoms: [Poem] = []
+    private(set) var poems: [Poem] = []
     private let poetryServiceProvider: PoetryServiceProvider
     private let settings: Settings
     
@@ -37,14 +38,14 @@ class AuthorPoemsViewModel {
         // Not really needed since if they exist offline it will already be used
         // So a failure here is a failure of both services
         let offlineOnly = settings.offlineOnly
-        DispatchQueue.main.asyncAwait {
+        DispatchQueue.main.throwingAsyncAwait {
             try await self.poetryServiceProvider.service(offlineOnly: offlineOnly).poems(author: self.author)
         } completion: { [weak self] val in
             guard let self else { return }
             self.fetching = false
             switch val {
             case .success(let val):
-                self.peoms = val
+                self.poems = val
             case .failure:
                 self.presentError = true
             }
